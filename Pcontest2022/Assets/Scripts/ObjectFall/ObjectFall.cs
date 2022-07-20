@@ -11,7 +11,7 @@ public class ObjectFall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cadaver = (GameObject)Resources.Load("Cadaver");
+        cadaver = (GameObject)Resources.Load("Zombie");
         cadavererea = GameObject.Find("CadaverErea");
         cadaverfall = new Vector3(cadavererea.transform.position.x, cadavererea.transform.position.y + 3.0f, cadavererea.transform.position.z);
     }
