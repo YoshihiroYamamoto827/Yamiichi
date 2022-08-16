@@ -15,15 +15,7 @@ D:/Unity/YNCTProgrammingContest2/Pcontest2022
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-<<<<<<< HEAD
-<<<<<<< HEAD
-52587
-=======
-52881
->>>>>>> Suzuki
-=======
-53541
->>>>>>> Suzuki
+54038
 Successfully changed project path to: D:/Unity/YNCTProgrammingContest2/Pcontest2022
 D:/Unity/YNCTProgrammingContest2/Pcontest2022
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -55,15 +47,7 @@ D:/Unity/YNCTProgrammingContest2/Pcontest2022
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-<<<<<<< HEAD
-<<<<<<< HEAD
-Refreshing native plugins compatible for Editor in 74.16 ms, found 3 plugins.
-=======
-Refreshing native plugins compatible for Editor in 72.50 ms, found 3 plugins.
->>>>>>> Suzuki
-=======
-Refreshing native plugins compatible for Editor in 76.13 ms, found 3 plugins.
->>>>>>> Suzuki
+Refreshing native plugins compatible for Editor in 76.91 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.5f1 (40eb3a945986)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.5f1/Editor/Data/Resources/UnitySubsystems
@@ -79,15 +63,7 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.5f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.5f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.5f1/Editor/Data/MonoBleedingEdge/etc'
-<<<<<<< HEAD
-<<<<<<< HEAD
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56096
-=======
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56888
->>>>>>> Suzuki
-=======
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56340
->>>>>>> Suzuki
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56832
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.5f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
@@ -95,15 +71,7 @@ Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.5f1/E
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.5f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.5f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.5f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-<<<<<<< HEAD
-<<<<<<< HEAD
-Registered in 0.006632 seconds.
-=======
-Registered in 0.007031 seconds.
->>>>>>> Suzuki
-=======
-Registered in 0.012293 seconds.
->>>>>>> Suzuki
+Registered in 0.007069 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 [usbmuxd] Start listen thread
@@ -111,94 +79,39 @@ Native extension for WindowsStandalone target not found
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for WebGL target not found
-<<<<<<< HEAD
-<<<<<<< HEAD
-Refreshing native plugins compatible for Editor in 68.71 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 81.13 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.607 seconds
+- Completed reload, in  0.666 seconds
 Domain Reload Profiling:
-	ReloadAssembly (608ms)
-		BeginReloadAssembly (69ms)
-=======
-Refreshing native plugins compatible for Editor in 72.25 ms, found 3 plugins.
-=======
-Refreshing native plugins compatible for Editor in 85.58 ms, found 3 plugins.
->>>>>>> Suzuki
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.695 seconds
-Domain Reload Profiling:
-<<<<<<< HEAD
-	ReloadAssembly (628ms)
-		BeginReloadAssembly (73ms)
->>>>>>> Suzuki
-=======
-	ReloadAssembly (696ms)
-		BeginReloadAssembly (96ms)
->>>>>>> Suzuki
+	ReloadAssembly (666ms)
+		BeginReloadAssembly (70ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-<<<<<<< HEAD
 			CreateAndSetChildDomain (1ms)
-<<<<<<< HEAD
-		EndReloadAssembly (430ms)
-			LoadAssemblies (68ms)
+		EndReloadAssembly (488ms)
+			LoadAssemblies (69ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (105ms)
+			SetupTypeCache (112ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (29ms)
-			SetupLoadedEditorAssemblies (249ms)
+			RebuildScriptCaches (33ms)
+			SetupLoadedEditorAssemblies (291ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (59ms)
+				InitializePlatformSupportModulesInManaged (72ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (69ms)
+				RefreshPlugins (81ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (81ms)
-				ProcessInitializeOnLoadMethodAttributes (39ms)
-=======
-		EndReloadAssembly (444ms)
-			LoadAssemblies (72ms)
-=======
-			CreateAndSetChildDomain (2ms)
-		EndReloadAssembly (482ms)
-			LoadAssemblies (93ms)
->>>>>>> Suzuki
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (113ms)
-			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (29ms)
-			SetupLoadedEditorAssemblies (289ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (66ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (86ms)
-				BeforeProcessingInitializeOnLoad (1ms)
-<<<<<<< HEAD
-				ProcessInitializeOnLoadAttributes (88ms)
-				ProcessInitializeOnLoadMethodAttributes (41ms)
->>>>>>> Suzuki
-=======
 				ProcessInitializeOnLoadAttributes (93ms)
 				ProcessInitializeOnLoadMethodAttributes (43ms)
->>>>>>> Suzuki
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-<<<<<<< HEAD
-<<<<<<< HEAD
-Registered in 0.003204 seconds.
-=======
-Registered in 0.003333 seconds.
->>>>>>> Suzuki
-=======
-Registered in 0.003427 seconds.
->>>>>>> Suzuki
+Registered in 0.003480 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image D:\Unity\YNCTProgrammingContest2\Pcontest2022\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image D:\Unity\YNCTProgrammingContest2\Pcontest2022\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
@@ -207,73 +120,31 @@ Native extension for WindowsStandalone target not found
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.76 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.68 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-<<<<<<< HEAD
-<<<<<<< HEAD
-- Completed reload, in  1.158 seconds
+- Completed reload, in  1.130 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1159ms)
-		BeginReloadAssembly (200ms)
-=======
-- Completed reload, in  1.034 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1035ms)
-		BeginReloadAssembly (204ms)
->>>>>>> Suzuki
-=======
-- Completed reload, in  1.135 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1136ms)
-		BeginReloadAssembly (223ms)
->>>>>>> Suzuki
+	ReloadAssembly (1131ms)
+		BeginReloadAssembly (212ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (9ms)
+			DisableScriptedObjects (6ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-<<<<<<< HEAD
-<<<<<<< HEAD
-			CreateAndSetChildDomain (119ms)
-		EndReloadAssembly (850ms)
-			LoadAssemblies (186ms)
+			CreateAndSetChildDomain (123ms)
+		EndReloadAssembly (803ms)
+			LoadAssemblies (78ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (243ms)
+			SetupTypeCache (263ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (44ms)
-			SetupLoadedEditorAssemblies (342ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (26ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (75ms)
-				ProcessInitializeOnLoadAttributes (208ms)
-=======
-			CreateAndSetChildDomain (124ms)
-		EndReloadAssembly (724ms)
-			LoadAssemblies (67ms)
-=======
-			CreateAndSetChildDomain (132ms)
-		EndReloadAssembly (804ms)
-			LoadAssemblies (95ms)
->>>>>>> Suzuki
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (283ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (47ms)
+			RebuildScriptCaches (64ms)
 			SetupLoadedEditorAssemblies (344ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (27ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-<<<<<<< HEAD
-				BeforeProcessingInitializeOnLoad (73ms)
-				ProcessInitializeOnLoadAttributes (192ms)
->>>>>>> Suzuki
-=======
-				BeforeProcessingInitializeOnLoad (81ms)
-				ProcessInitializeOnLoadAttributes (204ms)
->>>>>>> Suzuki
+				BeforeProcessingInitializeOnLoad (77ms)
+				ProcessInitializeOnLoadAttributes (208ms)
 				ProcessInitializeOnLoadMethodAttributes (26ms)
 				AfterProcessingInitializeOnLoad (6ms)
 				EditorAssembliesLoaded (0ms)
@@ -282,31 +153,13 @@ Domain Reload Profiling:
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-<<<<<<< HEAD
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-<<<<<<< HEAD
-Refreshing native plugins compatible for Editor in 0.59 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 1.12 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3378 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 25 unused Assets / (55.2 KB). Loaded Objects now: 3838.
 Memory consumption went from 120.6 MB to 120.5 MB.
-Total: 3.191900 ms (FindLiveObjects: 0.351700 ms CreateObjectMapping: 0.081300 ms MarkObjects: 2.692500 ms  DeleteObjects: 0.065700 ms)
-=======
-Refreshing native plugins compatible for Editor in 0.87 ms, found 3 plugins.
-=======
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
-Refreshing native plugins compatible for Editor in 0.68 ms, found 3 plugins.
->>>>>>> Suzuki
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3368 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 25 unused Assets / (55.7 KB). Loaded Objects now: 3828.
-Memory consumption went from 120.4 MB to 120.3 MB.
-<<<<<<< HEAD
-Total: 3.196600 ms (FindLiveObjects: 0.338900 ms CreateObjectMapping: 0.081000 ms MarkObjects: 2.701800 ms  DeleteObjects: 0.073900 ms)
->>>>>>> Suzuki
-=======
-Total: 3.020700 ms (FindLiveObjects: 0.308000 ms CreateObjectMapping: 0.078300 ms MarkObjects: 2.550500 ms  DeleteObjects: 0.082900 ms)
->>>>>>> Suzuki
+Total: 3.500200 ms (FindLiveObjects: 0.356400 ms CreateObjectMapping: 0.108000 ms MarkObjects: 2.949500 ms  DeleteObjects: 0.084900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -320,63 +173,37 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-<<<<<<< HEAD
-<<<<<<< HEAD
-  Time since last request: 5096.816227 seconds.
-  path: Assets/Scenes/Scene1.unity
-  artifactKey: Guid(d711c8fc5337acf44a9946692f2043e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Scene1.unity using Guid(d711c8fc5337acf44a9946692f2043e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b46cf358c055e9509abbdc4b56c4e03') in 0.006522 seconds 
-=======
-  Time since last request: 5432.356780 seconds.
-  path: Assets/prefab/ceiling.prefab
-  artifactKey: Guid(539621374fc1d154da182a85c011963b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/prefab/ceiling.prefab using Guid(539621374fc1d154da182a85c011963b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fa915b1125766cfc30494ea341c15be') in 0.110242 seconds 
+  Time since last request: 7807.606053 seconds.
+  path: Assets/images/uploads_files_342790_Lambent_Male_S.tga
+  artifactKey: Guid(8af7d75e51a70184484846432aff8797) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/images/uploads_files_342790_Lambent_Male_S.tga using Guid(8af7d75e51a70184484846432aff8797) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d5a101224931935a32fe8a30b3fc499') in 0.074138 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.773999 seconds.
-  path: Assets/prefab/Materials/door.mat
-  artifactKey: Guid(f95fef7b8930c174eae372d08725762a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/prefab/Materials/door.mat using Guid(f95fef7b8930c174eae372d08725762a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f418d3291efbc498bd889f7e567499bd') in 0.029641 seconds 
+  Time since last request: 0.000018 seconds.
+  path: Assets/Materials/ObjectMaterial.mat
+  artifactKey: Guid(f1da995e1e36aa0438108c84eea909ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/ObjectMaterial.mat using Guid(f1da995e1e36aa0438108c84eea909ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f14c55c12573dc91998bd8103e7e7afa') in 0.071988 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/prefab/Materials/floor3.jpg
-  artifactKey: Guid(bee8e7af4cc800d4b9b5b7eaaabf27e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/prefab/Materials/floor3.jpg using Guid(bee8e7af4cc800d4b9b5b7eaaabf27e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abef6cd90b2cf845a2312366d551dc12') in 0.041682 seconds 
+  Time since last request: 0.000022 seconds.
+  path: Assets/images/Cube.prefab
+  artifactKey: Guid(f9f707d5ab71d1e49aea30aa0f42cca2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/images/Cube.prefab using Guid(f9f707d5ab71d1e49aea30aa0f42cca2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd95a6dfa6f659cba5e0cbb9c09001d36') in 0.028233 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 8.152065 seconds.
-  path: Assets/prefab/Materials/Materials
-  artifactKey: Guid(595ae060287340440912fe0f70ad3c5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/prefab/Materials/Materials using Guid(595ae060287340440912fe0f70ad3c5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8ae77241025b9dd4218b1dc8a9e67e0') in 0.001188 seconds 
+  Time since last request: 0.000026 seconds.
+  path: Assets/Materials/PlayerMaterial.mat
+  artifactKey: Guid(85a6a08b2cc09b948a6b78b17ae45c36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/PlayerMaterial.mat using Guid(85a6a08b2cc09b948a6b78b17ae45c36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f13a2bc8e2ca4d6e6ec01bce18304551') in 0.012465 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.029841 seconds.
-  path: Assets/prefab/Materials/Materials/door.mat
-  artifactKey: Guid(be759a92a29292c458c2b4a8eb19c6df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/prefab/Materials/Materials/door.mat using Guid(be759a92a29292c458c2b4a8eb19c6df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5418506f41f0e37aedf514c8bbcd8f0') in 0.008068 seconds 
+  Time since last request: 0.000017 seconds.
+  path: Assets/Materials/FieldMaterial.mat
+  artifactKey: Guid(60279301f85a1c14e82f946cb9e604b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/FieldMaterial.mat using Guid(60279301f85a1c14e82f946cb9e604b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a872125b8b3957369465d556885ac45e') in 0.012067 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 2.761302 seconds.
-  path: Assets/Materials/ceiling Material.mat
-  artifactKey: Guid(205a560ad6d219d42a3d57b1c5aed999) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/ceiling Material.mat using Guid(205a560ad6d219d42a3d57b1c5aed999) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95685c0b3f65692ccca598aa186e6618') in 0.007661 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.012231 seconds.
-  path: Assets/Materials/frameMaterial.mat
-  artifactKey: Guid(7b0054dc4de6a914aa4a53a1a5b4f692) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/frameMaterial.mat using Guid(7b0054dc4de6a914aa4a53a1a5b4f692) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '948942e3f71c6ce23366c04648bc0e69') in 0.010839 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Materials/wall Material.mat
-  artifactKey: Guid(ff820e446547a3b42bbaa889ce08423f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/wall Material.mat using Guid(ff820e446547a3b42bbaa889ce08423f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3914d874c6f4dd97904515788a47dfcd') in 0.008999 seconds 
->>>>>>> Suzuki
-=======
-  Time since last request: 7248.907023 seconds.
-  path: Assets/prefab/ceiling.prefab
-  artifactKey: Guid(539621374fc1d154da182a85c011963b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/prefab/ceiling.prefab using Guid(539621374fc1d154da182a85c011963b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fa915b1125766cfc30494ea341c15be') in 0.307985 seconds 
->>>>>>> Suzuki
+  Time since last request: 0.000029 seconds.
+  path: Assets/images/uploads_files_342790_Lambent_Male.dae
+  artifactKey: Guid(ba48b8607225eb54a9b2e4a9251096a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/images/uploads_files_342790_Lambent_Male.dae using Guid(ba48b8607225eb54a9b2e4a9251096a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6bc108ba8832a20ff9d5e802d0a6e93d') in 0.055082 seconds 
