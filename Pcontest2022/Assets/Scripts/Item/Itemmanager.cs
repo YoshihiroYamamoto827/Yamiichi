@@ -5,6 +5,7 @@ using UnityEngine;
 public class Itemmanager : MonoBehaviour
 {
     public int itemcounter = 0;
+    public GameObject exitarea;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class Itemmanager : MonoBehaviour
         if(itemcounter >= 3)
         {
             Debug.Log("Area Opened");
-
+            exitarea.SetActive(true);
         }
     }
 

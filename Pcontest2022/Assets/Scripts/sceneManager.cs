@@ -26,4 +26,9 @@ public class sceneManager : MonoBehaviour
     {
         tutorialPanel.SetActive(false);
     }
+
+    public void GametoStart()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
 }
