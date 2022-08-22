@@ -24,7 +24,7 @@ public class ExitManager : MonoBehaviour
     {
         if(other.gameObject.name == "Player")
         {
-            script.GametoStart();
+            script.GameClear();
         }
     }
 }
