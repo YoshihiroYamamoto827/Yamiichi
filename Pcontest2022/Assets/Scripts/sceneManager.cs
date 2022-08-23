@@ -31,4 +31,9 @@ public class sceneManager : MonoBehaviour
     {
         SceneManager.LoadScene("TitleScene");
     }
+
+    public void GameClear()
+    {
+        SceneManager.LoadScene("EndScene");
+    }
 }
