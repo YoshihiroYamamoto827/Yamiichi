@@ -8,10 +8,10 @@ public class CSVWriter : MonoBehaviour
     public string fileName;
 
     //テスト用
-    private void Start()
-    {
-        WriteCSV("Hello,World");
-    }
+    //private void Start()
+    //{
+        //WriteCSV("Hello,World");
+    //}
 
     //CSVに書き込む処理
     public void WriteCSV(string txt)

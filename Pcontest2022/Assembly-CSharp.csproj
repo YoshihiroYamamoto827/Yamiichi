@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\House\PointLight.cs" />
     <Compile Include="Assets\Scripts\CameraMove.cs" />
     <Compile Include="Assets\Scripts\Enemy\KnockWindow.cs" />
+    <Compile Include="Assets\Scripts\MapMaking\CSVWriter.cs" />
     <Compile Include="Assets\Scripts\sceneManager.cs" />
     <Compile Include="Assets\Scripts\NotUse\LightRay.cs" />
     <Compile Include="Assets\Scripts\ExitManager.cs" />
@@ -71,7 +72,8 @@
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Menumanager.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMove.cs" />
-    <Compile Include="Assets\Scripts\MapMaking\CSVWriter.cs" />
+    <Compile Include="Assets\Scripts\MapMaking\MapMaker.cs" />
+    <Compile Include="Assets\Scripts\MapMaking\ValueManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
