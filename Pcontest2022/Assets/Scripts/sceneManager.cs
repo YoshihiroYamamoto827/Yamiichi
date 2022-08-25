@@ -36,4 +36,9 @@ public class sceneManager : MonoBehaviour
     {
         SceneManager.LoadScene("EndScene");
     }
+
+    public void MapPreview()
+    {
+        SceneManager.LoadScene("MapPreviewScene");
+    }
 }

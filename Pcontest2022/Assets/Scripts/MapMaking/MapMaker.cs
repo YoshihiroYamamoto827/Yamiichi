@@ -8,6 +8,7 @@ public class MapMaker : MonoBehaviour
     private ValueManager Valuemanager;
 
     private int Rxvalue, Ryvalue;
+    private string Robjectname;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,8 @@ public class MapMaker : MonoBehaviour
     {
         Rxvalue = Valuemanager.Sendxvalue();
         Ryvalue = Valuemanager.Sendyvalue();
-        CSVWriter.WriteCSV(Rxvalue.ToString() + "," + Ryvalue.ToString());
+        Robjectname = Valuemanager.Sendobjectname();
+        CSVWriter.WriteCSV(Rxvalue.ToString() + "," + Ryvalue.ToString() + "," + Robjectname);
         Debug.Log("Successed");
     }
 }

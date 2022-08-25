@@ -7,6 +7,8 @@ public class ValueManager : MonoBehaviour
 {
     private Text xaxisvalue, yaxisvalue;
     private int xvalue, yvalue;
+    private Dropdown ddtmp;
+    private string objectname;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,8 @@ public class ValueManager : MonoBehaviour
         //X座標、Y座標それぞれについて初期化した0を表示
         xaxisvalue.text = xvalue.ToString();
         yaxisvalue.text = yvalue.ToString();
+
+        ddtmp = GameObject.Find("ObjectChooseDropdown").GetComponent<Dropdown>();
     }
 
     // Update is called once per frame
@@ -72,5 +76,11 @@ public class ValueManager : MonoBehaviour
     public int Sendyvalue()
     {
         return yvalue;
+    }
+
+    public string Sendobjectname()
+    {
+        objectname = ddtmp.options[ddtmp.value].text;
+        return objectname;
     }
 }
