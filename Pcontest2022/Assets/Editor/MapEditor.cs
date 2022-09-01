@@ -5,8 +5,27 @@ using UnityEditor;
 using System.IO;
 using System.Linq;
 
-//MapEditor
 
+//jsonに出力する配列
+[System.Serializable]
+public class Jsondata
+{
+    public Mapdata[][] mapdata; 
+}
+
+//jsonデータのフォーマット
+[System.Serializable]
+public class Mapdata
+{
+    public int xcoor;
+    public int ycoor;
+    public string objectname;
+}
+
+
+
+
+//MapEditor
 public class MapEditor : EditorWindow
 {
     //画像ディレクトリ
@@ -73,7 +92,7 @@ public class MapEditor : EditorWindow
     //画像一覧をボタンとして出力
     private void DrawImageParts()
     {
-        if(imgDirectory != null)
+        if (imgDirectory != null)
         {
             float x = 0.0f;
             float y = 00.0f;
@@ -84,7 +103,7 @@ public class MapEditor : EditorWindow
             string path = AssetDatabase.GetAssetPath(imgDirectory);
             string[] names = Directory.GetFiles(path, "*.png");
             EditorGUILayout.BeginVertical();
-            foreach(string d in names)
+            foreach (string d in names)
             {
                 if (x > maxW)
                 {
@@ -93,7 +112,7 @@ public class MapEditor : EditorWindow
                     EditorGUILayout.EndHorizontal();
                 }
 
-                if(x == 0.0f)
+                if (x == 0.0f)
                 {
                     EditorGUILayout.BeginHorizontal();
                 }
@@ -130,9 +149,9 @@ public class MapEditor : EditorWindow
     {
         EditorGUILayout.BeginVertical();
         GUILayout.FlexibleSpace();
-        if(GUILayout.Button("open map editor"))
+        if (GUILayout.Button("open map editor"))
         {
-            if(subWindow == null)
+            if (subWindow == null)
             {
                 subWindow = MapEditorSubWindow.WillAppear(this);
             }
@@ -171,7 +190,7 @@ public class MapEditor : EditorWindow
         {
             resultPath = Application.dataPath;
         }
-        return resultPath + "/" + outputFileName + ".txt";
+        return resultPath + "/" + outputFileName + ".json";
     }
 }
 
@@ -191,6 +210,12 @@ public class MapEditorSubWindow : EditorWindow
     private Rect[,] gridRect;
     //親ウィンドウの参照
     private MapEditor parent;
+
+    Jsondata json = new Jsondata();
+
+
+    //書き込むjsonデータの文字列の定義
+    public string[][] jsonstr;
 
     //サブウィンドウを開く
     public static MapEditorSubWindow WillAppear(MapEditor _parent)
@@ -214,15 +239,20 @@ public class MapEditorSubWindow : EditorWindow
         mapSize = parent.MapSize;
         gridSize = parent.GridSize;
 
-        //マップデータを初期化
+        json.mapdata = new Mapdata[mapSize][mapSize];
+
+        //マップデータ、書き込むJsonデータの配列を初期化
         map = new string[mapSize, mapSize];
-        for(int i = 0; i < mapSize; i++)
+        for (int i = 0; i < mapSize; i++)
         {
-            for(int j = 0; j < mapSize; j++)
+            for (int j = 0; j < mapSize; j++)
             {
+                json.mapdata[i][j] = new Mapdata();
                 map[i, j] = "";
             }
         }
+        
+        
         //グリッドデータを生成
         gridRect = CreateGrid(mapSize);
     }
@@ -230,9 +260,9 @@ public class MapEditorSubWindow : EditorWindow
     void OnGUI()
     {
         //グリッド線を描画する
-        for(int yy = 0; yy < mapSize; yy++)
+        for (int yy = 0; yy < mapSize; yy++)
         {
-            for(int xx = 0; xx < mapSize; xx++)
+            for (int xx = 0; xx < mapSize; xx++)
             {
                 DrawGridLine(gridRect[yy, xx]);
             }
@@ -240,7 +270,7 @@ public class MapEditorSubWindow : EditorWindow
 
         //クリックされた位置を探してその場所に画像データを入れる
         Event e = Event.current;
-        if(e.type == EventType.MouseDown)
+        if (e.type == EventType.MouseDown)
         {
             Vector2 pos = Event.current.mousePosition;
             int xx;
@@ -256,7 +286,7 @@ public class MapEditorSubWindow : EditorWindow
             }
 
             //y位置を探す
-            for(int yy = 0; yy < mapSize; yy++)
+            for (int yy = 0; yy < mapSize; yy++)
             {
                 if (gridRect[yy, xx].Contains(pos))
                 {
@@ -276,9 +306,9 @@ public class MapEditorSubWindow : EditorWindow
         }
 
         //選択した画像を描画する
-        for(int yy = 0; yy < mapSize; yy++)
+        for (int yy = 0; yy < mapSize; yy++)
         {
-            for(int xx = 0; xx < mapSize; xx++)
+            for (int xx = 0; xx < mapSize; xx++)
             {
                 if (map[yy, xx] != null && map[yy, xx].Length > 0)
                 {
@@ -291,7 +321,7 @@ public class MapEditorSubWindow : EditorWindow
         //出力ボタン
         Rect rect = new Rect(0, WINDOW_H - 50, 300, 50);
         GUILayout.BeginArea(rect);
-        if(GUILayout.Button("output file", GUILayout.MinWidth(300), GUILayout.MinHeight(50)))
+        if (GUILayout.Button("output file", GUILayout.MinWidth(300), GUILayout.MinHeight(50)))
         {
             OutputFile();
         }
@@ -312,10 +342,10 @@ public class MapEditorSubWindow : EditorWindow
 
         Rect[,] resultRects = new Rect[sizeH, sizeW];
 
-        for(int yy = 0; yy < sizeH; yy++)
+        for (int yy = 0; yy < sizeH; yy++)
         {
             x = 0.0f;
-            for(int xx = 0; xx < sizeW; xx++)
+            for (int xx = 0; xx < sizeW; xx++)
             {
                 Rect r = new Rect(new Vector2(x, y), new Vector2(w, h));
                 resultRects[yy, xx] = r;
@@ -356,40 +386,39 @@ public class MapEditorSubWindow : EditorWindow
     //ファイルで出力
     private void OutputFile()
     {
+
         string path = parent.OutputFilePath();
 
         FileInfo fileInfo = new FileInfo(path);
         StreamWriter sw = fileInfo.AppendText();
-        sw.WriteLine(GetMapStrFormat());
+        for (int i = 0; i < mapSize; i++)
+        {
+            for (int j = 0; j < mapSize; j++)
+            {
+                sw.WriteLine(GetMapStrFormat(i, j));
+            }
+
+        }
         sw.Flush();
         sw.Close();
 
         //完了ポップアップ
-        EditorUtility.DisplayDialog("MapEditor", "output file success\n" + path, "ok");
+        EditorUtility.DisplayDialog("MapEditor", "output file success\n" + path, "OK");
     }
 
     //出力するマップデータ整形
-    private string GetMapStrFormat()
+    private string GetMapStrFormat(int x, int y)
     {
-        string result = "";
-        for(int i = 0; i < mapSize; i++)
-        {
-            for(int j = 0; j < mapSize; j++)
-            {
-                result += OutputDataFormat(map[i, j]);
-                if (j < mapSize - 1)
-                {
-                    result += ",";
-                }
-            }
-            result += "\n";
-        }
-        return result;
+        json.mapdata[x][y].xcoor = x;
+        json.mapdata[x][y].ycoor = y;
+        json.mapdata[x][y].objectname = OutputDataFormat(map[x, y]);
+        jsonstr[x][y] = JsonUtility.ToJson(json);
+        return jsonstr[x][y];
     }
 
     private string OutputDataFormat(string data)
     {
-        if(data != null && data.Length > 0)
+        if (data != null && data.Length > 0)
         {
             string[] tmps = data.Split('/');
             string fileName = tmps[tmps.Length - 1];
