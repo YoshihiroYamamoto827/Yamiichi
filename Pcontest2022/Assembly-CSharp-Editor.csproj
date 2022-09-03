@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Editor\MapEditor.cs" />
     <Compile Include="Assets\Editor\MyWindow.cs" />
+    <Compile Include="Assets\Editor\MapPreviewer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

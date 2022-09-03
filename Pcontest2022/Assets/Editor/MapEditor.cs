@@ -10,7 +10,7 @@ using System.Linq;
 [System.Serializable]
 public class Jsondata
 {
-    public Mapdata[][] mapdata; 
+    public Mapdata mapdata; 
 }
 
 //jsonデータのフォーマット
@@ -21,8 +21,6 @@ public class Mapdata
     public int ycoor;
     public string objectname;
 }
-
-
 
 
 //MapEditor
@@ -43,7 +41,7 @@ public class MapEditor : EditorWindow
     //サブウィンドウ
     private MapEditorSubWindow subWindow;
 
-    [UnityEditor.MenuItem("Window/Mapcreater")]
+    [UnityEditor.MenuItem("Window/MapEditor")]
     static void ShowTestMainWindow()
     {
         EditorWindow.GetWindow(typeof(MapEditor));
@@ -215,7 +213,7 @@ public class MapEditorSubWindow : EditorWindow
 
 
     //書き込むjsonデータの文字列の定義
-    public string[][] jsonstr;
+    public string jsonstr;
 
     //サブウィンドウを開く
     public static MapEditorSubWindow WillAppear(MapEditor _parent)
@@ -237,21 +235,21 @@ public class MapEditorSubWindow : EditorWindow
     public void init()
     {
         mapSize = parent.MapSize;
+        Debug.Log(mapSize);
         gridSize = parent.GridSize;
 
-        json.mapdata = new Mapdata[mapSize][mapSize];
+        json.mapdata = new Mapdata();
 
         //マップデータ、書き込むJsonデータの配列を初期化
         map = new string[mapSize, mapSize];
         for (int i = 0; i < mapSize; i++)
         {
+            json.mapdata = new Mapdata();
             for (int j = 0; j < mapSize; j++)
             {
-                json.mapdata[i][j] = new Mapdata();
                 map[i, j] = "";
             }
         }
-        
         
         //グリッドデータを生成
         gridRect = CreateGrid(mapSize);
@@ -409,11 +407,11 @@ public class MapEditorSubWindow : EditorWindow
     //出力するマップデータ整形
     private string GetMapStrFormat(int x, int y)
     {
-        json.mapdata[x][y].xcoor = x;
-        json.mapdata[x][y].ycoor = y;
-        json.mapdata[x][y].objectname = OutputDataFormat(map[x, y]);
-        jsonstr[x][y] = JsonUtility.ToJson(json);
-        return jsonstr[x][y];
+        json.mapdata.xcoor = x;
+        json.mapdata.ycoor = y;
+        json.mapdata.objectname = OutputDataFormat(map[x, y]);
+        jsonstr = JsonUtility.ToJson(json,true);
+        return jsonstr;
     }
 
     private string OutputDataFormat(string data)
