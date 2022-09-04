@@ -10,7 +10,7 @@ using System.Linq;
 [System.Serializable]
 public class Jsondata
 {
-    public Mapdata mapdata; 
+    public Mapdata[] mapdata; 
 }
 
 //jsonデータのフォーマット
@@ -238,15 +238,15 @@ public class MapEditorSubWindow : EditorWindow
         Debug.Log(mapSize);
         gridSize = parent.GridSize;
 
-        json.mapdata = new Mapdata();
+        json.mapdata = new Mapdata[mapSize * mapSize];
 
         //マップデータ、書き込むJsonデータの配列を初期化
         map = new string[mapSize, mapSize];
         for (int i = 0; i < mapSize; i++)
         {
-            json.mapdata = new Mapdata();
             for (int j = 0; j < mapSize; j++)
             {
+                json.mapdata[i * mapSize + j] = new Mapdata();
                 map[i, j] = "";
             }
         }
@@ -393,10 +393,10 @@ public class MapEditorSubWindow : EditorWindow
         {
             for (int j = 0; j < mapSize; j++)
             {
-                sw.WriteLine(GetMapStrFormat(i, j));
+                GetMapStrFormat(i, j);
             }
-
         }
+        sw.WriteLine(WriteJsonData());
         sw.Flush();
         sw.Close();
 
@@ -405,12 +405,16 @@ public class MapEditorSubWindow : EditorWindow
     }
 
     //出力するマップデータ整形
-    private string GetMapStrFormat(int x, int y)
+    private void GetMapStrFormat(int x, int y)
     {
-        json.mapdata.xcoor = x;
-        json.mapdata.ycoor = y;
-        json.mapdata.objectname = OutputDataFormat(map[x, y]);
-        jsonstr = JsonUtility.ToJson(json,true);
+        json.mapdata[x * mapSize + y].xcoor = x;
+        json.mapdata[x * mapSize + y].ycoor = y;
+        json.mapdata[x * mapSize + y].objectname = OutputDataFormat(map[x, y]);
+    }
+
+    private string WriteJsonData()
+    {
+        jsonstr = JsonUtility.ToJson(json, true);
         return jsonstr;
     }
 
