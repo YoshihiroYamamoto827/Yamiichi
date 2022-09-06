@@ -34,4 +34,12 @@ public class MapPreviewer : EditorWindow
         GUILayout.EndHorizontal();
         EditorGUILayout.Space();
     }
+
+    private void DrawMapPreviewButton()
+    {
+        EditorGUILayout.BeginVertical();
+        GUILayout.FlexibleSpace();
+        if (GUILayout.Button("Map Preview")) SceneManager.LoadScene("MapPreviewScene");
+            EditorGUILayout.EndVertical();
+    }
 }

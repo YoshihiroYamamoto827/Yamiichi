@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{460881E0-164D-FE8B-68AE-E85153A3D40C}</ProjectGuid>
+    <ProjectGuid>{E9267C30-4086-822D-6CFD-790B9FBF1DDF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -75,6 +75,8 @@
     <Compile Include="Assets\Scripts\Menumanager.cs" />
     <Compile Include="Assets\Scripts\MapPreview\MapPreview.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMove.cs" />
+    <Compile Include="Assets\Scripts\MapPreview\InputFieldManager.cs" />
+    <Compile Include="Assets\Scripts\MapPreview\MapGanarater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
