@@ -59,6 +59,8 @@
     <Compile Include="Assets\Scripts\ObjectFall\ObjectFall.cs" />
     <Compile Include="Assets\Scripts\House\PointLight.cs" />
     <Compile Include="Assets\Scripts\CameraMove.cs" />
+    <Compile Include="Assets\Scripts\MapPreview\InputFieldManager.cs" />
+    <Compile Include="Assets\Scripts\MapPreview\MapGanarater.cs" />
     <Compile Include="Assets\Scripts\Enemy\KnockWindow.cs" />
     <Compile Include="Assets\Scripts\MapMaking\CSVWriter.cs" />
     <Compile Include="Assets\Scripts\sceneManager.cs" />
@@ -75,8 +77,6 @@
     <Compile Include="Assets\Scripts\Menumanager.cs" />
     <Compile Include="Assets\Scripts\MapPreview\MapPreview.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMove.cs" />
-    <Compile Include="Assets\Scripts\MapPreview\InputFieldManager.cs" />
-    <Compile Include="Assets\Scripts\MapPreview\MapGanarater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -818,6 +818,9 @@
     </Reference>
     <Reference Include="Unity.SysrootPackage.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AssetBundleBrowser.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AssetBundleBrowser.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

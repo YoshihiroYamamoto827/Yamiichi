@@ -11,7 +11,7 @@ public class MapGanarater : MonoBehaviour
     [System.Serializable]
     public class Jsondata
     {
-        public Mapdata[] jsondata;
+        public Mapdata[] mapdata;
     }
 
     [System.Serializable]
@@ -25,23 +25,24 @@ public class MapGanarater : MonoBehaviour
     
     void Start()
     {
-        Jsondata mapdata = new Jsondata();
-        Jsondata inputjson = new Jsondata();
-
-        mapdata.jsondata = new Mapdata[100];
-        inputjson.jsondata = new Mapdata[100];
+        Jsondata jsondata = new Jsondata();
+        jsondata.mapdata = new Mapdata[100];
 
         inputFieldManager = GameObject.Find("InputFieldManager").GetComponent<InputFieldManager>();  
     }
 
     public void OnPreviewButton()
     {
+        var assetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/samplejson4");
+        string inputString = assetBundle.LoadAsset<TextAsset>("Assets/MapData/SampleJson4.json").ToString();
+
+
         JsonFile = inputFieldManager.SendJsonFile();
         ImgDir = inputFieldManager.SendImgDirectory();
 
-        string inputString = File.ReadAllText(JsonFile);
+        //string inputString = MapData.Load<TextAsset>("SampleJson4");
 
         Jsondata inputjson = JsonUtility.FromJson<Jsondata>(inputString);
-        Debug.Log(inputjson.jsondata[1]);
+        Debug.Log(inputjson.mapdata[1]);
     }
 }

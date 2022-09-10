@@ -59,6 +59,8 @@
     <Compile Include="Assets\Editor\MapPreviewer.cs" />
     <Compile Include="Assets\Editor\MapEditor.cs" />
     <Compile Include="Assets\Editor\MyWindow.cs" />
+    <Compile Include="Assets\Editor\AssetBundleEditor.cs" />
+    <Compile Include="Assets\Editor\AssetBundleBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -837,6 +839,9 @@
     </Reference>
     <Reference Include="Unity.SysrootPackage.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AssetBundleBrowser.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AssetBundleBrowser.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
