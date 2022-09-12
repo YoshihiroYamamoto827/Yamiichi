@@ -1,0 +1,53 @@
+ManifestFileVersion: 0
+CRC: 4196579971
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3e3dcffd1642f75d65fe8be6ea8b6aed
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 59be4202eb00b18ffe5b8a9eb2f7763d
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 81
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9f74b253ab0be8e4c800c69cb84f8fc2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a9f250c648ed67a42bad14083da17f04, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Resources/Objects/Door.prefab
+- Assets/Resources/Objects/Player.prefab
+- Assets/Resources/Objects/Floor.prefab
+- Assets/Resources/Objects/Wall.prefab
+- Assets/Resources/Objects/Item.prefab
+Dependencies: []
