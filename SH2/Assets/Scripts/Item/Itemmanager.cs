@@ -10,7 +10,8 @@ public class Itemmanager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        exitarea = GameObject.Find("ExitArea");
+        exitarea.SetActive(false);
     }
 
     // Update is called once per frame
