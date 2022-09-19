@@ -22,6 +22,12 @@ public class Mapdata
     public string objectname;
 }
 
+public class MapInfo
+{
+    public int mapsize;
+    public string date;
+}
+
 
 //MapEditor
 public class MapEditor : EditorWindow
@@ -34,8 +40,8 @@ public class MapEditor : EditorWindow
     private int mapSize = 10;
     //グリッドの大きさ
     private float gridSize = 50.0f;
-    //出力ファイル名
-    private string outputFileName;
+    //出力フォルダ名
+    private string outputFolderName;
     //選択した画像のパス
     private string selectedImagePath;
     //サブウィンドウ
@@ -51,32 +57,32 @@ public class MapEditor : EditorWindow
     {
         //GUI上で表示
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Image Directory:", GUILayout.Width(110));
+        GUILayout.Label("Image Directory:", GUILayout.Width(150));
         imgDirectory = EditorGUILayout.ObjectField(imgDirectory, typeof(UnityEngine.Object), true);
         GUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Map Size:", GUILayout.Width(110));
+        GUILayout.Label("Map Size:", GUILayout.Width(150));
         mapSize = EditorGUILayout.IntField(mapSize);
         GUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Grid Size:", GUILayout.Width(110));
+        GUILayout.Label("Grid Size:", GUILayout.Width(150));
         gridSize = EditorGUILayout.FloatField(gridSize);
         GUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Save Directory:", GUILayout.Width(110));
+        GUILayout.Label("Save Directory:", GUILayout.Width(150));
         outputDirectory = EditorGUILayout.ObjectField(outputDirectory, typeof(UnityEngine.Object), true);
         GUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Save Filename:", GUILayout.Width(110));
-        outputFileName = (string)EditorGUILayout.TextField(outputFileName);
+        GUILayout.Label("Save DirectoryName:", GUILayout.Width(150));
+        outputFolderName = (string)EditorGUILayout.TextField(outputFolderName);
         GUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
@@ -182,13 +188,19 @@ public class MapEditor : EditorWindow
         string resultPath = "";
         if (outputDirectory != null)
         {
+            if (System.IO.Directory.Exists(AssetDatabase.GetAssetPath(outputDirectory) + "/" + outputFolderName) == false)
+            {
+                Debug.Log("作成");
+                System.IO.Directory.CreateDirectory(AssetDatabase.GetAssetPath(outputDirectory) + "/" + outputFolderName);
+            }
+
             resultPath = AssetDatabase.GetAssetPath(outputDirectory);
         }
         else
         {
             resultPath = Application.dataPath;
         }
-        return resultPath + "/" + outputFileName + ".json";
+        return resultPath + "/" + outputFolderName;
     }
 }
 
@@ -210,10 +222,12 @@ public class MapEditorSubWindow : EditorWindow
     private MapEditor parent;
 
     Jsondata json = new Jsondata();
+    MapInfo info = new MapInfo();
 
 
     //書き込むjsonデータの文字列の定義
     public string jsonstr;
+    public string mapinfostr;
 
     //サブウィンドウを開く
     public static MapEditorSubWindow WillAppear(MapEditor _parent)
@@ -385,10 +399,10 @@ public class MapEditorSubWindow : EditorWindow
     private void OutputFile()
     {
 
-        string path = parent.OutputFilePath();
+        string folderpath = parent.OutputFilePath();
 
-        FileInfo fileInfo = new FileInfo(path);
-        StreamWriter sw = fileInfo.AppendText();
+        FileInfo MDfileInfo = new FileInfo(folderpath + "/" + "Mapdata.json");
+        StreamWriter mdsw = MDfileInfo.AppendText();
         for (int i = 0; i < mapSize; i++)
         {
             for (int j = 0; j < mapSize; j++)
@@ -396,12 +410,19 @@ public class MapEditorSubWindow : EditorWindow
                 GetMapStrFormat(i, j);
             }
         }
-        sw.WriteLine(WriteJsonData());
-        sw.Flush();
-        sw.Close();
+        mdsw.WriteLine(WriteJsonMapData());
+        mdsw.Flush();
+        mdsw.Close();
+
+        FileInfo MIfileInfo = new FileInfo(folderpath + "/" + "Mapinfo.json");
+        StreamWriter misw = MIfileInfo.AppendText();
+        GetMapInfoFormat();
+        misw.WriteLine(WriteJsonMapInfo());
+        misw.Flush();
+        misw.Close();
 
         //完了ポップアップ
-        EditorUtility.DisplayDialog("MapEditor", "output file success\n" + path, "OK");
+        EditorUtility.DisplayDialog("MapEditor", "output file success\n" + folderpath, "OK");
     }
 
     //出力するマップデータ整形
@@ -412,10 +433,22 @@ public class MapEditorSubWindow : EditorWindow
         json.mapdata[x * mapSize + y].objectname = OutputDataFormat(map[x, y]);
     }
 
-    private string WriteJsonData()
+    private void GetMapInfoFormat()
+    {
+        info.mapsize = mapSize;
+        info.date = System.DateTime.Now.Date.ToString();
+    }
+
+    private string WriteJsonMapData()
     {
         jsonstr = JsonUtility.ToJson(json, true);
         return jsonstr;
+    }
+
+    private string WriteJsonMapInfo()
+    {
+        mapinfostr = JsonUtility.ToJson(info, true);
+        return mapinfostr;
     }
 
     private string OutputDataFormat(string data)
