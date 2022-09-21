@@ -22,6 +22,7 @@ public class Mapdata
     public string objectname;
 }
 
+[System.Serializable]
 public class MapInfo
 {
     public int mapsize;

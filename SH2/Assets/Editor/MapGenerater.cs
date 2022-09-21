@@ -22,6 +22,14 @@ public class MapGanarater : EditorWindow
         public int ycoor;
         public string objectname;
     }
+
+    [System.Serializable]
+    public class MapInfo
+    {
+        public int mapsize;
+        public string date;
+    }
+
     [MenuItem("Window/MapGenerater")]
     static void Open()
     {
@@ -31,38 +39,50 @@ public class MapGanarater : EditorWindow
 
 
     //AssetBundleファイルの指定 
-    private string MapFileName;
+    private string MapFolderName;
     //マップの大きさ
     private int mapSize;
-    
+
+    //マップデータを代入する変数
+    private Jsondata jsondata;
+
     private void OnGUI()
     {
         init();
         GUILayout.BeginHorizontal();
-        MapFileName = EditorGUILayout.TextField("MapFileName", MapFileName);
+        MapFolderName = EditorGUILayout.TextField("MapFolderName", MapFolderName);
         GUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
-        if(GUILayout.Button("Generate Map") && MapFileName != null)
+        if(GUILayout.Button("Generate Map") && MapFolderName != null)
         {
-            OnPreviewButton(MapFileName);
+            OnPreviewButton(MapFolderName);
         }
     }
 
     private void init()
     {
-        Jsondata jsondata = new Jsondata();
-        jsondata.mapdata = new Mapdata[100];
+        
+        MapInfo info = new MapInfo();
     }
         
     public void OnPreviewButton(string JsonFileName)
     {
         //JsonファイルのAssetBundleとAssetBundle内の対応するJsonファイルの読み込み
-        var JsonassetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Samplejson6");
-        string inputString = JsonassetBundle.LoadAsset<TextAsset>("Assets/MapData/Samplejson6.json").ToString();
+        var JsonassetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/" + MapFolderName);
+        string mapdatainputString = JsonassetBundle.LoadAsset<TextAsset>("Assets/MapData/" + MapFolderName + "/Mapdata.json").ToString();
+        string mapinfoinputString = JsonassetBundle.LoadAsset<TextAsset>("Assets/MapData/" + MapFolderName + "/MapInfo.json").ToString();
 
-        //Jsonファイルのデータをクラス変数に代入
-        Jsondata inputjson = JsonUtility.FromJson<Jsondata>(inputString);
+        //マップサイズ情報をクラス変数に代入
+        MapInfo inputjson2 = JsonUtility.FromJson<MapInfo>(mapinfoinputString);
+
+        jsondata = new Jsondata();
+        jsondata.mapdata = new Mapdata[mapSize];
+
+        mapSize = inputjson2.mapsize;
+
+        //マップのjsonファイルのデータをクラス変数に代入
+        Jsondata inputjson = JsonUtility.FromJson<Jsondata>(mapdatainputString);
 
         Debug.Log(inputjson.mapdata[0].xcoor);
 
@@ -74,7 +94,7 @@ public class MapGanarater : EditorWindow
         var Item = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Item.prefab");
         var Player = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Player.prefab");
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i <mapSize *mapSize ; i++)
         {
             Instantiate(Floor, new Vector3(inputjson.mapdata[i].xcoor, 0f, inputjson.mapdata[i].ycoor), Quaternion.identity);
 

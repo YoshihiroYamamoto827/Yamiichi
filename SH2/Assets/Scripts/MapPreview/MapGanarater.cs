@@ -1,19 +1,20 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEditor;
 
+//MapGenerater
 public class MapGanarater : MonoBehaviour
 {
-    InputFieldManager inputFieldManager;
-    private string JsonFile, ImgDir;
-
+    //jsonファイルから入力される配列
     [System.Serializable]
     public class Jsondata
     {
         public Mapdata[] mapdata;
     }
 
+    //jsonデータのフォーマット
     [System.Serializable]
     public class Mapdata
     {
@@ -22,17 +23,58 @@ public class MapGanarater : MonoBehaviour
         public string objectname;
     }
 
-    void Start()
+    [System.Serializable]
+    public class MapInfo
     {
-        Jsondata jsondata = new Jsondata();
-        jsondata.mapdata = new Mapdata[100];
+        public int mapsize;
+        public string date;
+    }
 
+    //AssetBundleファイルの指定 
+    private string MapFolderName;
+    //マップの大きさ
+    private int mapSize;
+
+    //マップデータを代入する変数
+    private Jsondata jsondata;
+
+    private void OnGUI()
+    {
+        init();
+        GUILayout.BeginHorizontal();
+        MapFolderName = EditorGUILayout.TextField("MapFolderName", MapFolderName);
+        GUILayout.EndHorizontal();
+        EditorGUILayout.Space();
+
+        if (GUILayout.Button("Generate Map") && MapFolderName != null)
+        {
+            OnPreviewButton(MapFolderName);
+        }
+    }
+
+    private void init()
+    {
+
+        MapInfo info = new MapInfo();
+    }
+
+    public void OnPreviewButton(string JsonFileName)
+    {
         //JsonファイルのAssetBundleとAssetBundle内の対応するJsonファイルの読み込み
-        var JsonassetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/samplejson6");
-        string inputString = JsonassetBundle.LoadAsset<TextAsset>("Assets/MapData/SampleJson6.json").ToString();
+        var JsonassetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/" + MapFolderName);
+        string mapdatainputString = JsonassetBundle.LoadAsset<TextAsset>("Assets/MapData/" + MapFolderName + "/Mapdata.json").ToString();
+        string mapinfoinputString = JsonassetBundle.LoadAsset<TextAsset>("Assets/MapData/" + MapFolderName + "/MapInfo.json").ToString();
 
-        //Jsonファイルのデータをクラス変数に代入
-        Jsondata inputjson = JsonUtility.FromJson<Jsondata>(inputString);
+        //マップサイズ情報をクラス変数に代入
+        MapInfo inputjson2 = JsonUtility.FromJson<MapInfo>(mapinfoinputString);
+
+        jsondata = new Jsondata();
+        jsondata.mapdata = new Mapdata[mapSize];
+
+        mapSize = inputjson2.mapsize;
+
+        //マップのjsonファイルのデータをクラス変数に代入
+        Jsondata inputjson = JsonUtility.FromJson<Jsondata>(mapdatainputString);
 
         Debug.Log(inputjson.mapdata[0].xcoor);
 
@@ -43,16 +85,15 @@ public class MapGanarater : MonoBehaviour
         var Floor = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Floor.prefab");
         var Item = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Item.prefab");
         var Player = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Player.prefab");
-        var ItemManager = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/ItemManager.prefab");
-        var ExitArea = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/ExitArea.prefab");
-        var SceneManager = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/SceneManager.prefab");
-        for (int i = 0; i < 100; i++)
-        {
-            Instantiate(Floor, new Vector3(inputjson.mapdata[i].xcoor, 0f, inputjson.mapdata[i].ycoor),Quaternion.identity);
 
-            if(inputjson.mapdata[i].objectname != null)
+        for (int i = 0; i < mapSize; i++)
+        {
+            Instantiate(Floor, new Vector3(inputjson.mapdata[i].xcoor, 0f, inputjson.mapdata[i].ycoor), Quaternion.identity);
+
+            if (inputjson.mapdata[i].objectname != null)
             {
-                switch(inputjson.mapdata[i].objectname){
+                switch (inputjson.mapdata[i].objectname)
+                {
                     case "Capture\\001.png":
                         Instantiate(Wall, new Vector3(inputjson.mapdata[i].xcoor, 2f, inputjson.mapdata[i].ycoor), Quaternion.identity);
                         break;
@@ -74,9 +115,5 @@ public class MapGanarater : MonoBehaviour
                 }
             }
         }
-
-        Instantiate(ItemManager, new Vector3(0f, 0f, 0f), Quaternion.identity);
-        Instantiate(ExitArea, new Vector3(0f, 0f, 0f), Quaternion.identity);
-        Instantiate(SceneManager, new Vector3(0f, 0f, 0f), Quaternion.identity);
     }
-}
+}*/
