@@ -5,7 +5,7 @@ using System.IO;
 using UnityEditor;
 
 //MapGenerater
-public class MapGanarater : EditorWindow
+public class MapGanarater : MonoBehaviour
 {
     //jsonファイルから入力される配列
     [System.Serializable]
@@ -30,14 +30,6 @@ public class MapGanarater : EditorWindow
         public string date;
     }
 
-    [MenuItem("Window/MapGenerater")]
-    static void Open()
-    {
-        var window = GetWindow<MapGanarater>();
-        window.titleContent = new GUIContent("MapGenerate");
-    }
-
-
     //AssetBundleファイルの指定 
     private string MapFolderName;
     //マップの大きさ
@@ -51,20 +43,12 @@ public class MapGanarater : EditorWindow
     //マップ生成時に各オブジェクトの親となる空オブジェクトを指す変数
     private GameObject Parent;
     //マップ生成時に生成されたオブジェクトを指す変数
-    private GameObject Instanced; 
+    private GameObject Instanced;
 
-    private void OnGUI()
+    private void Start()
     {
         init();
-        GUILayout.BeginHorizontal();
-        MapFolderName = EditorGUILayout.TextField("MapFolderName", MapFolderName);
-        GUILayout.EndHorizontal();
-        EditorGUILayout.Space();
 
-        if (GUILayout.Button("Generate Map") && MapFolderName != null)
-        {
-            OnPreviewButton(MapFolderName);
-        }
     }
 
     private void init()
@@ -73,7 +57,7 @@ public class MapGanarater : EditorWindow
         MapInfo info = new MapInfo();
     }
 
-    public void OnPreviewButton(string JsonFileName)
+    public void MapGenerate(string JsonFileName)
     {
         //アセットバンドルの宣言と初期化
         AssetBundle JsonAssetBundle=null, ObjectAssetBundle = null, ManagerAssetBundle = null, ParentAssetBundle = null;

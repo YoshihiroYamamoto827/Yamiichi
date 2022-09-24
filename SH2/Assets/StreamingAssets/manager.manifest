@@ -1,0 +1,26 @@
+ManifestFileVersion: 0
+CRC: 1920384122
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 327d5ad7a77406ec2400a68b2525a5b5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: cfca10fbf44ab463d33f711b25081208
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: f6b9da3d4e3697147a5523eae39b07f9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3ba67bb6b8526974babd1420243326a5, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Resources/Manager/ItemManager.prefab
+- Assets/Resources/Manager/SceneManager.prefab
+Dependencies: []

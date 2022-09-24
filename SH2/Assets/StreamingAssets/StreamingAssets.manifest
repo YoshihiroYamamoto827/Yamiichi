@@ -1,16 +1,16 @@
 ManifestFileVersion: 0
-CRC: 3938318481
+CRC: 777490905
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: samplefolder1
+      Name: sample1
       Dependencies: {}
     Info_1:
-      Name: samplefolder2
+      Name: manager
       Dependencies: {}
     Info_2:
-      Name: samplefolder3
+      Name: objects
       Dependencies: {}
     Info_3:
-      Name: sample1
+      Name: parents
       Dependencies: {}

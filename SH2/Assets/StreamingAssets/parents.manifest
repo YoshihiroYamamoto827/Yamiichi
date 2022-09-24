@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 4150658248
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a5dc5b1e0b6fd94a8dfcf5b635f35732
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ae8c52309304dbced62e9359e7a02dec
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Resources/Parents/Floor.prefab
+- Assets/Resources/Parents/Wall.prefab
+- Assets/Resources/Parents/Door.prefab
+Dependencies: []
