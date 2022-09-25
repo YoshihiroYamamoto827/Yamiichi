@@ -67,12 +67,12 @@
     <Compile Include="Assets\Scripts\Enemy\Homing.cs" />
     <Compile Include="Assets\Scripts\Item\Itemmanager.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyPop.cs" />
+    <Compile Include="Assets\Scripts\MapGenerate\MapGenerater.cs" />
     <Compile Include="Assets\Scripts\Item\ItemCount.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\SendMapFolderName.cs" />
     <Compile Include="Assets\Scripts\Menumanager.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMove.cs" />
-    <Compile Include="Assets\Scripts\MapGenerate\MapGenerater.cs" />
-    <Compile Include="Assets\Scripts\SendMapFolderName.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

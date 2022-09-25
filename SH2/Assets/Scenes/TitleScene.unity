@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 23634598}
   - component: {fileID: 23634597}
   - component: {fileID: 23634596}
+  - component: {fileID: 23634599}
   m_Layer: 5
   m_Name: MapChooseDropdown
   m_TagString: Untagged
@@ -215,11 +216,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Option A
-      m_Image: {fileID: 0}
-    - m_Text: Option B
-      m_Image: {fileID: 0}
-    - m_Text: Option C
+    - m_Text: a
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -263,6 +260,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23634594}
   m_CullTransparentMesh: 1
+--- !u!114 &23634599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23634594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b54614b02f9a621478df47791a38c68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &28737989
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,7 +1848,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Option A
+  m_text: a
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
