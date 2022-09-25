@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2143512676
+CRC: 2086632956
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: aef2e028d25ff6b68ad120ba7b57a23e
+    Hash: d245ec5d60b202a0f750997d00cec350
   TypeTreeHash:
     serializedVersion: 2
     Hash: 59be4202eb00b18ffe5b8a9eb2f7763d
@@ -47,7 +47,7 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Resources/Objects/Item.prefab
 - Assets/Resources/Objects/Floor.prefab
-- Assets/Resources/Objects/Player(Clone).prefab
-- Assets/Resources/Objects/Door(Clone).prefab
-- Assets/Resources/Objects/Wall(Clone).prefab
+- Assets/Resources/Objects/Player.prefab
+- Assets/Resources/Objects/Door.prefab
+- Assets/Resources/Objects/Wall.prefab
 Dependencies: []

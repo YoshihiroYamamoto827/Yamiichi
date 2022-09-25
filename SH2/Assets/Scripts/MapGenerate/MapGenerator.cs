@@ -5,7 +5,7 @@ using System.IO;
 using UnityEditor;
 
 //MapGenerater
-public class MapGanarater : MonoBehaviour
+public class MapGenerator : MonoBehaviour
 {
     //jsonファイルから入力される配列
     [System.Serializable]
@@ -42,13 +42,12 @@ public class MapGanarater : MonoBehaviour
     private float y;
     //マップ生成時に各オブジェクトの親となる空オブジェクトを指す変数
     private GameObject Parent;
-    //マップ生成時に生成されたオブジェクトを指す変数
-    private GameObject Instanced;
 
     private void Start()
     {
         init();
-
+        MapFolderName = "Sample1";
+        MapGenerate(MapFolderName);
     }
 
     private void init()
@@ -57,15 +56,14 @@ public class MapGanarater : MonoBehaviour
         MapInfo info = new MapInfo();
     }
 
-    public void MapGenerate(string JsonFileName)
+    public void MapGenerate(string MapFolderName)
     {
         //アセットバンドルの宣言と初期化
-        AssetBundle JsonAssetBundle=null, ObjectAssetBundle = null, ManagerAssetBundle = null, ParentAssetBundle = null;
+        AssetBundle JsonAssetBundle, ObjectAssetBundle, ManagerAssetBundle;
+        GameObject Wall, Door, Floor, Item, Player, SceneManager, ItemManager;
 
-        //GameObjectの宣言
-        GameObject Wall, Door, Floor, Item, Player, SceneManager, ItemManager, WallParent, DoorParent, FloorParent, ItemParent;
         //JsonファイルのAssetBundleとAssetBundle内の対応するJsonファイルの読み込み
-        if (JsonAssetBundle != null)JsonAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/" + MapFolderName);
+        JsonAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Map/" + MapFolderName);
         string mapdatainputString = JsonAssetBundle.LoadAsset<TextAsset>("Assets/MapData/" + MapFolderName + "/Mapdata.json").ToString();
         string mapinfoinputString = JsonAssetBundle.LoadAsset<TextAsset>("Assets/MapData/" + MapFolderName + "/MapInfo.json").ToString();
 
@@ -82,10 +80,9 @@ public class MapGanarater : MonoBehaviour
 
         //Debug.Log(inputjson.mapdata[0].xcoor);
 
-        //オブジェクト、Magager、クローンをまとめる用の空のオブジェクトのAssetBundleの読み込み
-        if (ObjectAssetBundle != null) ObjectAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/objects");
-        if (ManagerAssetBundle != null) ManagerAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/manager");
-        if (ParentAssetBundle != null) ParentAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/parents");
+        //オブジェクト、MagagerのAssetBundleの読み込み
+        ObjectAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Objects");
+        ManagerAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Manager");
 
         Wall = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Wall.prefab");
         Door = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Door.prefab");
@@ -94,16 +91,18 @@ public class MapGanarater : MonoBehaviour
         Player = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Player.prefab");
         SceneManager = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Manager/SceneManager.prefab");
         ItemManager = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Manager/ItemManager.prefab");
-        WallParent = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Parents/Wall.prefab");
-        DoorParent = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Parents/Door.prefab");
-        FloorParent = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Parents/Floor.prefab");
-        ItemParent = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Parents/Item.prefab");
 
+        //各オブジェクトの生成
+        GameObject WallParent = new GameObject("Walls");
+        GameObject DoorParent = new GameObject("Doors");
+        GameObject FloorParent = new GameObject("Floors");
+        GameObject ItemParent = new GameObject("Items");
+
+        ObjectInstance1(SceneManager);
+        ObjectInstance1(ItemManager);
         for (int i = 0; i < mapSize * mapSize; i++)
         {
-            Instantiate(Floor, new Vector3(inputjson.mapdata[i].xcoor, y, inputjson.mapdata[i].ycoor), Quaternion.identity);
-
-            if (inputjson.mapdata[i].objectname != null)
+            if (inputjson.mapdata[i].objectname != "")
             {
                 switch (inputjson.mapdata[i].objectname)
                 {
@@ -143,12 +142,28 @@ public class MapGanarater : MonoBehaviour
                         Parent = null;
                         break;
                 }
-               Instanced = Instantiate(InstanceObject, new Vector3(inputjson.mapdata[i].xcoor, y, inputjson.mapdata[i].ycoor), Quaternion.identity);
-                //if (Parent != null) Instanced.transform.parent = Parent.transform;
+                ObjectInstance2(Floor,FloorParent,inputjson.mapdata[i].xcoor, y, inputjson.mapdata[i].ycoor,InstanceObject, Parent);
             }
+            var floor = Instantiate(Floor, new Vector3(inputjson.mapdata[i].xcoor, 0f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
+            floor.name = Floor.name;
+            if (FloorParent != null) floor.transform.parent = FloorParent.transform;
         }
+    }
 
-        Instantiate(SceneManager, new Vector3(0f, 0f, 0f), Quaternion.identity);
-        Instantiate(ItemManager, new Vector3(0f, 0f, 0f), Quaternion.identity);
+    private void ObjectInstance1(GameObject objb)
+    {
+       var obja = Instantiate(objb, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+        obja.name = objb.name;
+    }
+
+    private void ObjectInstance2(GameObject floorb, GameObject floorparent, float x,float y, float z, GameObject objb, GameObject parent)
+    {
+        var floora = Instantiate(floorb, new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
+        floora.name = floorb.name;
+        if (floorparent != null) floora.transform.parent = floorparent.transform;
+
+        var obja = Instantiate(objb, new Vector3(x, y, z), Quaternion.identity) as GameObject;
+        obja.name = objb.name;
+        if (parent != null) obja.transform.parent = parent.transform;
     }
 }
