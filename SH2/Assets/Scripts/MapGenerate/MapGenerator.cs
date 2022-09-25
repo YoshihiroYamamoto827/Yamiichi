@@ -46,7 +46,7 @@ public class MapGenerator : MonoBehaviour
     private void Start()
     {
         init();
-        MapFolderName = "Sample1";
+        MapFolderName = "Sample2";
         MapGenerate(MapFolderName);
     }
 
@@ -60,7 +60,7 @@ public class MapGenerator : MonoBehaviour
     {
         //アセットバンドルの宣言と初期化
         AssetBundle JsonAssetBundle, ObjectAssetBundle, ManagerAssetBundle;
-        GameObject Wall, Door, Floor, Item, Player, SceneManager, ItemManager;
+        GameObject Wall, Door, Floor, Item, Player, ExitArea, SceneManager, ItemManager;
 
         //JsonファイルのAssetBundleとAssetBundle内の対応するJsonファイルの読み込み
         JsonAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Map/" + MapFolderName);
@@ -89,8 +89,10 @@ public class MapGenerator : MonoBehaviour
         Floor = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Floor.prefab");
         Item = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Item.prefab");
         Player = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Player.prefab");
+        ExitArea = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/ExitArea.prefab");
         SceneManager = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Manager/SceneManager.prefab");
         ItemManager = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Manager/ItemManager.prefab");
+        
 
         //各オブジェクトの生成
         GameObject WallParent = new GameObject("Walls");
@@ -116,6 +118,8 @@ public class MapGenerator : MonoBehaviour
                         InstanceObject = Door;
                         y = 1.5f;
                         Parent = DoorParent;
+                        var exit = Instantiate(ExitArea, new Vector3(inputjson.mapdata[i].xcoor, 1f, inputjson.mapdata[i].ycoor), Quaternion.identity);
+                        exit.name = ExitArea.name;
                         break;
 
                     case "Capture\\003.png":
