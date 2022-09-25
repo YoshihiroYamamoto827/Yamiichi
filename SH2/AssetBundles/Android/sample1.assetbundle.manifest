@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 3729508875
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 22945e8b661814cb1faef4d010cb1235
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/MapData/Sample1/Mapinfo.json
+- Assets/MapData/Sample1/Mapdata.json
+Dependencies: []
