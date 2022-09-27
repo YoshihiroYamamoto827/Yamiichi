@@ -274,9 +274,6 @@ public class MapEditorSubWindow : EditorWindow
 
     void OnGUI()
     {
-        using (var scrollView = new EditorGUILayout.ScrollViewScope(scrollPos, GUILayout.Width(mapSize * gridSize + 10), GUILayout.Height(mapSize * gridSize + 10)))
-        {
-            scrollPos = scrollView.scrollPosition;
             //グリッド線を描画する
             for (int yy = 0; yy < mapSize; yy++)
             {
@@ -349,7 +346,7 @@ public class MapEditorSubWindow : EditorWindow
             }
             GUILayout.FlexibleSpace();
             GUILayout.EndArea();
-        }
+        
     }
 
     //グリッドデータを作成

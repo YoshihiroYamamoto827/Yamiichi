@@ -1,0 +1,2004 @@
+{
+    "mapdata": [
+        {
+            "xcoor": 0,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 3,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 16,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 0,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 3,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 16,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 1,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 3,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 16,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 2,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 3,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 4,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 5,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 6,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 7,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 8,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 9,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 10,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 11,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 12,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 13,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 14,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 15,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 16,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 3,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 3,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 16,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 4,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 3,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 16,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 5,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 3,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 16,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 6,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 3,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 5,
+            "objectname": "Capture\\003.png"
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 8,
+            "objectname": "Capture\\003.png"
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 13,
+            "objectname": "Capture\\003.png"
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 16,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 7,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 3,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 16,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 8,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 3,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 16,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 9,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 3,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 11,
+            "objectname": "Capture\\005.png"
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 16,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 10,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 3,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 6,
+            "objectname": "Capture\\005.png"
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 14,
+            "objectname": "Capture\\005.png"
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 16,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 11,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 3,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 16,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 12,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 3,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 10,
+            "objectname": "Capture\\006.png"
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 16,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 13,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 3,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 4,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 5,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 6,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 7,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 8,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 9,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 10,
+            "objectname": "Capture\\002.png"
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 11,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 12,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 13,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 14,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 15,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 16,
+            "objectname": "Capture\\001.png"
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 14,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 3,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 16,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 15,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 3,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 16,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 16,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 3,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 16,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 17,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 3,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 16,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 18,
+            "ycoor": 19,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 0,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 1,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 2,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 3,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 4,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 5,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 6,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 7,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 8,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 9,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 10,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 11,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 12,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 13,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 14,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 15,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 16,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 17,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 18,
+            "objectname": ""
+        },
+        {
+            "xcoor": 19,
+            "ycoor": 19,
+            "objectname": ""
+        }
+    ]
+}

@@ -1796,7 +1796,7 @@ GameObject:
   - component: {fileID: 8175744415068851969}
   - component: {fileID: 8175744415068851968}
   - component: {fileID: 8175744415068851970}
-  - component: {fileID: 8175744415068851981}
+  - component: {fileID: 7476270673774113235}
   m_Layer: 0
   m_Name: MoveZombie
   m_TagString: Untagged
@@ -1905,7 +1905,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
---- !u!114 &8175744415068851981
+--- !u!114 &7476270673774113235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1917,7 +1917,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff0e2171d1d2f746bb13d27ba7726ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   moveEnabled: 1
 --- !u!1 &5809910503703902664
 GameObject:

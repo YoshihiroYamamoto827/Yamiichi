@@ -46,14 +46,17 @@ public class MapGenerator : MonoBehaviour
 
     //NavMeshのスクリプト
     NavMeshManager navscript;
+    //EnemyMoveのスクリプト
+    EnemyMove enemymovescript;
 
     private void Start()
     {
         init();
-        MapFolderName = "Sample2";
+        MapFolderName = "Sample4";
         MapGenerate(MapFolderName);
         navscript.BakeNavMesh();
-
+        enemymovescript = GameObject.Find("MoveEnemymanager").GetComponent<EnemyMove>();
+        enemymovescript.init();
         UISetActivefalse(canvas, UIcamera);
     }
 
@@ -104,7 +107,7 @@ public class MapGenerator : MonoBehaviour
         ExitArea = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/ExitArea.prefab");
         SceneManager = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Manager/SceneManager.prefab");
         ItemManager = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Manager/ItemManager.prefab");
-        MoveZombie = EnemyAssetBundle.LoadAsset<GameObject>("Assets/Resources/Enemy/MoveZombie.prefab");
+        MoveZombie = EnemyAssetBundle.LoadAsset<GameObject>("Assets/Resources/Enemies/MoveZombie.prefab");
 
 
         //オブジェクトをまとめるための親オブジェクトの読み込み
@@ -112,7 +115,7 @@ public class MapGenerator : MonoBehaviour
         GameObject DoorParent = new GameObject("Doors");
         GameObject FloorParent = new GameObject("Floors");
         GameObject ItemParent = new GameObject("Items");
-       
+
 
         ObjectInstance1(SceneManager);
         ObjectInstance1(ItemManager);
@@ -160,7 +163,7 @@ public class MapGenerator : MonoBehaviour
                         Parent = null;
                         break;
                 }
-                ObjectInstance2(Floor,FloorParent,inputjson.mapdata[i].xcoor, y, inputjson.mapdata[i].ycoor,InstanceObject, Parent);
+                ObjectInstance2(Floor, FloorParent, inputjson.mapdata[i].xcoor, y, inputjson.mapdata[i].ycoor, InstanceObject, Parent);
             }
             var floor = Instantiate(Floor, new Vector3(inputjson.mapdata[i].xcoor, 0f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
             floor.name = Floor.name;
@@ -170,11 +173,11 @@ public class MapGenerator : MonoBehaviour
 
     private void ObjectInstance1(GameObject objb)
     {
-       var obja = Instantiate(objb, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+        var obja = Instantiate(objb, new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
         obja.name = objb.name;
     }
 
-    private void ObjectInstance2(GameObject floorb, GameObject floorparent, float x,float y, float z, GameObject objb, GameObject parent)
+    private void ObjectInstance2(GameObject floorb, GameObject floorparent, float x, float y, float z, GameObject objb, GameObject parent)
     {
         var floora = Instantiate(floorb, new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
         floora.name = floorb.name;
@@ -185,7 +188,7 @@ public class MapGenerator : MonoBehaviour
         if (parent != null) obja.transform.parent = parent.transform;
     }
 
-    private void UISetActivefalse(GameObject Can,GameObject Cam)
+    private void UISetActivefalse(GameObject Can, GameObject Cam)
     {
         Can.SetActive(false);
         Cam.SetActive(false);
