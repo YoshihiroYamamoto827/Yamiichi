@@ -221,6 +221,8 @@ public class MapEditorSubWindow : EditorWindow
     private Rect[,] gridRect;
     //親ウィンドウの参照
     private MapEditor parent;
+    //スクロール位置を記録
+    private Vector2 scrollPos;
 
     Jsondata json = new Jsondata();
     MapInfo info = new MapInfo();
@@ -272,74 +274,82 @@ public class MapEditorSubWindow : EditorWindow
 
     void OnGUI()
     {
-        //グリッド線を描画する
-        for (int yy = 0; yy < mapSize; yy++)
+        using (var scrollView = new EditorGUILayout.ScrollViewScope(scrollPos, GUILayout.Width(mapSize * gridSize + 10), GUILayout.Height(mapSize * gridSize + 10)))
         {
-            for (int xx = 0; xx < mapSize; xx++)
-            {
-                DrawGridLine(gridRect[yy, xx]);
-            }
-        }
-
-        //クリックされた位置を探してその場所に画像データを入れる
-        Event e = Event.current;
-        if (e.type == EventType.MouseDown)
-        {
-            Vector2 pos = Event.current.mousePosition;
-            int xx;
-
-            //x位置を探す
-            for (xx = 0; xx < mapSize; xx++)
-            {
-                Rect r = gridRect[0, xx];
-                if (r.x <= pos.x && pos.x <= r.x + r.width)
-                {
-                    break;
-                }
-            }
-
-            //y位置を探す
+            scrollPos = scrollView.scrollPosition;
+            //グリッド線を描画する
             for (int yy = 0; yy < mapSize; yy++)
             {
-                if (gridRect[yy, xx].Contains(pos))
+                for (int xx = 0; xx < mapSize; xx++)
                 {
-                    //消しゴムのときはデータを消す
-                    if (parent.SelectedImagePath.IndexOf("000") > -1)
-                    {
-                        map[yy, xx] = "";
-                    }
-                    else
-                    {
-                        map[yy, xx] = parent.SelectedImagePath;
-                    }
-                    Repaint();
-                    break;
+                    DrawGridLine(gridRect[yy, xx]);
                 }
             }
-        }
 
-        //選択した画像を描画する
-        for (int yy = 0; yy < mapSize; yy++)
-        {
-            for (int xx = 0; xx < mapSize; xx++)
+
+
+
+            //クリックされた位置を探してその場所に画像データを入れる
+            Event e = Event.current;
+            if (e.type == EventType.MouseDown)
             {
-                if (map[yy, xx] != null && map[yy, xx].Length > 0)
+                Vector2 pos = Event.current.mousePosition;
+                int xx;
+
+                //x位置を探す
+                for (xx = 0; xx < mapSize; xx++)
                 {
-                    Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath(map[yy, xx], typeof(Texture2D));
-                    GUI.DrawTexture(gridRect[yy, xx], tex);
+                    Rect r = gridRect[0, xx];
+                    if (r.x <= pos.x && pos.x <= r.x + r.width)
+                    {
+                        break;
+                    }
+                }
+
+                //y位置を探す
+                for (int yy = 0; yy < mapSize; yy++)
+                {
+                    if (gridRect[yy, xx].Contains(pos))
+                    {
+                        //消しゴムのときはデータを消す
+                        if (parent.SelectedImagePath.IndexOf("000") > -1)
+                        {
+                            map[yy, xx] = "";
+                        }
+                        else
+                        {
+                            map[yy, xx] = parent.SelectedImagePath;
+                        }
+                        Repaint();
+                        break;
+                    }
                 }
             }
-        }
 
-        //出力ボタン
-        Rect rect = new Rect(0, WINDOW_H - 50, 300, 50);
-        GUILayout.BeginArea(rect);
-        if (GUILayout.Button("output file", GUILayout.MinWidth(300), GUILayout.MinHeight(50)))
-        {
-            OutputFile();
+            //選択した画像を描画する
+            for (int yy = 0; yy < mapSize; yy++)
+            {
+                for (int xx = 0; xx < mapSize; xx++)
+                {
+                    if (map[yy, xx] != null && map[yy, xx].Length > 0)
+                    {
+                        Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath(map[yy, xx], typeof(Texture2D));
+                        GUI.DrawTexture(gridRect[yy, xx], tex);
+                    }
+                }
+            }
+
+
+            //出力ボタン
+            Rect rect = new Rect(0, WINDOW_H - 50, 300, 50);
+            GUILayout.BeginArea(rect);
+            if (GUILayout.Button("output file", GUILayout.MinWidth(300), GUILayout.MinHeight(50)))
+            {
+                OutputFile();
+            }
+            GUILayout.FlexibleSpace();
+            GUILayout.EndArea();
         }
-        GUILayout.FlexibleSpace();
-        GUILayout.EndArea();
     }
 
     //グリッドデータを作成

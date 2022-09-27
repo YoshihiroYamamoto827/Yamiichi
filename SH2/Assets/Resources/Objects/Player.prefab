@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8402170775137652690}
   - component: {fileID: 8402170775137652692}
   - component: {fileID: 3765870465553949371}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,8 +135,6 @@ MonoBehaviour:
   camera: {fileID: 8402170775617253924}
   Xsencislider: {fileID: 0}
   Ysencislider: {fileID: 0}
-  XSenciText: {fileID: 0}
-  YSenciText: {fileID: 0}
 --- !u!1 &8402170775617253924
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +146,7 @@ GameObject:
   - component: {fileID: 8402170775617253921}
   - component: {fileID: 8402170775617253922}
   - component: {fileID: 8402170775617253923}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

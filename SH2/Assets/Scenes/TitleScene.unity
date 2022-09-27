@@ -1176,7 +1176,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 28737990}
         m_TargetAssemblyTypeName: sceneManager, Assembly-CSharp
-        m_MethodName: MapPreview
+        m_MethodName: StarttoGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1979,7 +1979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1509021420
 RectTransform:
   m_ObjectHideFlags: 0

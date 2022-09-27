@@ -14,7 +14,7 @@ public class sceneManager : MonoBehaviour
 
     public void StarttoGame()
     {
-        SceneManager.LoadScene("HouseScene");
+        SceneManager.LoadScene("GameScene");
     }
 
     public void StarttoTutorial()

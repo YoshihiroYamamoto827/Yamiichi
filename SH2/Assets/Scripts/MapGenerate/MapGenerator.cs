@@ -7,14 +7,13 @@ using UnityEditor;
 //MapGenerater
 public class MapGenerator : MonoBehaviour
 {
-    //jsonƒtƒ@ƒCƒ‹‚©‚ç“ü—Í‚³‚ê‚é”z—ñ
+    //jsonãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ
     [System.Serializable]
     public class Jsondata
     {
         public Mapdata[] mapdata;
     }
 
-    //jsonƒf[ƒ^‚ÌƒtƒH[ƒ}ƒbƒg
     [System.Serializable]
     public class Mapdata
     {
@@ -30,59 +29,72 @@ public class MapGenerator : MonoBehaviour
         public string date;
     }
 
-    //AssetBundleƒtƒ@ƒCƒ‹‚Ìw’è 
+    //AssetBundleã‚’èª­ã¿è¾¼ã‚€ãƒ•ã‚©ãƒ«ãƒ€ã®åå‰ 
     private string MapFolderName;
-    //ƒ}ƒbƒv‚Ì‘å‚«‚³
+    //ãƒãƒƒãƒ—ã®å¤§ãã•
     private int mapSize;
-    //ƒ}ƒbƒvƒf[ƒ^‚ğ‘ã“ü‚·‚é•Ï”
+    //èª­ã¿è¾¼ã‚€jsonãƒ‡ãƒ¼ã‚¿
     private Jsondata jsondata;
-    //ƒ}ƒbƒv¶¬‚É‘ÎÛ‚Æ‚È‚éprefab‚ğw‚·•Ï”
+    //ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆæ™‚ã«ç”Ÿæˆã•ã‚Œã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡ã™å¤‰æ•°
     private GameObject InstanceObject;
-    //ƒ}ƒbƒv¶¬‚ÉyÀ•W‚ğ‘ã“ü‚·‚é•Ï”
+    //ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆæ™‚ã®yåº§æ¨™
     private float y;
-    //ƒ}ƒbƒv¶¬‚ÉŠeƒIƒuƒWƒFƒNƒg‚Ìe‚Æ‚È‚é‹óƒIƒuƒWƒFƒNƒg‚ğw‚·•Ï”
+    //ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆæ™‚ã«è¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡ã™å¤‰æ•°
     private GameObject Parent;
+    //NowLoadingã®æ™‚ã®canvasã€camera
+    private GameObject canvas, UIcamera;
+
+    //NavMeshã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
+    NavMeshManager navscript;
 
     private void Start()
     {
         init();
         MapFolderName = "Sample2";
         MapGenerate(MapFolderName);
+        navscript.BakeNavMesh();
+
+        UISetActivefalse(canvas, UIcamera);
     }
 
     private void init()
     {
         y = 0;
         MapInfo info = new MapInfo();
+        canvas = GameObject.Find("Canvas");
+        UIcamera = GameObject.Find("UICamera");
+        navscript = GameObject.Find("NavMeshmanager").GetComponent<NavMeshManager>();
     }
 
     public void MapGenerate(string MapFolderName)
     {
-        //ƒAƒZƒbƒgƒoƒ“ƒhƒ‹‚ÌéŒ¾‚Æ‰Šú‰»
-        AssetBundle JsonAssetBundle, ObjectAssetBundle, ManagerAssetBundle;
+        //AssetBundleã€GameObjectã®å®£è¨€
+        AssetBundle JsonAssetBundle, ObjectAssetBundle, ManagerAssetBundle, EnemyAssetBundle;
         GameObject Wall, Door, Floor, Item, Player, ExitArea, SceneManager, ItemManager;
+        GameObject MoveZombie;
 
-        //Jsonƒtƒ@ƒCƒ‹‚ÌAssetBundle‚ÆAssetBundle“à‚Ì‘Î‰‚·‚éJsonƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ
+        //Jsonãƒ•ã‚¡ã‚¤ãƒ«ã®AssetBundleèª­ã¿è¾¼ã¿ã€AssetBundleã‹ã‚‰ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿
         JsonAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Map/" + MapFolderName);
         string mapdatainputString = JsonAssetBundle.LoadAsset<TextAsset>("Assets/MapData/" + MapFolderName + "/Mapdata.json").ToString();
         string mapinfoinputString = JsonAssetBundle.LoadAsset<TextAsset>("Assets/MapData/" + MapFolderName + "/MapInfo.json").ToString();
 
-        //ƒ}ƒbƒvƒTƒCƒYî•ñ‚ğƒNƒ‰ƒX•Ï”‚É‘ã“ü
+        //ãƒãƒƒãƒ—ã‚µã‚¤ã‚ºæƒ…å ±ã®èª­ã¿è¾¼ã¿
         MapInfo inputjson2 = JsonUtility.FromJson<MapInfo>(mapinfoinputString);
 
-        //ƒ}ƒbƒvƒf[ƒ^‚ÌƒNƒ‰ƒX‚ğ‰Šú‰»Aƒ}ƒbƒvƒTƒCƒY•Ï”‚Å”z—ñ‚ğéŒ¾
+        //å„åº§æ¨™ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæƒ…å ±ã‚’ä»£å…¥ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®åˆæœŸåŒ–
         jsondata = new Jsondata();
         mapSize = inputjson2.mapsize;
         jsondata.mapdata = new Mapdata[mapSize];
 
-        //ƒ}ƒbƒv‚Ìjsonƒtƒ@ƒCƒ‹‚Ìƒf[ƒ^‚ğƒNƒ‰ƒX•Ï”‚É‘ã“ü
+        //å„åº§æ¨™ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæƒ…å ±ã®ä»£å…¥
         Jsondata inputjson = JsonUtility.FromJson<Jsondata>(mapdatainputString);
 
         //Debug.Log(inputjson.mapdata[0].xcoor);
 
-        //ƒIƒuƒWƒFƒNƒgAMagager‚ÌAssetBundle‚Ì“Ç‚İ‚İ
+        //ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã®AssetBundleèª­ã¿è¾¼ã¿ã€GameObjectã¨ã—ã¦ã®èª­ã¿è¾¼ã¿
         ObjectAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Objects");
         ManagerAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Manager");
+        EnemyAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Enemies");
 
         Wall = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Wall.prefab");
         Door = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Door.prefab");
@@ -92,13 +104,15 @@ public class MapGenerator : MonoBehaviour
         ExitArea = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/ExitArea.prefab");
         SceneManager = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Manager/SceneManager.prefab");
         ItemManager = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Manager/ItemManager.prefab");
-        
+        MoveZombie = EnemyAssetBundle.LoadAsset<GameObject>("Assets/Resources/Enemy/MoveZombie.prefab");
 
-        //ŠeƒIƒuƒWƒFƒNƒg‚Ì¶¬
+
+        //ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã¾ã¨ã‚ã‚‹ãŸã‚ã®è¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®èª­ã¿è¾¼ã¿
         GameObject WallParent = new GameObject("Walls");
         GameObject DoorParent = new GameObject("Doors");
         GameObject FloorParent = new GameObject("Floors");
         GameObject ItemParent = new GameObject("Items");
+       
 
         ObjectInstance1(SceneManager);
         ObjectInstance1(ItemManager);
@@ -123,9 +137,9 @@ public class MapGenerator : MonoBehaviour
                         break;
 
                     case "Capture\\003.png":
-                        InstanceObject = Wall;
-                        y = 1f;
-                        Parent = WallParent;
+                        InstanceObject = MoveZombie;
+                        y = 1.5f;
+                        Parent = null;
                         break;
 
                     case "Capture\\004.png":
@@ -169,5 +183,11 @@ public class MapGenerator : MonoBehaviour
         var obja = Instantiate(objb, new Vector3(x, y, z), Quaternion.identity) as GameObject;
         obja.name = objb.name;
         if (parent != null) obja.transform.parent = parent.transform;
+    }
+
+    private void UISetActivefalse(GameObject Can,GameObject Cam)
+    {
+        Can.SetActive(false);
+        Cam.SetActive(false);
     }
 }
