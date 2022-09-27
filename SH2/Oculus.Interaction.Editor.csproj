@@ -72,7 +72,6 @@
     <Compile Include="Assets\Oculus\Interaction\Editor\PoseDetection\FeatureStateThresholdsEditor.cs" />
     <Compile Include="Assets\Oculus\Interaction\Editor\PoseDetection\JointRotationFeatureConfigEditor.cs" />
     <Compile Include="Assets\Oculus\Interaction\Editor\Grab\HandGrab\HandGrabPoseEditor.cs" />
-    <Compile Include="Assets\Oculus\Interaction\Editor\Grab\HandGrab\HandGrabPointEditor.cs" />
     <Compile Include="Assets\Oculus\Interaction\Editor\Utils\ConditionalHideDrawer.cs" />
     <Compile Include="Assets\Oculus\Interaction\Editor\Grab\GrabbingRuleEditor.cs" />
     <Compile Include="Assets\Oculus\Interaction\Editor\Grab\HandGrab\HandGhostProviderUtils.cs" />
@@ -782,11 +781,11 @@
     <Reference Include="System.Xml.XPath.XDocument">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.5f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>

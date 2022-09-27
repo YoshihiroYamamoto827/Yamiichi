@@ -86,8 +86,6 @@
     <None Include="Assets\Oculus\Interaction\Samples\Scripts\HandGrabUse\Effects\WaterSpray\MeshBlitStamp.shader" />
     <None Include="Assets\Oculus\Interaction\Samples\Shaders\StencilSky.shader" />
     <None Include="Assets\Oculus\Interaction\Samples\Shaders\UIStyleShader.shader" />
-    <None Include="Assets\Oculus\Interaction\Samples\ThirdParty\GradientSkybox\LICENSE.txt" />
-    <None Include="Assets\Oculus\Interaction\Samples\ThirdParty\GradientSkybox\ThreeColorGradient.shader" />
     <None Include="Assets\Oculus\Interaction\Samples\Shaders\MRDeskShadow.shader" />
     <None Include="Assets\Oculus\Interaction\Samples\ThirdParty\Textures\ComprehensiveGrabMapTextureCredit.txt" />
     <None Include="Assets\Oculus\Interaction\Samples\Scripts\HandGrabUse\Shaders\BasicPBR.shader" />
@@ -755,11 +753,11 @@
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
