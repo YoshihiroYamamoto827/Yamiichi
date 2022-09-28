@@ -29,6 +29,14 @@ public class MapGenerator : MonoBehaviour
         public string date;
     }
 
+    struct MoveEnemyInfo
+    {
+        public int[] x;
+        public int[] y;
+        public GameObject[] EnemyType;
+    }
+
+
     //AssetBundleを読み込むフォルダの名前 
     private string MapFolderName;
     //マップの大きさ
@@ -43,6 +51,8 @@ public class MapGenerator : MonoBehaviour
     private GameObject Parent;
     //NowLoadingの時のcanvas、camera
     private GameObject canvas, UIcamera;
+    //敵の数をカウントする変数
+    private int EnemyCount;
 
     //NavMeshのスクリプト
     NavMeshManager navscript;
@@ -54,8 +64,7 @@ public class MapGenerator : MonoBehaviour
         init();
         MapFolderName = "Sample4";
         MapGenerate(MapFolderName);
-        navscript.BakeNavMesh();
-        enemymovescript = GameObject.Find("MoveEnemymanager").GetComponent<EnemyMove>();
+        enemymovescript = GameObject.Find("MoveZombie").GetComponent<EnemyMove>();
         enemymovescript.init();
         UISetActivefalse(canvas, UIcamera);
     }
@@ -63,6 +72,7 @@ public class MapGenerator : MonoBehaviour
     private void init()
     {
         y = 0;
+        EnemyCount = 0;
         MapInfo info = new MapInfo();
         canvas = GameObject.Find("Canvas");
         UIcamera = GameObject.Find("UICamera");
@@ -88,6 +98,10 @@ public class MapGenerator : MonoBehaviour
         jsondata = new Jsondata();
         mapSize = inputjson2.mapsize;
         jsondata.mapdata = new Mapdata[mapSize];
+        MoveEnemyInfo MEInfo;
+        MEInfo.x = new int[mapSize * mapSize];
+        MEInfo.y = new int[mapSize * mapSize];
+        MEInfo.EnemyType = new GameObject[mapSize * mapSize];
 
         //各座標のオブジェクト情報の代入
         Jsondata inputjson = JsonUtility.FromJson<Jsondata>(mapdatainputString);
@@ -115,6 +129,7 @@ public class MapGenerator : MonoBehaviour
         GameObject DoorParent = new GameObject("Doors");
         GameObject FloorParent = new GameObject("Floors");
         GameObject ItemParent = new GameObject("Items");
+        GameObject MoveEnemy = new GameObject("MoveEnemy");
 
 
         ObjectInstance1(SceneManager);
@@ -140,9 +155,13 @@ public class MapGenerator : MonoBehaviour
                         break;
 
                     case "Capture\\003.png":
-                        InstanceObject = MoveZombie;
+                        InstanceObject = null;
                         y = 1.5f;
                         Parent = null;
+                        MEInfo.x[EnemyCount] = inputjson.mapdata[i].xcoor;
+                        MEInfo.y[EnemyCount] = inputjson.mapdata[i].ycoor;
+                        MEInfo.EnemyType[EnemyCount] = MoveZombie;
+                        EnemyCount++;
                         break;
 
                     case "Capture\\004.png":
@@ -169,6 +188,13 @@ public class MapGenerator : MonoBehaviour
             floor.name = Floor.name;
             if (FloorParent != null) floor.transform.parent = FloorParent.transform;
         }
+        navscript.BakeNavMesh();
+
+        for(int j = 0; j < EnemyCount; j++)
+        {
+            EnemyInstance(MEInfo.x[j], MEInfo.y[j], MEInfo.EnemyType[j], MoveEnemy);
+        }
+        
     }
 
     private void ObjectInstance1(GameObject objb)
@@ -183,9 +209,20 @@ public class MapGenerator : MonoBehaviour
         floora.name = floorb.name;
         if (floorparent != null) floora.transform.parent = floorparent.transform;
 
-        var obja = Instantiate(objb, new Vector3(x, y, z), Quaternion.identity) as GameObject;
-        obja.name = objb.name;
-        if (parent != null) obja.transform.parent = parent.transform;
+        if (objb != null)
+        {
+            var obja = Instantiate(objb, new Vector3(x, y, z), Quaternion.identity) as GameObject;
+            obja.name = objb.name;
+            if (parent != null) obja.transform.parent = parent.transform;
+        }
+        
+    }
+
+    private void EnemyInstance(int x,int y,GameObject eneb,GameObject parent)
+    {
+        var enea = Instantiate(eneb, new Vector3(x, 1.5f, y), Quaternion.identity) as GameObject;
+        enea.name = eneb.name;
+        if (parent != null) enea.transform.parent = parent.transform;
     }
 
     private void UISetActivefalse(GameObject Can, GameObject Cam)

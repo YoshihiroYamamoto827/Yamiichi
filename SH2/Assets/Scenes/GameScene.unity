@@ -429,7 +429,6 @@ GameObject:
   m_Component:
   - component: {fileID: 622518233}
   - component: {fileID: 622518232}
-  - component: {fileID: 622518231}
   m_Layer: 0
   m_Name: MoveEnemymanager
   m_TagString: Untagged
@@ -437,19 +436,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &622518231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 622518230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fff0e2171d1d2f746bb13d27ba7726ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveEnabled: 1
 --- !u!195 &622518232
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -829,7 +815,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 2147483647
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1

@@ -12,6 +12,7 @@ public class NavMeshManager : MonoBehaviour
     private void Start()
     {
         _surface = gameObject.GetComponent<NavMeshSurface>();
+        Debug.Log(_surface);
     }
 
     public void BakeNavMesh()
