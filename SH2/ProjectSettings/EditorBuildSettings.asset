@@ -11,18 +11,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/HouseScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/VRtest/Title.unity
+  - enabled: 1
+    path: Assets/VRtest/Scenes/Title.unity
     guid: b8eb8a7842b428846921412b3db50368
   - enabled: 0
-    path: Assets/VRtest/Title 1.unity
-    guid: b41fe6d1b3776dd449ef89b2d232bd90
-  - enabled: 1
-    path: Assets/VRtest/Scene1.unity
+    path: Assets/VRtest/Scenes/Scene1.unity
     guid: d711c8fc5337acf44a9946692f2043e3
   - enabled: 0
     path: Assets/Scenes/MapPreviewScene.unity
     guid: 76df545a5d33d7849961299530742ff0
+  - enabled: 0
+    path: Assets/Oculus/SampleFramework/Usage/DistanceGrab.unity
+    guid: 24f58b3f0ca02d44eaec7f50bca538f2
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 5378bf04098c5874c92b918a4d9798a6, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 02e8110794f71634fa7bd1d96f3f77c5, type: 2}

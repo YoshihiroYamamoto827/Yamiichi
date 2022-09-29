@@ -161,8 +161,8 @@ public class OculusLaserPointer : OVRCursor
         lineRenderer.SetPosition(0, startPointObj.transform.position);
         lineRenderer.SetPosition(1, endPointObj.transform.position);
 
-        if (rayTransform == null && Camera.main != null)
-            rayTransform = Camera.main.transform;
+        /*if (rayTransform == null && Camera.main != null)
+            rayTransform = Camera.main.transform;*/
 
         // Move the gaze cursor to keep it in the middle of the view
         transform.position = rayTransform.position + rayTransform.forward * depth;

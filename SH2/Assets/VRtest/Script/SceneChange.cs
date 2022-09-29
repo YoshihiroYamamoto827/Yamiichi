@@ -6,7 +6,12 @@ using UnityEngine.UI;
 
 public class SceneChange : MonoBehaviour
 {
-    public void GameStart()
+    public void fadeInvoke()
+    {
+        Invoke("GameScene", 2);
+    }
+
+    void GameScene()
     {
         SceneManager.LoadScene("Scene1");
     }
