@@ -57,11 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\MapEditor.cs" />
-    <Compile Include="Assets\Editor\hoge.cs" />
     <Compile Include="Assets\Editor\MapGenerater.cs" />
-    <Compile Include="Assets\Editor\MyWindow.cs" />
-    <Compile Include="Assets\Editor\AssetBundleEditor.cs" />
-    <Compile Include="Assets\Editor\AssetBundleBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

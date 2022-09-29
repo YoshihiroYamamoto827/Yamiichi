@@ -57,20 +57,18 @@ public class MapGenerator : MonoBehaviour
     //NavMeshのスクリプト
     NavMeshManager navscript;
     //EnemyMoveのスクリプト
-    EnemyMove enemymovescript;
+    EnemyMove[] enemymovescript;
 
     private void Start()
     {
         init();
-        MapFolderName = "Sample4";
         MapGenerate(MapFolderName);
-        enemymovescript = GameObject.Find("MoveZombie").GetComponent<EnemyMove>();
-        enemymovescript.init();
         UISetActivefalse(canvas, UIcamera);
     }
 
     private void init()
     {
+        MapFolderName = SendMapFolderName.getMapFolderName();
         y = 0;
         EnemyCount = 0;
         MapInfo info = new MapInfo();
@@ -85,6 +83,9 @@ public class MapGenerator : MonoBehaviour
         AssetBundle JsonAssetBundle, ObjectAssetBundle, ManagerAssetBundle, EnemyAssetBundle;
         GameObject Wall, Door, Floor, Item, Player, ExitArea, SceneManager, ItemManager;
         GameObject MoveZombie;
+
+        //敵の生成時にスクリプトを指定するために、GameObjectを格納する変数
+        GameObject[] ene;
 
         //JsonファイルのAssetBundle読み込み、AssetBundleからファイルの読み込み
         JsonAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Map/" + MapFolderName);
@@ -102,6 +103,7 @@ public class MapGenerator : MonoBehaviour
         MEInfo.x = new int[mapSize * mapSize];
         MEInfo.y = new int[mapSize * mapSize];
         MEInfo.EnemyType = new GameObject[mapSize * mapSize];
+        
 
         //各座標のオブジェクト情報の代入
         Jsondata inputjson = JsonUtility.FromJson<Jsondata>(mapdatainputString);
@@ -192,9 +194,21 @@ public class MapGenerator : MonoBehaviour
 
         for(int j = 0; j < EnemyCount; j++)
         {
-            EnemyInstance(MEInfo.x[j], MEInfo.y[j], MEInfo.EnemyType[j], MoveEnemy);
+            EnemyInstance(MEInfo.x[j], MEInfo.y[j], MEInfo.EnemyType[j], MoveEnemy, j);
         }
+
+        enemymovescript = new EnemyMove[EnemyCount];
+        ene = new GameObject[EnemyCount];
+
+        ene = GameObject.FindGameObjectsWithTag("MoveEnemy");
         
+        for (int k = 0; k < EnemyCount; k++)
+        {
+            Debug.Log(ene[k].name);
+            enemymovescript[k] = ene[k].GetComponent<EnemyMove>();
+            enemymovescript[k].init();
+        }
+
     }
 
     private void ObjectInstance1(GameObject objb)
@@ -218,10 +232,10 @@ public class MapGenerator : MonoBehaviour
         
     }
 
-    private void EnemyInstance(int x,int y,GameObject eneb,GameObject parent)
+    private void EnemyInstance(int x, int y, GameObject eneb, GameObject parent, int j)
     {
         var enea = Instantiate(eneb, new Vector3(x, 1.5f, y), Quaternion.identity) as GameObject;
-        enea.name = eneb.name;
+        enea.name = eneb.name + j.ToString();
         if (parent != null) enea.transform.parent = parent.transform;
     }
 

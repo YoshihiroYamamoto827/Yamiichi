@@ -6,13 +6,13 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMove : MonoBehaviour
 {
-    static Animator MZanim;
+    private Animator MZanim;
 
     [SerializeField]
     [Tooltip("í«Ç¢Ç©ÇØÇÈëŒè€")]
-    static GameObject MEplayer;
+    private GameObject MEplayer;
 
-    static NavMeshAgent agent;
+    private NavMeshAgent agent;
 
     int attackInterval = 1;
     bool attacking = false;

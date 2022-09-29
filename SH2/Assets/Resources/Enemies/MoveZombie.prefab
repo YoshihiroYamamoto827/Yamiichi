@@ -1799,7 +1799,7 @@ GameObject:
   - component: {fileID: 7476270673774113235}
   m_Layer: 0
   m_Name: MoveZombie
-  m_TagString: Untagged
+  m_TagString: MoveEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
