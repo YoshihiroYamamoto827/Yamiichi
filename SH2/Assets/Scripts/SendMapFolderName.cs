@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-using TMPro;
 using System.IO;
 
 public class SendMapFolderName : MonoBehaviour
 {
     GameObject DeveloperPanel;
-    TMP_Dropdown MCDropdown;
+    Dropdown MCDropdown;
     public static string MapFolderName;
 
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this);
+
         //開発者設定のパネルの取得
         DeveloperPanel = GameObject.Find("DeveloperPanel");
 
@@ -25,12 +26,10 @@ public class SendMapFolderName : MonoBehaviour
         foreach (FileInfo f in info)
         {
             Debug.Log(f.Name);
-            if(f.Name!="Map")MapList.Add(f.Name);
+            if (f.Name != "Map") MapList.Add(f.Name);
         }
 
-        //ドロップダウンのコンポーネント取得と表示するリストの宣言
-        MCDropdown = GameObject.Find("MapChooseDropdown").GetComponent<TMP_Dropdown>();
-        Debug.Log(MCDropdown);
+        MCDropdown = GameObject.Find("Dropdown").GetComponent<Dropdown>();
 
         //ドロップダウンのOptionsをクリア
         MCDropdown.ClearOptions();
@@ -51,6 +50,7 @@ public class SendMapFolderName : MonoBehaviour
 
     public static string getMapFolderName()
     {
+        Debug.Log(MapFolderName);
         return MapFolderName;
     }
 }

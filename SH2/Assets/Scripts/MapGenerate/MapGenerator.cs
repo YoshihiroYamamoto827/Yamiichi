@@ -69,6 +69,7 @@ public class MapGenerator : MonoBehaviour
     private void init()
     {
         MapFolderName = SendMapFolderName.getMapFolderName();
+        Debug.Log(MapFolderName);
         y = 0;
         EnemyCount = 0;
         MapInfo info = new MapInfo();
@@ -81,12 +82,22 @@ public class MapGenerator : MonoBehaviour
     {
         //AssetBundle、GameObjectの宣言
         AssetBundle JsonAssetBundle, ObjectAssetBundle, ManagerAssetBundle, EnemyAssetBundle;
-        GameObject Wall, Door, Floor, Item, Player, ExitArea, SceneManager, ItemManager;
+        GameObject Wall, Door, Floor, Ceiling, Item, Player, ExitArea, SceneManager, ItemManager;
         GameObject MoveZombie;
 
         //敵の生成時にスクリプトを指定するために、GameObjectを格納する変数
         GameObject[] ene;
 
+        /*void AssetBundleUnload()
+        {
+            JsonAssetBundle.Unload(false);
+            ObjectAssetBundle.Unload(false);
+            ManagerAssetBundle.Unload(false);
+            EnemyAssetBundle.Unload(false);
+        }
+
+        AssetBundleUnload();*/
+        
         //JsonファイルのAssetBundle読み込み、AssetBundleからファイルの読み込み
         JsonAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Map/" + MapFolderName);
         string mapdatainputString = JsonAssetBundle.LoadAsset<TextAsset>("Assets/MapData/" + MapFolderName + "/Mapdata.json").ToString();
@@ -118,6 +129,7 @@ public class MapGenerator : MonoBehaviour
         Wall = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Wall.prefab");
         Door = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Door.prefab");
         Floor = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Floor.prefab");
+        Ceiling = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Ceiling.prefab");
         Item = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Item.prefab");
         Player = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Player.prefab");
         ExitArea = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/ExitArea.prefab");
@@ -130,6 +142,7 @@ public class MapGenerator : MonoBehaviour
         GameObject WallParent = new GameObject("Walls");
         GameObject DoorParent = new GameObject("Doors");
         GameObject FloorParent = new GameObject("Floors");
+        GameObject CeilingParent = new GameObject("Ceilings");
         GameObject ItemParent = new GameObject("Items");
         GameObject MoveEnemy = new GameObject("MoveEnemy");
 
@@ -189,6 +202,11 @@ public class MapGenerator : MonoBehaviour
             var floor = Instantiate(Floor, new Vector3(inputjson.mapdata[i].xcoor, 0f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
             floor.name = Floor.name;
             if (FloorParent != null) floor.transform.parent = FloorParent.transform;
+
+            var ceiling = Instantiate(Ceiling, new Vector3(inputjson.mapdata[i].xcoor, 4f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
+            ceiling.name = Ceiling.name;
+            if (CeilingParent != null) ceiling.transform.parent = CeilingParent.transform;
+
         }
         navscript.BakeNavMesh();
 

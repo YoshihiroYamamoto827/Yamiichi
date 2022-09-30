@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 70185747
+CRC: 422130894
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: fea0b320083f4702327510018e41f1b8
+    Hash: d11058015d638c833e84701b26177bc2
   TypeTreeHash:
     serializedVersion: 2
     Hash: 84b0e38155ee466dcf2ee768b385736a
@@ -51,6 +51,7 @@ Assets:
 - Assets/Resources/Objects/Floor.prefab
 - Assets/Resources/Objects/Player.prefab
 - Assets/Resources/Objects/Door.prefab
+- Assets/Resources/Objects/ceiling.prefab
 - Assets/Resources/Objects/ExitArea.prefab
 - Assets/Resources/Objects/Wall.prefab
 Dependencies: []
