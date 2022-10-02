@@ -6,13 +6,29 @@ using UnityEngine.UI;
 
 public class SceneChange : MonoBehaviour
 {
-    public void fadeInvoke()
+    public int fadetime;
+
+    public void FadeInvoke()
     {
-        Invoke("GameScene", 2);
+        if (SceneManager.GetActiveScene().name=="Help")
+            Invoke("GameScene", fadetime);
+        else if(SceneManager.GetActiveScene().name=="Title")
+            Invoke("HelpScene", fadetime);
     }
+
+    /*public void Help()
+    {
+        invoke("GameScene", 8);
+    }*/
 
     void GameScene()
     {
         SceneManager.LoadScene("Scene1");
     }
+
+    void HelpScene()
+    {
+        SceneManager.LoadScene("Help");
+    }
+
 }

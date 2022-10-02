@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/VRtest/Scenes/Title.unity
     guid: b8eb8a7842b428846921412b3db50368
-  - enabled: 0
+  - enabled: 1
+    path: Assets/VRtest/Scenes/Help.unity
+    guid: adef45ebee078db42a9ea9ac44166a5d
+  - enabled: 1
     path: Assets/VRtest/Scenes/Scene1.unity
     guid: d711c8fc5337acf44a9946692f2043e3
   - enabled: 0
