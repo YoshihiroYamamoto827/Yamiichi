@@ -6,11 +6,11 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMove : MonoBehaviour
 {
-    private Animator anim;
+    private Animator MZanim;
 
     [SerializeField]
     [Tooltip("追いかける対象")]
-    private GameObject player;
+    private GameObject MEplayer;
 
     private NavMeshAgent agent;
 
@@ -21,22 +21,22 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim = gameObject.GetComponent<Animator>();
-
-        // NavMeshAgentを保持しておく
-        agent = GetComponent<NavMeshAgent>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (moveEnabled)
+        if (MZanim != null)
         {
-            Move();
-        }
-        else
-        {
-            Stop();
+            if (moveEnabled)
+            {
+                Move();
+            }
+            else
+            {
+                Stop();
+            }
         }
     }
 
@@ -54,7 +54,7 @@ public class EnemyMove : MonoBehaviour
         {
             attacking = true;
             moveEnabled = false;
-            anim.SetTrigger("Attack");
+            MZanim.SetTrigger("Attack");
             yield return new WaitForSeconds(attackInterval);
             attacking = false;
             moveEnabled = true;
@@ -64,15 +64,27 @@ public class EnemyMove : MonoBehaviour
 
     void Move()
     {
-        anim.SetFloat("Speed", agent.speed, 0.1f, Time.deltaTime);
+        
+            MZanim.SetFloat("Speed", agent.speed, 0.1f, Time.deltaTime);
 
-        // プレイヤーを目指して進む
-        agent.destination = player.transform.position;
+            // プレイヤーを目指して進む
+            agent.destination = MEplayer.transform.position;
+        
     }
 
     void Stop()
     {
-        agent.speed = 0;
-        anim.SetFloat("Speed", agent.speed, 0.1f, Time.deltaTime);
+            agent.speed = 0;
+            MZanim.SetFloat("Speed", agent.speed, 0.1f, Time.deltaTime);
+    }
+
+    public void init()
+    {
+        MZanim = gameObject.GetComponent<Animator>();
+
+        MEplayer = GameObject.Find("Player");
+
+        //NavMeshAgentを保持しておく
+        agent = GetComponent<NavMeshAgent>();
     }
 }

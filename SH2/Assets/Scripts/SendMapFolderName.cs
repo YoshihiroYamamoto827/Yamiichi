@@ -2,15 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System.IO;
 
 public class SendMapFolderName : MonoBehaviour
 {
+    GameObject DeveloperPanel;
+    Dropdown MCDropdown;
+    public static string MapFolderName;
 
     // Start is called before the first frame update
     void Start()
     {
-        Dropdown MCDropdown;
+        DontDestroyOnLoad(this);
+
+        //開発者設定のパネルの取得
+        DeveloperPanel = GameObject.Find("DeveloperPanel");
+
         List<string> MapList = new List<string>();
 
         DirectoryInfo dir = new DirectoryInfo(Application.streamingAssetsPath + "/Map");
@@ -18,23 +26,31 @@ public class SendMapFolderName : MonoBehaviour
         foreach (FileInfo f in info)
         {
             Debug.Log(f.Name);
-
-            if(f.Name!="map")MapList.Add(f.Name);
+            if (f.Name != "Map") MapList.Add(f.Name);
         }
 
-        //ドロップダウンのコンポーネント取得と表示するリストの宣言
-        MCDropdown = GameObject.Find("MapChooseDropdown").GetComponent<Dropdown>();
+        MCDropdown = GameObject.Find("Dropdown").GetComponent<Dropdown>();
 
         //ドロップダウンのOptionsをクリア
         MCDropdown.ClearOptions();
 
         //リストをドロップダウンに追加
         MCDropdown.AddOptions(MapList);
+
+        MCDropdown.options[MCDropdown.value].text = MapList[0];
+
+        DeveloperPanel.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnSelected()
     {
-        
+        MapFolderName = MCDropdown.options[MCDropdown.value].text;
+        Debug.Log(MapFolderName);
+    }
+
+    public static string getMapFolderName()
+    {
+        Debug.Log(MapFolderName);
+        return MapFolderName;
     }
 }

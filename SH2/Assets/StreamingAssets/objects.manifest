@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2143512676
+CRC: 422130894
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: aef2e028d25ff6b68ad120ba7b57a23e
+    Hash: d11058015d638c833e84701b26177bc2
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 59be4202eb00b18ffe5b8a9eb2f7763d
+    Hash: 84b0e38155ee466dcf2ee768b385736a
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -34,6 +34,8 @@ ClassTypes:
 - Class: 81
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: 11500000, guid: d16570c5761f852429b9eead27879ab9, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 9f74b253ab0be8e4c800c69cb84f8fc2, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: a9f250c648ed67a42bad14083da17f04, type: 3}
@@ -47,7 +49,9 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Resources/Objects/Item.prefab
 - Assets/Resources/Objects/Floor.prefab
-- Assets/Resources/Objects/Player(Clone).prefab
-- Assets/Resources/Objects/Door(Clone).prefab
-- Assets/Resources/Objects/Wall(Clone).prefab
+- Assets/Resources/Objects/Player.prefab
+- Assets/Resources/Objects/Door.prefab
+- Assets/Resources/Objects/ceiling.prefab
+- Assets/Resources/Objects/ExitArea.prefab
+- Assets/Resources/Objects/Wall.prefab
 Dependencies: []
