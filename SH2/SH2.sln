@@ -35,11 +35,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook.Wit.TTS.Samples", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook.Wit.Editor", "Facebook.Wit.Editor.csproj", "{251706C9-B215-7003-FFC8-A29F4982895D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{110CCC16-3A4C-6A7A-D97D-1526180A9F86}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oculus.Interaction.Editor", "Oculus.Interaction.Editor.csproj", "{CDEED7A0-56C5-3A02-226C-EBF925F69D36}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook.Wit.Conduit.Editor", "Facebook.Wit.Conduit.Editor.csproj", "{1E96F742-149D-13B8-D740-313601E8771A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{110CCC16-3A4C-6A7A-D97D-1526180A9F86}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oculus.Interaction.Samples.Editor", "Oculus.Interaction.Samples.Editor.csproj", "{4EA62F06-DDB7-CA98-19DE-F5D0EBF0AB3C}"
 EndProject
@@ -139,6 +139,10 @@ Global
 		{251706C9-B215-7003-FFC8-A29F4982895D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{251706C9-B215-7003-FFC8-A29F4982895D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{251706C9-B215-7003-FFC8-A29F4982895D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{110CCC16-3A4C-6A7A-D97D-1526180A9F86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{110CCC16-3A4C-6A7A-D97D-1526180A9F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{110CCC16-3A4C-6A7A-D97D-1526180A9F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{110CCC16-3A4C-6A7A-D97D-1526180A9F86}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CDEED7A0-56C5-3A02-226C-EBF925F69D36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CDEED7A0-56C5-3A02-226C-EBF925F69D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDEED7A0-56C5-3A02-226C-EBF925F69D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -147,10 +151,6 @@ Global
 		{1E96F742-149D-13B8-D740-313601E8771A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E96F742-149D-13B8-D740-313601E8771A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E96F742-149D-13B8-D740-313601E8771A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{110CCC16-3A4C-6A7A-D97D-1526180A9F86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{110CCC16-3A4C-6A7A-D97D-1526180A9F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{110CCC16-3A4C-6A7A-D97D-1526180A9F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{110CCC16-3A4C-6A7A-D97D-1526180A9F86}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4EA62F06-DDB7-CA98-19DE-F5D0EBF0AB3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4EA62F06-DDB7-CA98-19DE-F5D0EBF0AB3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EA62F06-DDB7-CA98-19DE-F5D0EBF0AB3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
