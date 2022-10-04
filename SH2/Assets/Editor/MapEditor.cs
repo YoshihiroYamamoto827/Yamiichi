@@ -40,7 +40,7 @@ public class MapEditor : EditorWindow
     //マップエディタのマスの数
     private int mapSize = 10;
     //グリッドの大きさ
-    private float gridSize = 50.0f;
+    private int gridSize = 50;
     //出力フォルダ名
     private string outputFolderName;
     //選択した画像のパス
@@ -71,7 +71,7 @@ public class MapEditor : EditorWindow
 
         GUILayout.BeginHorizontal();
         GUILayout.Label("Grid Size:", GUILayout.Width(150));
-        gridSize = EditorGUILayout.FloatField(gridSize);
+        gridSize = EditorGUILayout.IntField(gridSize);
         GUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
@@ -178,7 +178,7 @@ public class MapEditor : EditorWindow
         get { return mapSize; }
     }
 
-    public float GridSize
+    public int GridSize
     {
         get { return gridSize; }
     }
@@ -214,11 +214,15 @@ public class MapEditorSubWindow : EditorWindow
     //マップのグリッド数
     private int mapSize = 0;
     //グリッドサイズ
-    private float gridSize = 0.0f;
+    private int gridSize = 0;
     //マップデータ
     private string[,] map;
     //グリッドの四角
     private Rect[,] gridRect;
+    //マップのマスのTexture
+    private Texture _texture;
+    //マップ表示エリアの余白
+    private int Areamargin;
     //親ウィンドウの参照
     private MapEditor parent;
     //スクロール位置を記録
@@ -254,6 +258,7 @@ public class MapEditorSubWindow : EditorWindow
         mapSize = parent.MapSize;
         Debug.Log(mapSize);
         gridSize = parent.GridSize;
+        Areamargin = 10;
 
         json.mapdata = new Mapdata[mapSize * mapSize];
 
@@ -267,9 +272,13 @@ public class MapEditorSubWindow : EditorWindow
                 map[i, j] = "";
             }
         }
-        
-        //グリッドデータを生成
-        gridRect = CreateGrid(mapSize);
+
+        //Mapのマスを描画するTextureの初期化
+        var measureTexture = new Texture2D(1, 1);
+        measureTexture.SetPixel(0, 0, Color.white);
+        measureTexture.Apply();
+        _texture = measureTexture;
+
     }
 
     void OnGUI()
@@ -278,8 +287,9 @@ public class MapEditorSubWindow : EditorWindow
         {
             using (new EditorGUILayout.HorizontalScope())
             {
-                using (var scrollView = new EditorGUILayout.ScrollViewScope(scrollPos, GUILayout.Width(1500)))
+                using (var scrollView = new EditorGUILayout.ScrollViewScope(scrollPos, GUILayout.Width(1000f)))
                 {
+                    GUILayout.BeginArea(new Rect(Areamargin, Areamargin, position.size.x - 20, position.size.y - 20));
                     scrollPos = scrollView.scrollPosition;
 
                     //グリッド線を描画する
@@ -287,12 +297,12 @@ public class MapEditorSubWindow : EditorWindow
                     {
                         for (int xx = 0; xx < mapSize; xx++)
                         {
-                            DrawGridLine(gridRect[yy, xx]);
+                            int measureX =Areamargin * 3 + gridSize * xx;
+                            int measureY = Areamargin * 3 + gridSize * yy;
+                            Rect measureRect = new Rect(measureX, measureY, gridSize, gridSize);
+                            GUI.DrawTexture(measureRect, _texture, ScaleMode.StretchToFill, true, 0, Color.white, 3, 0);
                         }
                     }
-
-
-
 
                     //クリックされた位置を探してその場所に画像データを入れる
                     Event e = Event.current;
@@ -343,12 +353,12 @@ public class MapEditorSubWindow : EditorWindow
                             }
                         }
                     }
+                    GUILayout.EndArea();
                 }   
             }
-        }
 
             //出力ボタン
-            Rect rect = new Rect(0, WINDOW_H - 50, 300, 50);
+            Rect rect = new Rect(0, position.size.y - 50, 300, 50);
             GUILayout.BeginArea(rect);
             if (GUILayout.Button("output file", GUILayout.MinWidth(300), GUILayout.MinHeight(50)))
             {
@@ -356,34 +366,10 @@ public class MapEditorSubWindow : EditorWindow
             }
             GUILayout.FlexibleSpace();
             GUILayout.EndArea();
-        
-    }
-
-    //グリッドデータを作成
-    private Rect[,] CreateGrid(int div)
-    {
-        int sizeW = div;
-        int sizeH = div;
-
-        float x = 0.0f;
-        float y = 0.0f;
-        float w = gridSize;
-        float h = gridSize;
-
-        Rect[,] resultRects = new Rect[sizeH, sizeW];
-
-        for (int yy = 0; yy < sizeH; yy++)
-        {
-            x = 0.0f;
-            for (int xx = 0; xx < sizeW; xx++)
-            {
-                Rect r = new Rect(new Vector2(x, y), new Vector2(w, h));
-                resultRects[yy, xx] = r;
-                x += w;
-            }
-            y += h;
         }
-        return resultRects;
+
+            
+        
     }
 
     //グリッド線を描画
