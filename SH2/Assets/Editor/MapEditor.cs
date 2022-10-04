@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Linq;
+using UnityEngine.UIElements;
 
 
 //jsonに出力する配列
@@ -217,16 +218,20 @@ public class MapEditorSubWindow : EditorWindow
     private int gridSize = 0;
     //マップデータ
     private string[,] map;
-    //グリッドの四角
-    private Rect[,] gridRect;
     //マップのマスのTexture
     private Texture _texture;
     //マップ表示エリアの余白
     private int Areamargin;
+    //マスの大きさ
+    private Rect[] MapRects; 
+    //マップ生成時のマスのx座標とy座標
+    private int measureX, measureY;
     //親ウィンドウの参照
     private MapEditor parent;
     //スクロール位置を記録
     private Vector2 scrollPos = Vector2.zero;
+    //スクロールを検知するための変数
+    private Vector2 scrollmonitor = Vector2.zero;
 
     Jsondata json = new Jsondata();
     MapInfo info = new MapInfo();
@@ -256,7 +261,6 @@ public class MapEditorSubWindow : EditorWindow
     public void init()
     {
         mapSize = parent.MapSize;
-        Debug.Log(mapSize);
         gridSize = parent.GridSize;
         Areamargin = 10;
 
@@ -273,130 +277,136 @@ public class MapEditorSubWindow : EditorWindow
             }
         }
 
-        //Mapのマスを描画するTextureの初期化
+        //Mapのマスを描画するRectsとTextureの初期化
+        MapRects = new Rect[mapSize * mapSize];
         var measureTexture = new Texture2D(1, 1);
         measureTexture.SetPixel(0, 0, Color.white);
         measureTexture.Apply();
         _texture = measureTexture;
 
+        
+
     }
 
     void OnGUI()
     {
-        using (new EditorGUILayout.VerticalScope())
+        using (var scrollView = new EditorGUILayout.ScrollViewScope(scrollPos))
         {
-            using (new EditorGUILayout.HorizontalScope())
+            scrollPos = scrollView.scrollPosition;
+            
+            using (new GUILayout.VerticalScope())
             {
-                using (var scrollView = new EditorGUILayout.ScrollViewScope(scrollPos, GUILayout.Width(1000f)))
+                //グリッド線を描画する
+                for (int yy = 0; yy < mapSize; yy++)
                 {
-                    GUILayout.BeginArea(new Rect(Areamargin, Areamargin, position.size.x - 20, position.size.y - 20));
-                    scrollPos = scrollView.scrollPosition;
-
-                    //グリッド線を描画する
-                    for (int yy = 0; yy < mapSize; yy++)
+                    for (int xx = 0; xx < mapSize; xx++)
                     {
-                        for (int xx = 0; xx < mapSize; xx++)
+                        measureX = Areamargin * 3 + gridSize * xx;
+                        measureY = Areamargin * 3 + gridSize * yy;
+                        MapRects[(xx*10) + yy] = new Rect(measureX, measureY, gridSize, gridSize);
+                        GUI.DrawTexture(MapRects[(xx * 10) + yy], _texture, ScaleMode.StretchToFill, true, 0, Color.white, 3, 0);
+                    }
+                }
+
+                //クリックされた位置を探してその場所に画像データを入れる
+                Event e = Event.current;
+                if (e.type == EventType.MouseDown)
+                {
+                    Vector2 pos = Event.current.mousePosition;
+                    int xx;
+
+                    //x位置を探す
+                    for (xx = 0; xx < (mapSize - 1); xx++)
+                    {
+                        if (MapRects[(xx * 10)].x <= pos.x && pos.x <= MapRects[((xx + 1) * 10)].x)
                         {
-                            int measureX =Areamargin * 3 + gridSize * xx;
-                            int measureY = Areamargin * 3 + gridSize * yy;
-                            Rect measureRect = new Rect(measureX, measureY, gridSize, gridSize);
-                            GUI.DrawTexture(measureRect, _texture, ScaleMode.StretchToFill, true, 0, Color.white, 3, 0);
+                            Debug.Log(xx);
+                            break;
                         }
+
+                        if (xx == mapSize - 2) break;
                     }
 
-                    //クリックされた位置を探してその場所に画像データを入れる
-                    Event e = Event.current;
-                    if (e.type == EventType.MouseDown)
-                    {
-                        Vector2 pos = Event.current.mousePosition;
-                        int xx;
+                    if (xx == mapSize - 2) xx = mapSize - 1;
+                    Debug.Log(xx);
 
-                        //x位置を探す
-                        for (xx = 0; xx < mapSize; xx++)
+                    //y位置を探す
+                    for (int yy = 0; yy < (mapSize - 1); yy++)
+                    {
+                        if (MapRects[yy].y <= pos.y && pos.y <= MapRects[(yy + 1)].y)
                         {
-                            Rect r = gridRect[0, xx];
-                            if (r.x <= pos.x && pos.x <= r.x + r.width)
+                            //消しゴムのときはデータを消す
+                            if (parent.SelectedImagePath.IndexOf("000") > -1)
                             {
-                                break;
+                                map[xx, yy] = "";
                             }
+                            else
+                            {
+                                map[xx, yy] = parent.SelectedImagePath;
+                            }
+                            Repaint();
+                            break;
                         }
 
-                        //y位置を探す
-                        for (int yy = 0; yy < mapSize; yy++)
+                        if (yy == mapSize - 2)
                         {
-                            if (gridRect[yy, xx].Contains(pos))
+                            yy = mapSize - 1;
+                            if (parent.SelectedImagePath.IndexOf("000") > -1)
                             {
-                                //消しゴムのときはデータを消す
-                                if (parent.SelectedImagePath.IndexOf("000") > -1)
-                                {
-                                    map[yy, xx] = "";
-                                }
-                                else
-                                {
-                                    map[yy, xx] = parent.SelectedImagePath;
-                                }
-                                Repaint();
-                                break;
+                                map[xx, yy] = "";
                             }
+                            else
+                            {
+                                map[xx, yy] = parent.SelectedImagePath;
+                            }
+                            Repaint();
+                            break;
                         }
                     }
+                }
 
-                    //選択した画像を描画する
-                    for (int yy = 0; yy < mapSize; yy++)
+                //選択した画像を描画する
+                for (int yy = 0; yy < mapSize; yy++)
+                {
+                    for (int xx = 0; xx < mapSize; xx++)
                     {
-                        for (int xx = 0; xx < mapSize; xx++)
+                        if (map[xx, yy] != null && map[xx, yy].Length > 0)
                         {
-                            if (map[yy, xx] != null && map[yy, xx].Length > 0)
-                            {
-                                Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath(map[yy, xx], typeof(Texture2D));
-                                GUI.DrawTexture(gridRect[yy, xx], tex);
-                            }
+                            Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath(map[xx, yy], typeof(Texture2D));
+                            GUI.DrawTexture(MapRects[(xx * 10) + yy], tex);
                         }
                     }
-                    GUILayout.EndArea();
-                }   
+                }
+
+                //Ctrl + スクロールでgridsizeを変更し再描画
+                if((Input.GetKey(KeyCode.LeftControl) && scrollmonitor != scrollPos)|| (Input.GetKey(KeyCode.RightControl) && scrollmonitor != scrollPos))
+                {
+                    gridSize -= 5;
+                    Repaint();
+                }
+
+                GUILayout.Space(measureY);
+
+                //出力ボタン
+                Rect rect = new Rect(0, position.size.y - 50, 300, 50);
+                GUILayout.BeginArea(rect);
+                if (GUILayout.Button("output file", GUILayout.MinWidth(300), GUILayout.MinHeight(50)))
+                {
+                    OutputFile();
+                }
+                GUILayout.FlexibleSpace();
+                GUILayout.EndArea();
+
             }
 
-            //出力ボタン
-            Rect rect = new Rect(0, position.size.y - 50, 300, 50);
-            GUILayout.BeginArea(rect);
-            if (GUILayout.Button("output file", GUILayout.MinWidth(300), GUILayout.MinHeight(50)))
+            using (new GUILayout.HorizontalScope())
             {
-                OutputFile();
+                GUILayout.Space(measureX);
             }
-            GUILayout.FlexibleSpace();
-            GUILayout.EndArea();
         }
 
-            
+
         
-    }
-
-    //グリッド線を描画
-    private void DrawGridLine(Rect r)
-    {
-        //grid
-        Handles.color = new Color(1f, 1f, 1f, 0.5f);
-
-        //upper line
-        Handles.DrawLine(
-            new Vector2(r.position.x, r.position.y),
-            new Vector2(r.position.x + r.size.x, r.position.y));
-
-        //bottom line
-        Handles.DrawLine(
-            new Vector2(r.position.x, r.position.y + r.size.y),
-            new Vector2(r.position.x + r.size.x, r.position.y + r.size.y));
-
-        //left line
-        Handles.DrawLine(
-            new Vector2(r.position.x, r.position.y),
-            new Vector2(r.position.x + r.size.x, r.position.y + r.size.y));
-
-        //right line
-        Handles.DrawLine(
-            new Vector2(r.position.x + r.size.x, r.position.y),
-            new Vector2(r.position.x + r.size.x, r.position.y + r.size.y));
     }
 
     //ファイルで出力
