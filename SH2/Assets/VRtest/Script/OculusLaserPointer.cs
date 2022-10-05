@@ -187,21 +187,21 @@ public class OculusLaserPointer : OVRCursor
     /// <param name="normal"></param>
     public override void SetCursorStartDest(Vector3 _, Vector3 pos, Vector3 normal)
     {
-        transform.position = pos;
+        rayTransform.transform.position = pos;
 
         normal = rayTransform.forward;
 
         // Set the rotation to match the normal of the surface it's on.
-        Quaternion newRot = transform.rotation;
+        Quaternion newRot = rayTransform.transform.rotation;
         newRot.SetLookRotation(normal, rayTransform.up);
-        transform.rotation = newRot;
+        rayTransform.transform.rotation = newRot;
 
         // record depth so that distance doesn't pop when pointer leaves an object
         depth = (rayTransform.position - pos).magnitude;
 
         //set scale based on depth
         currentScale = depth * depthScaleMultiplier;
-        transform.localScale = new Vector3(currentScale, currentScale, currentScale);
+        rayTransform.transform.localScale = new Vector3(currentScale, currentScale, currentScale);
 
         positionSetsThisFrame++;
         RequestShow();
@@ -218,9 +218,9 @@ public class OculusLaserPointer : OVRCursor
         if (positionSetsThisFrame == 0)
         {
             // No geometry intersections, so gazing into space. Make the cursor face directly at the camera
-            Quaternion newRot = transform.rotation;
+            Quaternion newRot = rayTransform.transform.rotation;
             newRot.SetLookRotation(rayTransform.forward, rayTransform.up);
-            transform.rotation = newRot;
+            rayTransform.transform.rotation = newRot;
         }
 
         Quaternion iconRotation = gazeIcon.rotation;

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class SceneChange : MonoBehaviour
 {
     public GameObject TitlePanel;
@@ -15,19 +17,32 @@ public class SceneChange : MonoBehaviour
     public GameObject Button;
     public Text ButtonText;
     public GameObject PlayerController;
-    public GameObject FlashLight;
+    public Light lightSwitch;
+
+    [SerializeField] AudioClip[] clips;
+    AudioSource source;
+
+    float lightwaitTime = 0.0f;
+    float footwaitTime = 0.0f;
+
+    private void Awake()
+    {
+        //if (SceneManager.GetActiveScene().name == "Title")
+           // source = GetComponent<AudioSource>().Play()[0];
+    }
 
     private void Start()
     {
+        source = GetComponent<AudioSource>();
 
         //表示するパネル変更
-        TitlePanel.SetActive(false);
+        /*TitlePanel.SetActive(false);
         HelpPanel.SetActive(false);
         MapSelectPanel.SetActive(false);
         EndPanel.SetActive(false);
         Button.SetActive(false);
         Pointer.SetActive(false);
-        PlayerController.GetComponent<OVRPlayerController>().enabled = true;
+        PlayerController.GetComponent<OVRPlayerController>().enabled = true;*/
 
         if (SceneManager.GetActiveScene().name != "Game")
         {
@@ -40,6 +55,9 @@ public class SceneChange : MonoBehaviour
         {
             TitlePanel.SetActive(true);
             ButtonText.text = "Next";
+            //source = gameObject.GetComponent<AudioSource>();
+            source.PlayOneShot(clips[0]);
+            source.loop = !source.loop;
         }
         else if (SceneManager.GetActiveScene().name == "Help")
         {
@@ -56,11 +74,6 @@ public class SceneChange : MonoBehaviour
             EndPanel.SetActive(true);
             ButtonText.text = "Title";
         }
-        else if (SceneManager.GetActiveScene().name == "Game")
-        {
-            GameObject obj = Instantiate(FlashLight, transform.position, Quaternion.identity);
-        }
-
     }
 
     private void Update()
@@ -82,8 +95,22 @@ public class SceneChange : MonoBehaviour
 
         if (OVRInput.Get(OVRInput.RawButton.Y))
             SceneManager.LoadScene("End");
+
+        //サウンド        
+        if (lightwaitTime <= 0.0f)
+        {
+            if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
+                LightSwitch();
+        }
+        else
+        {
+            lightwaitTime -= Time.deltaTime;
+        }
+        if (OVRInput.Get(OVRInput.RawButton.LThumbstick))
+            PlayFoot();
     }
 
+    //シーン変更
     public void FadeInvoke()
     {
         if (SceneManager.GetActiveScene().name == "Help")
@@ -93,23 +120,31 @@ public class SceneChange : MonoBehaviour
         else if (SceneManager.GetActiveScene().name == "End" || SceneManager.GetActiveScene().name == "MapSelect")
             Invoke("TitleScene", 3);
     }
-
     void GameScene()
     {
         SceneManager.LoadScene("Game");
         Button.SetActive(false);
         Pointer.SetActive(false);
     }
-
     void HelpScene()
     {
         SceneManager.LoadScene("Help");
     }
-
     void TitleScene()
     {
         SceneManager.LoadScene("Title");
     }
 
 
+    void LightSwitch()
+    {
+        lightSwitch.enabled = !lightSwitch.enabled;
+        source.PlayOneShot(clips[5]);
+        lightwaitTime = 0.5f;
+    }
+
+    public void PlayFoot()
+    {
+        source.PlayOneShot(clips[Random.Range(1, 4)]);
+    }
 }
