@@ -82,7 +82,7 @@ public class MapGenerator : MonoBehaviour
     {
         //AssetBundle、GameObjectの宣言
         AssetBundle JsonAssetBundle, ObjectAssetBundle, ManagerAssetBundle, EnemyAssetBundle;
-        GameObject Wall, Door, Floor, Ceiling, Item, Player, ExitArea, SceneManager, ItemManager;
+        GameObject Wall, EventWall, Door, Floor, Ceiling, Item, Player, ExitArea, SceneManager, ItemManager;
         GameObject MoveZombie;
 
         //敵の生成時にスクリプトを指定するために、GameObjectを格納する変数
@@ -127,6 +127,7 @@ public class MapGenerator : MonoBehaviour
         EnemyAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Enemies");
 
         Wall = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Wall.prefab");
+        EventWall = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/EventWall.prefab");
         Door = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Door.prefab");
         Floor = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Floor.prefab");
         Ceiling = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Ceiling.prefab");
@@ -195,6 +196,12 @@ public class MapGenerator : MonoBehaviour
                         InstanceObject = Player;
                         y = 1.5f;
                         Parent = null;
+                        break;
+
+                        case "Capture\\007.png":
+                        InstanceObject = EventWall;
+                        y = 2f;
+                        Parent = WallParent;
                         break;
                 }
                 ObjectInstance2(Floor, FloorParent, inputjson.mapdata[i].xcoor, y, inputjson.mapdata[i].ycoor, InstanceObject, Parent);

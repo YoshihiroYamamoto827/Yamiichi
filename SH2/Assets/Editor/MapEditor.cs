@@ -40,7 +40,7 @@ public class MapEditor : EditorWindow
     //マップエディタのマスの数
     private int mapSize = 10;
     //グリッドの大きさ
-    private float gridSize = 50.0f;
+    private int gridSize = 50;
     //出力フォルダ名
     private string outputFolderName;
     //選択した画像のパス
@@ -66,12 +66,21 @@ public class MapEditor : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.Label("Map Size:", GUILayout.Width(150));
         mapSize = EditorGUILayout.IntField(mapSize);
+        if (mapSize > 100)
+        {
+            mapSize = 100;
+        }
+        else
+        {
+         if (mapSize < 5) mapSize = 5;
+        }
+        
         GUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
         GUILayout.BeginHorizontal();
         GUILayout.Label("Grid Size:", GUILayout.Width(150));
-        gridSize = EditorGUILayout.FloatField(gridSize);
+        gridSize = EditorGUILayout.IntField(gridSize);
         GUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
@@ -178,7 +187,7 @@ public class MapEditor : EditorWindow
         get { return mapSize; }
     }
 
-    public float GridSize
+    public int GridSize
     {
         get { return gridSize; }
     }
@@ -214,15 +223,23 @@ public class MapEditorSubWindow : EditorWindow
     //マップのグリッド数
     private int mapSize = 0;
     //グリッドサイズ
-    private float gridSize = 0.0f;
+    private int gridSize = 0;
     //マップデータ
     private string[,] map;
-    //グリッドの四角
-    private Rect[,] gridRect;
+    //マップのマスのTexture
+    private Texture _texture;
+    //マップ表示エリアの余白
+    private int Areamargin;
+    //マスの大きさ
+    private Rect[] MapRects; 
+    //マップ生成時のマスのx座標とy座標
+    private int measureX, measureY;
     //親ウィンドウの参照
     private MapEditor parent;
     //スクロール位置を記録
     private Vector2 scrollPos = Vector2.zero;
+    //スクロールの程度を検知するための変数
+    private Vector2 scrollmonitor = Vector2.zero;
 
     Jsondata json = new Jsondata();
     MapInfo info = new MapInfo();
@@ -254,6 +271,7 @@ public class MapEditorSubWindow : EditorWindow
         mapSize = parent.MapSize;
         Debug.Log(mapSize);
         gridSize = parent.GridSize;
+        Areamargin = 10;
 
         json.mapdata = new Mapdata[mapSize * mapSize];
 
@@ -267,32 +285,39 @@ public class MapEditorSubWindow : EditorWindow
                 map[i, j] = "";
             }
         }
+
+        //Mapのマスを描画するRectsとTextureの初期化
+        MapRects = new Rect[mapSize * mapSize];
+        var measureTexture = new Texture2D(1, 1);
+        measureTexture.SetPixel(0, 0, Color.white);
+        measureTexture.Apply();
+        _texture = measureTexture;
+
         
-        //グリッドデータを生成
-        gridRect = CreateGrid(mapSize);
+
     }
 
     void OnGUI()
     {
-        using (new EditorGUILayout.VerticalScope())
+        using (var scrollView = new EditorGUILayout.ScrollViewScope(scrollPos))
         {
-            using (new EditorGUILayout.HorizontalScope())
+            scrollPos = scrollView.scrollPosition;
+
+            using (new GUILayout.HorizontalScope())
             {
-                using (var scrollView = new EditorGUILayout.ScrollViewScope(scrollPos, GUILayout.Width(1500)))
+                using (new GUILayout.VerticalScope())
                 {
-                    scrollPos = scrollView.scrollPosition;
-
-                    //グリッド線を描画する
-                    for (int yy = 0; yy < mapSize; yy++)
-                    {
-                        for (int xx = 0; xx < mapSize; xx++)
+                        //グリッド線を描画する
+                        for (int yy = 0; yy < mapSize; yy++)
                         {
-                            DrawGridLine(gridRect[yy, xx]);
+                            for (int xx = 0; xx < mapSize; xx++)
+                            {
+                                measureX = Areamargin * 3 + gridSize * xx;
+                                measureY = Areamargin * 3 + gridSize * yy;
+                                MapRects[(xx * mapSize) + yy] = new Rect(measureX, measureY, gridSize, gridSize);
+                                GUI.DrawTexture(MapRects[(xx * mapSize) + yy], _texture, ScaleMode.StretchToFill, true, 0, Color.white, 3, 0);
+                            }
                         }
-                    }
-
-
-
 
                     //クリックされた位置を探してその場所に画像データを入れる
                     Event e = Event.current;
@@ -300,30 +325,51 @@ public class MapEditorSubWindow : EditorWindow
                     {
                         Vector2 pos = Event.current.mousePosition;
                         int xx;
+                        bool xmax = false;
 
                         //x位置を探す
-                        for (xx = 0; xx < mapSize; xx++)
+                        for (xx = 0; xx < (mapSize - 1); xx++)
                         {
-                            Rect r = gridRect[0, xx];
-                            if (r.x <= pos.x && pos.x <= r.x + r.width)
+                            if (MapRects[(xx * mapSize)].x <= pos.x && pos.x <= MapRects[((xx + 1) * mapSize)].x)
                             {
+
+                                Debug.Log(xx);
                                 break;
                             }
+
+                            if (xx == mapSize - 2) xmax = true;
                         }
 
+                        if (xmax && xx == (mapSize - 2)) xx = mapSize - 1;
+
                         //y位置を探す
-                        for (int yy = 0; yy < mapSize; yy++)
+                        for (int yy = 0; yy < (mapSize - 1); yy++)
                         {
-                            if (gridRect[yy, xx].Contains(pos))
+                            if (MapRects[yy].y <= pos.y && pos.y <= MapRects[(yy + 1)].y)
                             {
                                 //消しゴムのときはデータを消す
                                 if (parent.SelectedImagePath.IndexOf("000") > -1)
                                 {
-                                    map[yy, xx] = "";
+                                    map[xx, yy] = "";
                                 }
                                 else
                                 {
-                                    map[yy, xx] = parent.SelectedImagePath;
+                                    map[xx, yy] = parent.SelectedImagePath;
+                                }
+                                Repaint();
+                                break;
+                            }
+
+                            if (yy == mapSize - 2)
+                            {
+                                yy = mapSize - 1;
+                                if (parent.SelectedImagePath.IndexOf("000") > -1)
+                                {
+                                    map[xx, yy] = "";
+                                }
+                                else
+                                {
+                                    map[xx, yy] = parent.SelectedImagePath;
                                 }
                                 Repaint();
                                 break;
@@ -336,81 +382,50 @@ public class MapEditorSubWindow : EditorWindow
                     {
                         for (int xx = 0; xx < mapSize; xx++)
                         {
-                            if (map[yy, xx] != null && map[yy, xx].Length > 0)
+                            if (map[xx, yy] != null && map[xx, yy].Length > 0)
                             {
-                                Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath(map[yy, xx], typeof(Texture2D));
-                                GUI.DrawTexture(gridRect[yy, xx], tex);
+                                Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath(map[xx, yy], typeof(Texture2D));
+                                GUI.DrawTexture(MapRects[(xx * mapSize) + yy], tex);
                             }
                         }
                     }
-                }   
-            }
-        }
 
-            //出力ボタン
-            Rect rect = new Rect(0, WINDOW_H - 50, 300, 50);
-            GUILayout.BeginArea(rect);
-            if (GUILayout.Button("output file", GUILayout.MinWidth(300), GUILayout.MinHeight(50)))
-            {
-                OutputFile();
-            }
-            GUILayout.FlexibleSpace();
-            GUILayout.EndArea();
-        
-    }
+                    //Ctrl + スクロールでマスのサイズを拡大、縮小
+                    if (e.type == EventType.KeyDown && e.keyCode == KeyCode.LeftControl)
+                    {
+                        if (scrollPos.y > scrollmonitor.y)
+                        {
+                            gridSize -= 5;
+                            Repaint();
+                            scrollmonitor = scrollPos;
+                        }
 
-    //グリッドデータを作成
-    private Rect[,] CreateGrid(int div)
-    {
-        int sizeW = div;
-        int sizeH = div;
+                        if (scrollPos.y < scrollmonitor.y)
+                        {
+                            gridSize += 5;
+                            Repaint();
+                            scrollmonitor = scrollPos;
+                        }
+                    }
 
-        float x = 0.0f;
-        float y = 0.0f;
-        float w = gridSize;
-        float h = gridSize;
 
-        Rect[,] resultRects = new Rect[sizeH, sizeW];
+                    GUILayout.Space(measureY);
+                        
+                    //出力ボタン
+                    Rect rect = new Rect(0, position.size.y - 50, 300, 50);
+                    GUILayout.BeginArea(rect);
+                    if (GUILayout.Button("output file", GUILayout.MinWidth(300), GUILayout.MinHeight(50)))
+                    {
+                        OutputFile();
+                    }
+                    GUILayout.FlexibleSpace();
+                    GUILayout.EndArea();
 
-        for (int yy = 0; yy < sizeH; yy++)
-        {
-            x = 0.0f;
-            for (int xx = 0; xx < sizeW; xx++)
-            {
-                Rect r = new Rect(new Vector2(x, y), new Vector2(w, h));
-                resultRects[yy, xx] = r;
-                x += w;
-            }
-            y += h;
-        }
-        return resultRects;
-    }
+                }
 
-    //グリッド線を描画
-    private void DrawGridLine(Rect r)
-    {
-        //grid
-        Handles.color = new Color(1f, 1f, 1f, 0.5f);
-
-        //upper line
-        Handles.DrawLine(
-            new Vector2(r.position.x, r.position.y),
-            new Vector2(r.position.x + r.size.x, r.position.y));
-
-        //bottom line
-        Handles.DrawLine(
-            new Vector2(r.position.x, r.position.y + r.size.y),
-            new Vector2(r.position.x + r.size.x, r.position.y + r.size.y));
-
-        //left line
-        Handles.DrawLine(
-            new Vector2(r.position.x, r.position.y),
-            new Vector2(r.position.x + r.size.x, r.position.y + r.size.y));
-
-        //right line
-        Handles.DrawLine(
-            new Vector2(r.position.x + r.size.x, r.position.y),
-            new Vector2(r.position.x + r.size.x, r.position.y + r.size.y));
+                GUILayout.Space(measureX);
+            } 
+        } 
     }
 
     //ファイルで出力
@@ -483,4 +498,290 @@ public class MapEditorSubWindow : EditorWindow
         }
     }
 }
+
+/*//MapEditor SubWindow2
+public class MapEditorSubWindow2 : EditorWindow
+{
+    //マップウィンドウのサイズ
+    const float WINDOW_W = 750.0f;
+    const float WINDOW_H = 750.0f;
+    //マップのグリッド数
+    private int mapSize = 0;
+    //グリッドサイズ
+    private int gridSize = 0;
+    //マップデータ
+    private string[,] map;
+    //マップのマスのTexture
+    private Texture _texture;
+    //マップ表示エリアの余白
+    private int Areamargin;
+    //マスの大きさ
+    private Rect[] MapRects;
+    //マップ生成時のマスのx座標とy座標
+    private int measureX, measureY;
+    //親ウィンドウの参照
+    private MapEditor parent;
+    //スクロール位置を記録
+    private Vector2 scrollPos = Vector2.zero;
+    //スクロールの程度を検知するための変数
+    private Vector2 scrollmonitor = Vector2.zero;
+
+    Jsondata json = new Jsondata();
+    MapInfo info = new MapInfo();
+
+
+    //書き込むjsonデータの文字列の定義
+    public string jsonstr;
+    public string mapinfostr;
+
+    //サブウィンドウを開く
+    public static MapEditorSubWindow2 WillAppear(MapEditor _parent)
+    {
+        MapEditorSubWindow2 window = (MapEditorSubWindow2)EditorWindow.GetWindow(typeof(MapEditorSubWindow2), false);
+        window.Show();
+        window.minSize = new Vector2(WINDOW_W, WINDOW_H);
+        //window.SetParent(_parent);
+        window.init();
+        return window;
+    }
+
+    private void SetParent(MapEditor _parent)
+    {
+        parent = _parent;
+    }
+
+    //サブウィンドウの初期化
+    public void init()
+    {
+        mapSize = parent.MapSize;
+        Debug.Log(mapSize);
+        gridSize = parent.GridSize;
+        Areamargin = 10;
+
+        json.mapdata = new Mapdata[mapSize * mapSize];
+
+        //マップデータ、書き込むJsonデータの配列を初期化
+        map = new string[mapSize, mapSize];
+        for (int i = 0; i < mapSize; i++)
+        {
+            for (int j = 0; j < mapSize; j++)
+            {
+                json.mapdata[i * mapSize + j] = new Mapdata();
+                map[i, j] = "";
+            }
+        }
+
+        //Mapのマスを描画するRectsとTextureの初期化
+        MapRects = new Rect[mapSize * mapSize];
+        var measureTexture = new Texture2D(1, 1);
+        measureTexture.SetPixel(0, 0, Color.white);
+        measureTexture.Apply();
+        _texture = measureTexture;
+
+
+
+    }
+
+    void OnGUI()
+    {
+        using (var scrollView = new EditorGUILayout.ScrollViewScope(scrollPos))
+        {
+            scrollPos = scrollView.scrollPosition;
+
+            using (new GUILayout.HorizontalScope())
+            {
+                using (new GUILayout.VerticalScope())
+                {
+                    //グリッド線を描画する
+                    for (int yy = 0; yy < mapSize; yy++)
+                    {
+                        for (int xx = 0; xx < mapSize; xx++)
+                        {
+                            measureX = Areamargin * 3 + gridSize * xx;
+                            measureY = Areamargin * 3 + gridSize * yy;
+                            MapRects[(xx * mapSize) + yy] = new Rect(measureX, measureY, gridSize, gridSize);
+                            GUI.DrawTexture(MapRects[(xx * mapSize) + yy], _texture, ScaleMode.StretchToFill, true, 0, Color.white, 3, 0);
+                        }
+                    }
+
+                    //クリックされた位置を探してその場所に画像データを入れる
+                    Event e = Event.current;
+                    if (e.type == EventType.MouseDown)
+                    {
+                        Vector2 pos = Event.current.mousePosition;
+                        int xx;
+                        bool xmax = false;
+
+                        //x位置を探す
+                        for (xx = 0; xx < (mapSize - 1); xx++)
+                        {
+                            if (MapRects[(xx * mapSize)].x <= pos.x && pos.x <= MapRects[((xx + 1) * mapSize)].x)
+                            {
+
+                                Debug.Log(xx);
+                                break;
+                            }
+
+                            if (xx == mapSize - 2) xmax = true;
+                        }
+
+                        if (xmax && xx == (mapSize - 2)) xx = mapSize - 1;
+
+                        //y位置を探す
+                        for (int yy = 0; yy < (mapSize - 1); yy++)
+                        {
+                            if (MapRects[yy].y <= pos.y && pos.y <= MapRects[(yy + 1)].y)
+                            {
+                                //消しゴムのときはデータを消す
+                                if (parent.SelectedImagePath.IndexOf("000") > -1)
+                                {
+                                    map[xx, yy] = "";
+                                }
+                                else
+                                {
+                                    map[xx, yy] = parent.SelectedImagePath;
+                                }
+                                Repaint();
+                                break;
+                            }
+
+                            if (yy == mapSize - 2)
+                            {
+                                yy = mapSize - 1;
+                                if (parent.SelectedImagePath.IndexOf("000") > -1)
+                                {
+                                    map[xx, yy] = "";
+                                }
+                                else
+                                {
+                                    map[xx, yy] = parent.SelectedImagePath;
+                                }
+                                Repaint();
+                                break;
+                            }
+                        }
+                    }
+
+                    //選択した画像を描画する
+                    for (int yy = 0; yy < mapSize; yy++)
+                    {
+                        for (int xx = 0; xx < mapSize; xx++)
+                        {
+                            if (map[xx, yy] != null && map[xx, yy].Length > 0)
+                            {
+                                Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath(map[xx, yy], typeof(Texture2D));
+                                GUI.DrawTexture(MapRects[(xx * mapSize) + yy], tex);
+                            }
+                        }
+                    }
+
+                    //Ctrl + スクロールでマスのサイズを拡大、縮小
+                    if (e.type == EventType.KeyDown && e.keyCode == KeyCode.LeftControl)
+                    {
+                        if (scrollPos.y > scrollmonitor.y)
+                        {
+                            gridSize -= 5;
+                            Repaint();
+                            scrollmonitor = scrollPos;
+                        }
+
+                        if (scrollPos.y < scrollmonitor.y)
+                        {
+                            gridSize += 5;
+                            Repaint();
+                            scrollmonitor = scrollPos;
+                        }
+                    }
+
+
+                    GUILayout.Space(measureY);
+
+                    //出力ボタン
+                    Rect rect = new Rect(0, measureY + 50, 300, 50);
+                    GUILayout.BeginArea(rect);
+                    if (GUILayout.Button("output file", GUILayout.MinWidth(300), GUILayout.MinHeight(50)))
+                    {
+                        OutputFile();
+                    }
+                    GUILayout.FlexibleSpace();
+                    GUILayout.EndArea();
+
+                }
+
+                GUILayout.Space(measureX);
+            }
+        }
+    }
+
+    //ファイルで出力
+    private void OutputFile()
+    {
+
+        string folderpath = parent.OutputFilePath();
+
+        FileInfo MDfileInfo = new FileInfo(folderpath + "/" + "Mapdata.json");
+        StreamWriter mdsw = MDfileInfo.AppendText();
+        for (int i = 0; i < mapSize; i++)
+        {
+            for (int j = 0; j < mapSize; j++)
+            {
+                GetMapStrFormat(i, j);
+            }
+        }
+        mdsw.WriteLine(WriteJsonMapData());
+        mdsw.Flush();
+        mdsw.Close();
+
+        FileInfo MIfileInfo = new FileInfo(folderpath + "/" + "Mapinfo.json");
+        StreamWriter misw = MIfileInfo.AppendText();
+        GetMapInfoFormat();
+        misw.WriteLine(WriteJsonMapInfo());
+        misw.Flush();
+        misw.Close();
+
+        //完了ポップアップ
+        EditorUtility.DisplayDialog("MapEditor", "output file success\n" + folderpath, "OK");
+    }
+
+    //出力するマップデータ整形
+    private void GetMapStrFormat(int x, int y)
+    {
+        json.mapdata[x * mapSize + y].xcoor = x;
+        json.mapdata[x * mapSize + y].ycoor = y;
+        json.mapdata[x * mapSize + y].objectname = OutputDataFormat(map[x, y]);
+    }
+
+    private void GetMapInfoFormat()
+    {
+        info.mapsize = mapSize;
+        info.date = System.DateTime.Now.Date.ToString();
+    }
+
+    private string WriteJsonMapData()
+    {
+        jsonstr = JsonUtility.ToJson(json, true);
+        return jsonstr;
+    }
+
+    private string WriteJsonMapInfo()
+    {
+        mapinfostr = JsonUtility.ToJson(info, true);
+        return mapinfostr;
+    }
+
+    private string OutputDataFormat(string data)
+    {
+        if (data != null && data.Length > 0)
+        {
+            string[] tmps = data.Split('/');
+            string fileName = tmps[tmps.Length - 1];
+            return fileName.Split('/')[0];
+        }
+        else
+        {
+            return "";
+        }
+    }
+}*/
+
 
