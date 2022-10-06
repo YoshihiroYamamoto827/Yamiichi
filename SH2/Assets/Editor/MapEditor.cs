@@ -499,7 +499,7 @@ public class MapEditorSubWindow : EditorWindow
     }
 }
 
-//MapEditor SubWindow2
+/*//MapEditor SubWindow2
 public class MapEditorSubWindow2 : EditorWindow
 {
     //マップウィンドウのサイズ
@@ -535,9 +535,9 @@ public class MapEditorSubWindow2 : EditorWindow
     public string mapinfostr;
 
     //サブウィンドウを開く
-    public static MapEditorSubWindow WillAppear(MapEditor _parent)
+    public static MapEditorSubWindow2 WillAppear(MapEditor _parent)
     {
-        MapEditorSubWindow window = (MapEditorSubWindow)EditorWindow.GetWindow(typeof(MapEditorSubWindow), false);
+        MapEditorSubWindow2 window = (MapEditorSubWindow2)EditorWindow.GetWindow(typeof(MapEditorSubWindow2), false);
         window.Show();
         window.minSize = new Vector2(WINDOW_W, WINDOW_H);
         //window.SetParent(_parent);
@@ -697,7 +697,7 @@ public class MapEditorSubWindow2 : EditorWindow
                     GUILayout.Space(measureY);
 
                     //出力ボタン
-                    Rect rect = new Rect(0, position.size.y - 50, 300, 50);
+                    Rect rect = new Rect(0, measureY + 50, 300, 50);
                     GUILayout.BeginArea(rect);
                     if (GUILayout.Button("output file", GUILayout.MinWidth(300), GUILayout.MinHeight(50)))
                     {
@@ -782,6 +782,6 @@ public class MapEditorSubWindow2 : EditorWindow
             return "";
         }
     }
-}
+}*/
 
 

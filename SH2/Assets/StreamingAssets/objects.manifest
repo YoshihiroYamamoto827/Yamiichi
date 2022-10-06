@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 422130894
+CRC: 2228996654
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d11058015d638c833e84701b26177bc2
+    Hash: 7a1c67a286a9afdaed6ed19c1583622e
   TypeTreeHash:
     serializedVersion: 2
     Hash: 84b0e38155ee466dcf2ee768b385736a
@@ -50,6 +50,7 @@ Assets:
 - Assets/Resources/Objects/Item.prefab
 - Assets/Resources/Objects/Floor.prefab
 - Assets/Resources/Objects/Player.prefab
+- Assets/Resources/Objects/EventWall.prefab
 - Assets/Resources/Objects/Door.prefab
 - Assets/Resources/Objects/ceiling.prefab
 - Assets/Resources/Objects/ExitArea.prefab
