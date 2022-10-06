@@ -161,8 +161,8 @@ public class OculusLaserPointer : OVRCursor
         lineRenderer.SetPosition(0, startPointObj.transform.position);
         lineRenderer.SetPosition(1, endPointObj.transform.position);
 
-        /*if (rayTransform == null && Camera.main != null)
-            rayTransform = Camera.main.transform;*/
+        if (rayTransform == null && Camera.main != null)
+            rayTransform = Camera.main.transform;
 
         // Move the gaze cursor to keep it in the middle of the view
         transform.position = rayTransform.position + rayTransform.forward * depth;
@@ -187,21 +187,21 @@ public class OculusLaserPointer : OVRCursor
     /// <param name="normal"></param>
     public override void SetCursorStartDest(Vector3 _, Vector3 pos, Vector3 normal)
     {
-        rayTransform.transform.position = pos;
+        transform.position = pos;
 
         normal = rayTransform.forward;
 
         // Set the rotation to match the normal of the surface it's on.
-        Quaternion newRot = rayTransform.transform.rotation;
+        Quaternion newRot = transform.rotation;
         newRot.SetLookRotation(normal, rayTransform.up);
-        rayTransform.transform.rotation = newRot;
+        transform.rotation = newRot;
 
         // record depth so that distance doesn't pop when pointer leaves an object
         depth = (rayTransform.position - pos).magnitude;
 
         //set scale based on depth
         currentScale = depth * depthScaleMultiplier;
-        rayTransform.transform.localScale = new Vector3(currentScale, currentScale, currentScale);
+        transform.localScale = new Vector3(currentScale, currentScale, currentScale);
 
         positionSetsThisFrame++;
         RequestShow();
@@ -218,9 +218,9 @@ public class OculusLaserPointer : OVRCursor
         if (positionSetsThisFrame == 0)
         {
             // No geometry intersections, so gazing into space. Make the cursor face directly at the camera
-            Quaternion newRot = rayTransform.transform.rotation;
+            Quaternion newRot = transform.rotation;
             newRot.SetLookRotation(rayTransform.forward, rayTransform.up);
-            rayTransform.transform.rotation = newRot;
+            transform.rotation = newRot;
         }
 
         Quaternion iconRotation = gazeIcon.rotation;

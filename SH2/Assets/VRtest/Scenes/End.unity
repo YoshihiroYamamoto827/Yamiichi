@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VRPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 1990078998183223858, guid: 1d5931c307301524a9a5270707df4385, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2062483245678112623, guid: 1d5931c307301524a9a5270707df4385, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -176,6 +180,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2062483245678112623, guid: 1d5931c307301524a9a5270707df4385, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863078104179313161, guid: 1d5931c307301524a9a5270707df4385, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

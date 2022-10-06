@@ -29,7 +29,7 @@ public class SceneChange : MonoBehaviour
     private void Awake()
     {
         //if (SceneManager.GetActiveScene().name == "Title")
-           // source = GetComponent<AudioSource>().Play()[0];
+        // source = GetComponent<AudioSource>().Play()[0];
     }
 
     private void Start()
@@ -50,14 +50,12 @@ public class SceneChange : MonoBehaviour
             Button.SetActive(true);
             Pointer.SetActive(true);
             PlayerController.GetComponent<OVRPlayerController>().enabled = false;
-
         }
 
         if (SceneManager.GetActiveScene().name == "Title")
         {
             TitlePanel.SetActive(true);
             ButtonText.text = "Next";
-            //source = gameObject.GetComponent<AudioSource>();
             source.PlayOneShot(clips[0]);
             source.loop = !source.loop;
         }
@@ -101,19 +99,24 @@ public class SceneChange : MonoBehaviour
         lightwaitTime += Time.deltaTime;
         footwaitTime += Time.deltaTime;
 
-        if(lightwaitTime>=0.7f)
+        if (lightwaitTime >= 0.7f)
         {
             if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
             {
                 LightSwitch();
             }
         }
-        if(footwaitTime>=0.912f)
+        if (SceneManager.GetActiveScene().name == "Game")
         {
-            Vector2 v = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
-            if (v.x != 0 && v.y != 0)
+            //lightSwitch.FlashLightRay.enabled = true;
+
+            if (footwaitTime >= 0.912f)
             {
-                PlayFoot();
+                Vector2 v = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
+                if (v.x != 0 && v.y != 0)
+                {
+                    PlayFoot();
+                }
             }
         }
     }
