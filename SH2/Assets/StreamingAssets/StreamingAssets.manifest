@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 1587839623
+CRC: 120158057
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: objects
+      Name: ovrplayer
       Dependencies: {}

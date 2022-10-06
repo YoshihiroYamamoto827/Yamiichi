@@ -24,6 +24,7 @@ public class SceneChange : MonoBehaviour
 
     float lightwaitTime = 0.0f;
     float footwaitTime = 0.0f;
+    bool footSound;
 
     private void Awake()
     {
@@ -49,6 +50,7 @@ public class SceneChange : MonoBehaviour
             Button.SetActive(true);
             Pointer.SetActive(true);
             PlayerController.GetComponent<OVRPlayerController>().enabled = false;
+
         }
 
         if (SceneManager.GetActiveScene().name == "Title")
@@ -96,18 +98,24 @@ public class SceneChange : MonoBehaviour
         if (OVRInput.Get(OVRInput.RawButton.Y))
             SceneManager.LoadScene("End");
 
-        //サウンド        
-        if (lightwaitTime <= 0.0f)
+        lightwaitTime += Time.deltaTime;
+        footwaitTime += Time.deltaTime;
+
+        if(lightwaitTime>=0.7f)
         {
             if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
+            {
                 LightSwitch();
+            }
         }
-        else
+        if(footwaitTime>=0.912f)
         {
-            lightwaitTime -= Time.deltaTime;
+            Vector2 v = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
+            if (v.x != 0 && v.y != 0)
+            {
+                PlayFoot();
+            }
         }
-        if (OVRInput.Get(OVRInput.RawButton.LThumbstick))
-            PlayFoot();
     }
 
     //シーン変更
@@ -138,13 +146,14 @@ public class SceneChange : MonoBehaviour
 
     void LightSwitch()
     {
+        lightwaitTime = 0.0f;
         lightSwitch.enabled = !lightSwitch.enabled;
-        source.PlayOneShot(clips[5]);
-        lightwaitTime = 0.5f;
+        source.PlayOneShot(clips[4]);        
     }
 
     public void PlayFoot()
-    {
-        source.PlayOneShot(clips[Random.Range(1, 4)]);
+    {        
+        footwaitTime = 0.0f;
+        source.PlayOneShot(clips[Random.Range(1, 3)]);
     }
 }
