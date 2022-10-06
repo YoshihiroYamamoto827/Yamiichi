@@ -17,7 +17,8 @@ public class SceneChange : MonoBehaviour
     public GameObject Button;
     public Text ButtonText;
     public GameObject PlayerController;
-    public Light lightSwitch;
+    public GameObject FlashLight;
+    public Light lighting;
 
     [SerializeField] AudioClip[] clips;
     AudioSource source;
@@ -26,30 +27,23 @@ public class SceneChange : MonoBehaviour
     float footwaitTime = 0.0f;
     bool footSound;
 
-    private void Awake()
-    {
-        //if (SceneManager.GetActiveScene().name == "Title")
-        // source = GetComponent<AudioSource>().Play()[0];
-    }
+    public GameObject l_controller;
+    public GameObject r_controller;
+    public GameObject l_hand;
 
     private void Start()
     {
         source = GetComponent<AudioSource>();
-
-        //表示するパネル変更
-        /*TitlePanel.SetActive(false);
-        HelpPanel.SetActive(false);
-        MapSelectPanel.SetActive(false);
-        EndPanel.SetActive(false);
-        Button.SetActive(false);
-        Pointer.SetActive(false);
-        PlayerController.GetComponent<OVRPlayerController>().enabled = true;*/
 
         if (SceneManager.GetActiveScene().name != "Game")
         {
             Button.SetActive(true);
             Pointer.SetActive(true);
             PlayerController.GetComponent<OVRPlayerController>().enabled = false;
+            l_controller.SetActive(true);
+            r_controller.SetActive(true);
+            FlashLight.SetActive(false);
+            l_hand.SetActive(false);         
         }
 
         if (SceneManager.GetActiveScene().name == "Title")
@@ -99,18 +93,17 @@ public class SceneChange : MonoBehaviour
         lightwaitTime += Time.deltaTime;
         footwaitTime += Time.deltaTime;
 
-        if (lightwaitTime >= 0.7f)
+        if (lightwaitTime >= 0.5f)
         {
             if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
             {
+                source.PlayOneShot(clips[4]);
                 LightSwitch();
             }
         }
         if (SceneManager.GetActiveScene().name == "Game")
         {
-            //lightSwitch.FlashLightRay.enabled = true;
-
-            if (footwaitTime >= 0.912f)
+        if (footwaitTime >= 0.912f)
             {
                 Vector2 v = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
                 if (v.x != 0 && v.y != 0)
@@ -150,8 +143,8 @@ public class SceneChange : MonoBehaviour
     void LightSwitch()
     {
         lightwaitTime = 0.0f;
-        lightSwitch.enabled = !lightSwitch.enabled;
-        source.PlayOneShot(clips[4]);        
+        lighting.enabled = !lighting.enabled;
+
     }
 
     public void PlayFoot()
