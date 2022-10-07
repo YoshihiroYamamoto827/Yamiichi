@@ -53,6 +53,7 @@ public class MapGenerator : MonoBehaviour
     private GameObject canvas, UIcamera;
     //敵の数をカウントする変数
     private int EnemyCount;
+    private Vector3 rotate = Vector3.zero;
 
     //NavMeshのスクリプト
     NavMeshManager navscript;
@@ -87,16 +88,6 @@ public class MapGenerator : MonoBehaviour
 
         //敵の生成時にスクリプトを指定するために、GameObjectを格納する変数
         GameObject[] ene;
-
-        /*void AssetBundleUnload()
-        {
-            JsonAssetBundle.Unload(false);
-            ObjectAssetBundle.Unload(false);
-            ManagerAssetBundle.Unload(false);
-            EnemyAssetBundle.Unload(false);
-        }
-
-        AssetBundleUnload();*/
         
         //JsonファイルのAssetBundle読み込み、AssetBundleからファイルの読み込み
         JsonAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Map/" + MapFolderName);
@@ -168,6 +159,7 @@ public class MapGenerator : MonoBehaviour
                         Parent = DoorParent;
                         var exit = Instantiate(ExitArea, new Vector3(inputjson.mapdata[i].xcoor, 1f, inputjson.mapdata[i].ycoor), Quaternion.identity);
                         exit.name = ExitArea.name;
+                        rotate.y = 90f;
                         break;
 
                     case "Capture\\003.png":
@@ -196,6 +188,7 @@ public class MapGenerator : MonoBehaviour
                         InstanceObject = Player;
                         y = 1.5f;
                         Parent = null;
+                        rotate.y = 180f;
                         break;
 
                         case "Capture\\007.png":
@@ -204,13 +197,13 @@ public class MapGenerator : MonoBehaviour
                         Parent = WallParent;
                         break;
                 }
-                ObjectInstance2(Floor, FloorParent, inputjson.mapdata[i].xcoor, y, inputjson.mapdata[i].ycoor, InstanceObject, Parent);
+                ObjectInstance2(Floor, FloorParent, mapSize - inputjson.mapdata[i].xcoor, y, inputjson.mapdata[i].ycoor, InstanceObject, Parent, rotate);
             }
-            var floor = Instantiate(Floor, new Vector3(inputjson.mapdata[i].xcoor, 0f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
+            var floor = Instantiate(Floor, new Vector3(mapSize - inputjson.mapdata[i].xcoor, 0f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
             floor.name = Floor.name;
             if (FloorParent != null) floor.transform.parent = FloorParent.transform;
 
-            var ceiling = Instantiate(Ceiling, new Vector3(inputjson.mapdata[i].xcoor, 4f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
+            var ceiling = Instantiate(Ceiling, new Vector3(mapSize - inputjson.mapdata[i].xcoor, 4f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
             ceiling.name = Ceiling.name;
             if (CeilingParent != null) ceiling.transform.parent = CeilingParent.transform;
 
@@ -234,6 +227,15 @@ public class MapGenerator : MonoBehaviour
             enemymovescript[k].init();
         }
 
+        void AssetBundleUnload()
+        {
+            JsonAssetBundle.Unload(false);
+            ObjectAssetBundle.Unload(false);
+            ManagerAssetBundle.Unload(false);
+            EnemyAssetBundle.Unload(false);
+        }
+        AssetBundleUnload();
+
     }
 
     private void ObjectInstance1(GameObject objb)
@@ -242,7 +244,7 @@ public class MapGenerator : MonoBehaviour
         obja.name = objb.name;
     }
 
-    private void ObjectInstance2(GameObject floorb, GameObject floorparent, float x, float y, float z, GameObject objb, GameObject parent)
+    private void ObjectInstance2(GameObject floorb, GameObject floorparent, float x, float y, float z, GameObject objb, GameObject parent, Vector3 Rotate)
     {
         var floora = Instantiate(floorb, new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
         floora.name = floorb.name;
@@ -250,7 +252,7 @@ public class MapGenerator : MonoBehaviour
 
         if (objb != null)
         {
-            var obja = Instantiate(objb, new Vector3(x, y, z), Quaternion.identity) as GameObject;
+            var obja = Instantiate(objb, new Vector3(x, y, z), Quaternion.Euler(Rotate)) as GameObject;
             obja.name = objb.name;
             if (parent != null) obja.transform.parent = parent.transform;
         }

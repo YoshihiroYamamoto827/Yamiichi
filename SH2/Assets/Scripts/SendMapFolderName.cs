@@ -39,6 +39,8 @@ public class SendMapFolderName : MonoBehaviour
 
         MCDropdown.options[MCDropdown.value].text = MapList[0];
 
+        MapFolderName = MCDropdown.options[MCDropdown.value].text;
+
         DeveloperPanel.SetActive(false);
     }
 

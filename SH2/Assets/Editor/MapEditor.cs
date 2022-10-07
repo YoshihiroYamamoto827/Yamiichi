@@ -344,9 +344,9 @@ public class MapEditorSubWindow : EditorWindow
                 using (new GUILayout.VerticalScope())
                 {
                         //グリッド線を描画する
-                        for (int yy = 0; yy < mapSize; yy++)
+                        for (int xx = 0; xx < mapSize; xx++)
                         {
-                            for (int xx = 0; xx < mapSize; xx++)
+                            for (int yy = 0; yy < mapSize; yy++)
                             {
                                 measureX = Areamargin * 3 + gridSize * xx;
                                 measureY = Areamargin * 3 + gridSize * yy;
@@ -414,9 +414,9 @@ public class MapEditorSubWindow : EditorWindow
                     }
 
                     //選択した画像を描画する
-                    for (int yy = 0; yy < mapSize; yy++)
+                    for (int xx = 0; xx < mapSize; xx++)
                     {
-                        for (int xx = 0; xx < mapSize; xx++)
+                        for (int yy = 0; yy < mapSize; yy++)
                         {
                             if (map[xx, yy] != null && map[xx, yy].Length > 0)
                             {
@@ -446,16 +446,6 @@ public class MapEditorSubWindow : EditorWindow
 
 
                     GUILayout.Space(measureY);
-                        
-                    //出力ボタン
-                    Rect rect = new Rect(0, position.size.y - 50, 300, 50);
-                    GUILayout.BeginArea(rect);
-                    if (GUILayout.Button("output file", GUILayout.MinWidth(300), GUILayout.MinHeight(50)))
-                    {
-                        OutputFile();
-                    }
-                    GUILayout.FlexibleSpace();
-                    GUILayout.EndArea();
 
                 }
 
