@@ -35,7 +35,7 @@ public class SceneChange : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
 
-        if (SceneManager.GetActiveScene().name != "Game")
+        if (SceneManager.GetActiveScene().name != "GameScene")
         {
             Button.SetActive(true);
             Pointer.SetActive(true);
@@ -126,7 +126,7 @@ public class SceneChange : MonoBehaviour
     }
     void GameScene()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("GameScene");
         Button.SetActive(false);
         Pointer.SetActive(false);
     }

@@ -17,6 +17,6 @@ public class NavMeshManager : MonoBehaviour
 
     public void BakeNavMesh()
     {
-        _surface.BuildNavMesh();
+        //_surface.BuildNavMesh();
     }
 }

@@ -7,7 +7,7 @@ using System.IO;
 
 public class SendMapFolderName : MonoBehaviour
 {
-    GameObject DeveloperPanel;
+    /*GameObject DeveloperPanel;
     Dropdown MCDropdown;
     public static string MapFolderName;
 
@@ -17,7 +17,7 @@ public class SendMapFolderName : MonoBehaviour
         DontDestroyOnLoad(this);
 
         //ŠJ”­Òİ’è‚Ìƒpƒlƒ‹‚Ìæ“¾
-        DeveloperPanel = GameObject.Find("DeveloperPanel");
+        DeveloperPanel = GameObject.Find("MapSelectPanel");
 
         List<string> MapList = new List<string>();
 
@@ -52,5 +52,5 @@ public class SendMapFolderName : MonoBehaviour
     {
         Debug.Log(MapFolderName);
         return MapFolderName;
-    }
+    }*/
 }

@@ -68,7 +68,7 @@ public class EnemyMove : MonoBehaviour
             MZanim.SetFloat("Speed", agent.speed, 0.1f, Time.deltaTime);
 
             // プレイヤーを目指して進む
-            agent.destination = MEplayer.transform.position;
+            //agent.destination = MEplayer.transform.position;
         
     }
 

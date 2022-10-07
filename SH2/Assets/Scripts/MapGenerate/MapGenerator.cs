@@ -63,18 +63,18 @@ public class MapGenerator : MonoBehaviour
     {
         init();
         MapGenerate(MapFolderName);
-        UISetActivefalse(canvas, UIcamera);
+        //UISetActivefalse(canvas, UIcamera);
     }
 
     private void init()
     {
-        MapFolderName = SendMapFolderName.getMapFolderName();
+        MapFolderName = "Sample6";
         Debug.Log(MapFolderName);
         y = 0;
         EnemyCount = 0;
         MapInfo info = new MapInfo();
-        canvas = GameObject.Find("Canvas");
-        UIcamera = GameObject.Find("UICamera");
+        //canvas = GameObject.Find("Canvas");
+        //UIcamera = GameObject.Find("UICamera");
         navscript = GameObject.Find("NavMeshmanager").GetComponent<NavMeshManager>();
     }
 
@@ -99,9 +99,13 @@ public class MapGenerator : MonoBehaviour
         AssetBundleUnload();*/
         
         //JsonファイルのAssetBundle読み込み、AssetBundleからファイルの読み込み
-        JsonAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Map/" + MapFolderName);
-        string mapdatainputString = JsonAssetBundle.LoadAsset<TextAsset>("Assets/MapData/" + MapFolderName + "/Mapdata.json").ToString();
-        string mapinfoinputString = JsonAssetBundle.LoadAsset<TextAsset>("Assets/MapData/" + MapFolderName + "/MapInfo.json").ToString();
+        JsonAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, MapFolderName));
+        Debug.Log(MapFolderName);
+        string mapdatainputString = JsonAssetBundle.LoadAsset<TextAsset>("Mapdata").ToString();
+        string mapinfoinputString = JsonAssetBundle.LoadAsset<TextAsset>("MapInfo").ToString();
+        Debug.Log(mapdatainputString);
+        Debug.Log(mapinfoinputString);
+
 
         //マップサイズ情報の読み込み
         MapInfo inputjson2 = JsonUtility.FromJson<MapInfo>(mapinfoinputString);
@@ -122,9 +126,9 @@ public class MapGenerator : MonoBehaviour
         //Debug.Log(inputjson.mapdata[0].xcoor);
 
         //オブジェクトとマネージャーのAssetBundle読み込み、GameObjectとしての読み込み
-        ObjectAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Objects");
-        ManagerAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Manager");
-        EnemyAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Enemies");
+        ObjectAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "objects"));
+        ManagerAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "manager"));
+        EnemyAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "enemies"));
 
         Wall = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Wall.prefab");
         EventWall = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/EventWall.prefab");
@@ -132,7 +136,7 @@ public class MapGenerator : MonoBehaviour
         Floor = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Floor.prefab");
         Ceiling = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Ceiling.prefab");
         Item = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Item.prefab");
-        Player = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Player.prefab");
+        Player = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/OVRPlayer.prefab");
         ExitArea = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/ExitArea.prefab");
         SceneManager = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Manager/SceneManager.prefab");
         ItemManager = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Manager/ItemManager.prefab");
@@ -264,9 +268,9 @@ public class MapGenerator : MonoBehaviour
         if (parent != null) enea.transform.parent = parent.transform;
     }
 
-    private void UISetActivefalse(GameObject Can, GameObject Cam)
+    /*private void UISetActivefalse(GameObject Can, GameObject Cam)
     {
         Can.SetActive(false);
         Cam.SetActive(false);
-    }
+    }*/
 }

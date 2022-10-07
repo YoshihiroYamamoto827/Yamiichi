@@ -62,7 +62,7 @@ public class MapEditor : EditorWindow
     private string selectedImagePath;
     //サブウィンドウ
     private MapEditorSubWindow subWindow;
-    private MapEditorSubWindow2 subWindow2;
+    //private MapEditorSubWindow2 subWindow2;
 
     [UnityEditor.MenuItem("Window/MapEditor")]
     static void ShowTestMainWindow()
@@ -186,7 +186,7 @@ public class MapEditor : EditorWindow
             if (subWindow == null)
             {
                 subWindow = MapEditorSubWindow.WillAppear(this);
-                subWindow2 = MapEditorSubWindow2.WillAppear(this);
+               // subWindow2 = MapEditorSubWindow2.WillAppear(this);
             }
             else
             {
@@ -543,7 +543,7 @@ public class MapEditorSubWindow : EditorWindow
 }
 
 //MapEditor SubWindow2
-public class MapEditorSubWindow2 : EditorWindow
+/*public class MapEditorSubWindow2 : EditorWindow
 {
     //マップウィンドウのサイズ
     const float WINDOW_W = 750.0f;
@@ -682,6 +682,6 @@ public class MapEditorSubWindow2 : EditorWindow
             return "";
         }
     }
-}
+}*/
 
 

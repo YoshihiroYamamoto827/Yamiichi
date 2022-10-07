@@ -1,11 +1,16 @@
 ManifestFileVersion: 0
-<<<<<<< HEAD
-CRC: 3766698625
-=======
-CRC: 3324100589
->>>>>>> master
+CRC: 4225056407
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: ovrplayer
+      Name: enemies
+      Dependencies: {}
+    Info_1:
+      Name: manager
+      Dependencies: {}
+    Info_2:
+      Name: objects
+      Dependencies: {}
+    Info_3:
+      Name: sample6
       Dependencies: {}
