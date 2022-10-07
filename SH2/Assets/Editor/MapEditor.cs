@@ -41,6 +41,8 @@ public class GimmicInfo
 public class Gimmicdata
 {
     bool exit;
+    int Xmovecoor;
+    int Ymovecoor;
 }
 
 
@@ -62,7 +64,7 @@ public class MapEditor : EditorWindow
     private string selectedImagePath;
     //サブウィンドウ
     private MapEditorSubWindow subWindow;
-    private MapEditorSubWindow2 subWindow2;
+    //private MapEditorSubWindow2 subWindow2;
 
     [UnityEditor.MenuItem("Window/MapEditor")]
     static void ShowTestMainWindow()
@@ -186,7 +188,7 @@ public class MapEditor : EditorWindow
             if (subWindow == null)
             {
                 subWindow = MapEditorSubWindow.WillAppear(this);
-                subWindow2 = MapEditorSubWindow2.WillAppear(this);
+                //subWindow2 = MapEditorSubWindow2.WillAppear(this);
             }
             else
             {
@@ -542,7 +544,7 @@ public class MapEditorSubWindow : EditorWindow
     }
 }
 
-//MapEditor SubWindow2
+/*//MapEditor SubWindow2
 public class MapEditorSubWindow2 : EditorWindow
 {
     //マップウィンドウのサイズ
@@ -609,6 +611,8 @@ public class MapEditorSubWindow2 : EditorWindow
         using (var scrollView = new EditorGUILayout.ScrollViewScope(scrollPos))
         {
             scrollPos = scrollView.scrollPosition;
+
+            switch(map[x,y])
 
         }
     }
@@ -682,6 +686,6 @@ public class MapEditorSubWindow2 : EditorWindow
             return "";
         }
     }
-}
+}*/
 
 
