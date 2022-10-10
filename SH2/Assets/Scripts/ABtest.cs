@@ -35,6 +35,7 @@ public class ABtest : MonoBehaviour
 
     GameObject InstanceObject;
     float y;
+    bool FloorInstalled;
 
     int playerx,playery;
 
@@ -95,6 +96,7 @@ public class ABtest : MonoBehaviour
 
         for(int i = 0; i < mapSize * mapSize; i++)
         {
+            FloorInstalled = false;
             if (inputjson.mapdata[i].objectname != "")
             {
                 switch (inputjson.mapdata[i].objectname)
@@ -139,11 +141,21 @@ public class ABtest : MonoBehaviour
                 if (InstanceObject != Player)
                 {
                     ObjectInstance2(Floor, inputjson.mapdata[i].xcoor, y, inputjson.mapdata[i].ycoor, InstanceObject);
+                    FloorInstalled = true;
                 }
+                }
+            if (FloorInstalled == false)
+            {
+                var floor = Instantiate(Floor, new Vector3(inputjson.mapdata[i].xcoor, 0f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
+                floor.name = Floor.name;
+
             }
+
+            var ceiling = Instantiate(Ceiling, new Vector3(inputjson.mapdata[i].xcoor, 4f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
+            ceiling.name = Ceiling.name;
         }
 
-        Player.transform.Translate(playerx, 1.5f, playery);
+        Player.transform.Translate(playerx, 2f, playery);
 
     }
 
@@ -151,8 +163,6 @@ public class ABtest : MonoBehaviour
     {
         var floora = Instantiate(floorb, new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
         floora.name = floorb.name;
-
-
 
         if (objb != null)
         {

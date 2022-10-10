@@ -967,6 +967,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVRPlayer2
       objectReference: {fileID: 0}
+    - target: {fileID: 8974688972432916741, guid: 346ce10ba46cd8048845c1b21e1dd554, type: 3}
+      propertyPath: m_Height
+      value: 1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 8974688972432916741, guid: 346ce10ba46cd8048845c1b21e1dd554, type: 3}
+      propertyPath: m_Center.y
+      value: -0.28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 346ce10ba46cd8048845c1b21e1dd554, type: 3}
 --- !u!1 &1486112775

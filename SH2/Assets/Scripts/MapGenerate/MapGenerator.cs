@@ -217,7 +217,6 @@ public class MapGenerator : MonoBehaviour
             var ceiling = Instantiate(Ceiling, new Vector3(inputjson.mapdata[i].xcoor, 4f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
             ceiling.name = Ceiling.name;
             if (CeilingParent != null) ceiling.transform.parent = CeilingParent.transform;
-
         }
 
         for(int j = 0; j < EnemyCount; j++)
