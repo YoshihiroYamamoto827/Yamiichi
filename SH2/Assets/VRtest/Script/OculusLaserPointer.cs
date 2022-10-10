@@ -152,7 +152,7 @@ public class OculusLaserPointer : OVRCursor
 
         _instance = this;
 
-        gazeIcon = transform.Find("PointerIcon");
+        gazeIcon = transform.Find("gazeIcon");
         progressIndicator = transform.GetComponent<OVRProgressIndicator>();
     }
 

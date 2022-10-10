@@ -143,7 +143,6 @@ public class OVRScreenFade : MonoBehaviour
 	public void FadeOut()
 	{
 		StartCoroutine(Fade(0,1));
-
 	}
 
 	/// <summary>
@@ -233,33 +232,5 @@ public class OVRScreenFade : MonoBehaviour
 			fadeRenderer.material = fadeMaterial;
 			fadeRenderer.enabled = isFading;
 		}
-	}
-
-	/*public void FadeOn(float startAlpha = 0, float endAlpha = 1, float delay = 0)
-	{
-		StartCoroutine(Fade(startAlpha, endAlpha, delay));
-	}
-
-
-	IEnumerator Fade(float startAlpha, float endAlpha, float delay)
-	{
-		Debug.Log("fade on");
-		float elapsedTime = 0.0f;
-
-		yield return new WaitForSeconds(delay);
-
-		while (elapsedTime < fadeTime)
-		{
-			elapsedTime += Time.deltaTime;
-			currentAlpha = Mathf.Lerp(startAlpha, endAlpha, Mathf.Clamp01(elapsedTime / fadeTime));
-			SetMaterialAlpha();
-			yield return new WaitForEndOfFrame();
-		}
-	}*/
-
-	public void FadeOn()
-    {
-		FadeOut();
-        FadeIn();
 	}
 }

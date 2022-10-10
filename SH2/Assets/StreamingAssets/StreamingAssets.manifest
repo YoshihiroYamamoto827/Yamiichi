@@ -1,16 +1,10 @@
 ManifestFileVersion: 0
-CRC: 4225056407
+CRC: 325207552
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: enemies
+      Name: testcube
       Dependencies: {}
     Info_1:
-      Name: manager
-      Dependencies: {}
-    Info_2:
-      Name: objects
-      Dependencies: {}
-    Info_3:
-      Name: sample6
+      Name: testcube2
       Dependencies: {}

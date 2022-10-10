@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/VRtest/Scenes/Help.unity
     guid: adef45ebee078db42a9ea9ac44166a5d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: f165be872b1bf0640b9654596e2cb3ca
   - enabled: 0
@@ -32,7 +32,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/VRtest/Scenes/Game.unity
     guid: 063c333f3440c4c4baa61edcae8eb524
-  - enabled: 1
+  - enabled: 0
     path: Assets/VRtest/Scenes/GameScene.unity
     guid: 0b2828e46f932a94abfc17d7d93a4892
   m_configObjects:

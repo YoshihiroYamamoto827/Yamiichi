@@ -94,10 +94,9 @@ namespace OVRTouchSample
 
             OVRManager.InputFocusAcquired += OnInputFocusAcquired;
             OVRManager.InputFocusLost += OnInputFocusLost;
-/*#if UNITY_EDITOR
+#if UNITY_EDITOR
             OVRPlugin.SendEvent("custom_hand", (SceneManager.GetActiveScene().name == "CustomHands").ToString(), "sample_framework");
-#endif*/
-
+#endif
         }
 
         private void OnDestroy()
@@ -211,12 +210,12 @@ namespace OVRTouchSample
             m_animator.SetFloat(m_animParamIndexFlex, flex);
 
             // Point
-            bool canPoint = grabPose.AllowPointing;
+            bool canPoint = !grabbing || grabPose.AllowPointing;
             float point = canPoint ? m_pointBlend : 0.0f;
             m_animator.SetLayerWeight(m_animLayerIndexPoint, point);
 
             // Thumbs up
-            bool canThumbsUp = grabPose.AllowThumbsUp;
+            bool canThumbsUp = !grabbing || grabPose.AllowThumbsUp;
             float thumbsUp = canThumbsUp ? m_thumbsUpBlend : 0.0f;
             m_animator.SetLayerWeight(m_animLayerIndexThumb, thumbsUp);
 

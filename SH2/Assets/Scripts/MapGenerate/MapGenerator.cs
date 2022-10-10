@@ -97,7 +97,7 @@ public class MapGenerator : MonoBehaviour
         }
 
         AssetBundleUnload();*/
-        
+
         //JsonファイルのAssetBundle読み込み、AssetBundleからファイルの読み込み
         JsonAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, MapFolderName));
         Debug.Log(MapFolderName);
@@ -130,13 +130,13 @@ public class MapGenerator : MonoBehaviour
         ManagerAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "manager"));
         EnemyAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "enemies"));
 
-        Wall = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Wall.prefab");
+        Wall = ObjectAssetBundle.LoadAsset<GameObject>("Wall.prefab");
         EventWall = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/EventWall.prefab");
         Door = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Door.prefab");
         Floor = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Floor.prefab");
         Ceiling = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Ceiling.prefab");
         Item = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Item.prefab");
-        Player = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/OVRPlayer.prefab");
+        Player = GameObject.Find("OVRPlayer2");
         ExitArea = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/ExitArea.prefab");
         SceneManager = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Manager/SceneManager.prefab");
         ItemManager = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Manager/ItemManager.prefab");
@@ -219,7 +219,6 @@ public class MapGenerator : MonoBehaviour
             if (CeilingParent != null) ceiling.transform.parent = CeilingParent.transform;
 
         }
-        navscript.BakeNavMesh();
 
         for(int j = 0; j < EnemyCount; j++)
         {
@@ -252,13 +251,14 @@ public class MapGenerator : MonoBehaviour
         floora.name = floorb.name;
         if (floorparent != null) floora.transform.parent = floorparent.transform;
 
-        if (objb != null)
-        {
-            var obja = Instantiate(objb, new Vector3(x, y, z), Quaternion.identity) as GameObject;
-            obja.name = objb.name;
-            if (parent != null) obja.transform.parent = parent.transform;
-        }
-        
+
+            if (objb != null)
+            {
+                var obja = Instantiate(objb, new Vector3(x, y, z), Quaternion.identity) as GameObject;
+                obja.name = objb.name;
+                if (parent != null) obja.transform.parent = parent.transform;
+            }
+
     }
 
     private void EnemyInstance(int x, int y, GameObject eneb, GameObject parent, int j)
