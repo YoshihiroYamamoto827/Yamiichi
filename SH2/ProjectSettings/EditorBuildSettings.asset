@@ -11,22 +11,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/HouseScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/VRtest/Scenes/Title.unity
     guid: b8eb8a7842b428846921412b3db50368
-  - enabled: 0
-    path: Assets/VRtest/Scenes/Help.unity
-    guid: adef45ebee078db42a9ea9ac44166a5d
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: f165be872b1bf0640b9654596e2cb3ca
   - enabled: 0
     path: Assets/Scenes/MapPreviewScene.unity
     guid: 76df545a5d33d7849961299530742ff0
-  - enabled: 0
-    path: Assets/VRtest/Scenes/MapSelect.unity
-    guid: ff204088104b3f64d8907874f4264a20
-  - enabled: 0
+  - enabled: 1
     path: Assets/VRtest/Scenes/End.unity
     guid: 5d6e49c119cdd074e8739c9f403b83c8
   - enabled: 0
