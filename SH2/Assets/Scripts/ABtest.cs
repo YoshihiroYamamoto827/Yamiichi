@@ -72,14 +72,17 @@ public class ABtest : MonoBehaviour
         EnemyAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "enemies"));
 
         Wall = ObjectAssetBundle.LoadAsset<GameObject>("Wall.prefab");
-        EventWall = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/EventWall.prefab");
-        Door = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Door.prefab");
-        Floor = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Floor.prefab");
-        Ceiling = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Ceiling.prefab");
-        Item = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Item.prefab");
+        EventWall = ObjectAssetBundle.LoadAsset<GameObject>("EventWall.prefab");
+        Door = ObjectAssetBundle.LoadAsset<GameObject>("Door.prefab");
+        Floor = ObjectAssetBundle.LoadAsset<GameObject>("Floor.prefab");
+        Ceiling = ObjectAssetBundle.LoadAsset<GameObject>("Ceiling.prefab");
+        Item = ObjectAssetBundle.LoadAsset<GameObject>("Item.prefab");
         Player = GameObject.Find("OVRPlayerController");
-        MoveZombie = EnemyAssetBundle.LoadAsset<GameObject>("Assets/Resources/Enemies/MoveZombie.prefab");
-        ExitArea = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/ExitArea.prefab");
+        MoveZombie = EnemyAssetBundle.LoadAsset<GameObject>("MoveZombie.prefab");
+        ExitArea = ObjectAssetBundle.LoadAsset<GameObject>("ExitArea.prefab");
+        ItemManager = ManagerAssetBundle.LoadAsset<GameObject>("ItemManager.prefab");
+
+        Instantiate(ItemManager);
 
         for (int i = 0; i < mapSize * mapSize; i++)
         {

@@ -18,6 +18,7 @@ public class Itemmanager : MonoBehaviour
     {
         if(itemcounter >= 3)
         {
+            exitarea = GameObject.Find("ExitArea");
             Debug.Log("Area Opened");
             exitarea.SetActive(true);
         }
@@ -26,10 +27,5 @@ public class Itemmanager : MonoBehaviour
     public void itemcounterAdd()
     {
         itemcounter++;
-    }
-
-    public void LoadExitArea()
-    {
-        exitarea = GameObject.Find("ExitArea");
     }
 }

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3270812397
+CRC: 2897179713
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 362260471d8b800e9bed41d24d527fb0
+    Hash: f66bd3737a47d1c8bf00d1cb55439af2
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 24f937c66baf5d9f0e02e0da3b0d715b
+    Hash: c80fa3c735d5fbdb95597fb0699d515e
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -54,6 +54,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 4444ce35d262aa648ad0c425a559b931, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 0950df82e7936c84983497630bde5b54, type: 3}
@@ -64,9 +66,17 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 79b7e65854ace8f44b05c52c6e824354, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4f07515ada089df47868559a20dd6783, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
 - Class: 114
@@ -78,11 +88,15 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 3958d76751ac16944935a05edadb40b3, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: b71d1996d67004241a3b69960856ffcb, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: e503ea6418d27594caa33b93cac1b06a, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 5178bc8574ce2bf4388e787a2e2af326, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 95cef9690d2c24248a32b58451596d09, type: 3}
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fd425c2d06f39bf4899d07c05d0f10eb, type: 3}
 - Class: 114
@@ -90,9 +104,15 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: d16570c5761f852429b9eead27879ab9, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 69d62d2c267636a4faf8bfd07592190d, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 7aaf960227867044282d921171d2d7ac, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 9f74b253ab0be8e4c800c69cb84f8fc2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: a9f250c648ed67a42bad14083da17f04, type: 3}
 - Class: 114
@@ -120,12 +140,46 @@ ClassTypes:
 - Class: 224
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Dropdown/DropdownEvent
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Dropdown/OptionData
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Dropdown/OptionDataList
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphValueRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.VertexGradient
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.ArgumentCache
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentCallGroup
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentListenerMode
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.AnimationTriggers
 - AssemblyName: UnityEngine.UI
@@ -139,13 +193,22 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.Navigation
 - AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ScrollRect/ScrollRectEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Scrollbar/ScrollEvent
+- AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.SpriteState
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Toggle/ToggleEvent
 Assets:
 - Assets/Resources/Objects/Item.prefab
+- Assets/Resources/Objects/OVRPlayer2.prefab
 - Assets/Resources/Objects/Floor.prefab
+- Assets/Resources/Objects/Flashlight.prefab
 - Assets/Resources/Objects/Player.prefab
 - Assets/Resources/Objects/EventWall.prefab
 - Assets/Resources/Objects/Door.prefab
+- Assets/Resources/Objects/OVRPlayerController.prefab
 - Assets/Resources/Objects/ceiling.prefab
 - Assets/Resources/Objects/ExitArea.prefab
 - Assets/Resources/Objects/OVRPlayer.prefab
