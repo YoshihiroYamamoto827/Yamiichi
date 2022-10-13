@@ -38,32 +38,18 @@ public class ABtest : MonoBehaviour
     bool FloorInstalled;
 
     int playerx,playery;
+    private Vector3 rotate = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
     {
-        AssetBundle Test1, Test2;
-        GameObject cube1, cube2;
-        var path1 = Application.streamingAssetsPath + "/testcube";
-        var path2 = Application.streamingAssetsPath + "/testcube2";
-
-        Test1 = AssetBundle.LoadFromFile(path1);
-        Test2 = AssetBundle.LoadFromFile(path2);
-
-        Debug.Log(Test1);
-
-        cube1 = Test1.LoadAsset<GameObject>("TestCube");
-        cube2 = Test2.LoadAsset<GameObject>("Assets/Resources/TestCube2.prefab");
-
-        Instantiate(cube1, new Vector3(-1,1,0),Quaternion.identity);
-        Instantiate(cube2, new Vector3(1, 1, 0), Quaternion.identity);
 
         //AssetBundleÅAGameObjectÇÃêÈåæ
         AssetBundle JsonAssetBundle, ObjectAssetBundle, ManagerAssetBundle, EnemyAssetBundle;
         GameObject Wall, EventWall, Door, Floor, Ceiling, Item, Player, ExitArea, SceneManager, ItemManager;
         GameObject MoveZombie;
 
-        string MapFolderName = "sample6";
+        string MapFolderName = "sample8";
 
         JsonAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, MapFolderName));
 
@@ -93,8 +79,9 @@ public class ABtest : MonoBehaviour
         Item = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Item.prefab");
         Player = GameObject.Find("OVRPlayerController");
         MoveZombie = EnemyAssetBundle.LoadAsset<GameObject>("Assets/Resources/Enemies/MoveZombie.prefab");
+        ExitArea = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/ExitArea.prefab");
 
-        for(int i = 0; i < mapSize * mapSize; i++)
+        for (int i = 0; i < mapSize * mapSize; i++)
         {
             FloorInstalled = false;
             if (inputjson.mapdata[i].objectname != "")
@@ -109,11 +96,15 @@ public class ABtest : MonoBehaviour
                     case "Capture\\002.png":
                         InstanceObject = Door;
                         y = 1.5f;
+                        var exit = Instantiate(ExitArea, new Vector3(inputjson.mapdata[i].xcoor, 1f, inputjson.mapdata[i].ycoor), Quaternion.identity);
+                        exit.name = ExitArea.name;
+                        rotate.y = 90f;
                         break;
 
                     case "Capture\\003.png":
                         InstanceObject = MoveZombie;
                         y = 1.5f;
+                        rotate.y = 90f;
                         break;
 
                     case "Capture\\004.png":
@@ -131,6 +122,7 @@ public class ABtest : MonoBehaviour
                         playerx = inputjson.mapdata[i].xcoor;
                         playery = inputjson.mapdata[i].ycoor;
                         y = 1.5f;
+                        rotate.y = 180f;
                         break;
 
                     case "Capture\\007.png":
@@ -140,18 +132,18 @@ public class ABtest : MonoBehaviour
                 }
                 if (InstanceObject != Player)
                 {
-                    ObjectInstance2(Floor, inputjson.mapdata[i].xcoor, y, inputjson.mapdata[i].ycoor, InstanceObject);
+                    ObjectInstance2(Floor, mapSize - inputjson.mapdata[i].xcoor, y, inputjson.mapdata[i].ycoor, InstanceObject, rotate);
                     FloorInstalled = true;
                 }
                 }
             if (FloorInstalled == false)
             {
-                var floor = Instantiate(Floor, new Vector3(inputjson.mapdata[i].xcoor, 0f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
+                var floor = Instantiate(Floor, new Vector3(mapSize - inputjson.mapdata[i].xcoor, 0f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
                 floor.name = Floor.name;
 
             }
 
-            var ceiling = Instantiate(Ceiling, new Vector3(inputjson.mapdata[i].xcoor, 4f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
+            var ceiling = Instantiate(Ceiling, new Vector3(mapSize - inputjson.mapdata[i].xcoor, 4f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
             ceiling.name = Ceiling.name;
         }
 
@@ -159,14 +151,14 @@ public class ABtest : MonoBehaviour
 
     }
 
-    private void ObjectInstance2(GameObject floorb, float x, float y, float z, GameObject objb)
+    private void ObjectInstance2(GameObject floorb, float x, float y, float z, GameObject objb, Vector3 Rotate)
     {
         var floora = Instantiate(floorb, new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
         floora.name = floorb.name;
 
         if (objb != null)
         {
-            var obja = Instantiate(objb, new Vector3(x, y, z), Quaternion.identity) as GameObject;
+            var obja = Instantiate(objb, new Vector3(x, y, z), Quaternion.Euler(Rotate)) as GameObject;
             obja.name = objb.name;
         }
 
