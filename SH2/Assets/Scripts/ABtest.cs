@@ -77,7 +77,7 @@ public class ABtest : MonoBehaviour
         Floor = ObjectAssetBundle.LoadAsset<GameObject>("Floor.prefab");
         Ceiling = ObjectAssetBundle.LoadAsset<GameObject>("Ceiling.prefab");
         Item = ObjectAssetBundle.LoadAsset<GameObject>("Item.prefab");
-        Player = GameObject.Find("OVRPlayerController");
+        Player = GameObject.Find("Player");
         MoveZombie = EnemyAssetBundle.LoadAsset<GameObject>("MoveZombie.prefab");
         ExitArea = ObjectAssetBundle.LoadAsset<GameObject>("ExitArea.prefab");
         ItemManager = ManagerAssetBundle.LoadAsset<GameObject>("ItemManager.prefab");

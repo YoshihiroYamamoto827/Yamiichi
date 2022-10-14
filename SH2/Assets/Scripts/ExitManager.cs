@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ExitManager : MonoBehaviour
-{
+ public class ExitManager : MonoBehaviour
+{/*
     GameObject scenemanager,itemmanager;
     sceneManager script;
     Itemmanager script2;
@@ -36,5 +36,5 @@ public class ExitManager : MonoBehaviour
     private void GameClear()
     {
         SceneManager.LoadScene("EndScene");
-    }
+    }*/
 }
