@@ -151,7 +151,6 @@ public class ABtest : MonoBehaviour
         }
 
         Player.transform.Translate(playerx, 2f, playery);
-
     }
 
     private void ObjectInstance2(GameObject floorb, float x, float y, float z, GameObject objb, Vector3 Rotate)
