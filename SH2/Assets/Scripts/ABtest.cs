@@ -49,7 +49,7 @@ public class ABtest : MonoBehaviour
         GameObject Wall, EventWall, Door, Floor, Ceiling, Item, Player, ExitArea, SceneManager, ItemManager;
         GameObject MoveZombie;
 
-        string MapFolderName = "sample8";
+        string MapFolderName = "manual";
 
         JsonAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, MapFolderName));
 
@@ -77,7 +77,7 @@ public class ABtest : MonoBehaviour
         Floor = ObjectAssetBundle.LoadAsset<GameObject>("Floor.prefab");
         Ceiling = ObjectAssetBundle.LoadAsset<GameObject>("Ceiling.prefab");
         Item = ObjectAssetBundle.LoadAsset<GameObject>("Item.prefab");
-        Player = GameObject.Find("OVRPlayerController");
+        Player = GameObject.Find("Player");
         MoveZombie = EnemyAssetBundle.LoadAsset<GameObject>("MoveZombie.prefab");
         ExitArea = ObjectAssetBundle.LoadAsset<GameObject>("ExitArea.prefab");
         ItemManager = ManagerAssetBundle.LoadAsset<GameObject>("ItemManager.prefab");
