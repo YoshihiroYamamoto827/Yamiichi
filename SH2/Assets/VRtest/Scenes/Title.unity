@@ -282,6 +282,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVRPlayerController
       objectReference: {fileID: 0}
+    - target: {fileID: 4126655939457667499, guid: 67b858ebec31149419b2f3f8782091a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126655940257290542, guid: 67b858ebec31149419b2f3f8782091a1, type: 3}
+      propertyPath: m_Text
+      value: "\u79FB\u52D5\uFF1A\u5DE6\u30B9\u30C6\u30A3\u30C3\u30AF\n\u8996\u70B9\u64CD\u4F5C\uFF1A\u53F3\u30B9\u30C6\u30A3\u30C3\u30AF\n\n\n\u30A2\u30A4\u30C6\u30E0\u30923\u3064\u5165\u624B\u3057\u30C9\u30A2\u3078"
+      objectReference: {fileID: 0}
     - target: {fileID: 4126655940867023550, guid: 67b858ebec31149419b2f3f8782091a1, type: 3}
       propertyPath: m_IsActive
       value: 0
