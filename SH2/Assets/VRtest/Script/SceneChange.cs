@@ -236,9 +236,6 @@ public class SceneChange : MonoBehaviour
             }
         }
 
-        if (OVRInput.Get(OVRInput.RawButton.Y))
-            SceneManager.LoadScene("End");
-
         lightwaitTime += Time.deltaTime;
         footwaitTime += Time.deltaTime;
 

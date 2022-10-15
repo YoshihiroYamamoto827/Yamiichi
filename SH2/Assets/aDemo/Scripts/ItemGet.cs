@@ -16,7 +16,7 @@ public class ItemGet : MonoBehaviour
         }
         if (other.gameObject.CompareTag("ExitDoor") && ItemCount >= 3)
         {
-            SceneManager.LoadScene("EndScene");
+            SceneManager.LoadScene("End");
             Debug.Log("endScene");
         }
 
