@@ -53,7 +53,6 @@ public class MapGenerator : MonoBehaviour
     private GameObject canvas, UIcamera;
     //敵の数をカウントする変数
     private int EnemyCount;
-    private Vector3 rotate = Vector3.zero;
 
     //NavMeshのスクリプト
     NavMeshManager navscript;
@@ -64,18 +63,18 @@ public class MapGenerator : MonoBehaviour
     {
         init();
         MapGenerate(MapFolderName);
-        UISetActivefalse(canvas, UIcamera);
+        //UISetActivefalse(canvas, UIcamera);
     }
 
     private void init()
     {
-        MapFolderName = SendMapFolderName.getMapFolderName();
+        MapFolderName = "Sample6";
         Debug.Log(MapFolderName);
         y = 0;
         EnemyCount = 0;
         MapInfo info = new MapInfo();
-        canvas = GameObject.Find("Canvas");
-        UIcamera = GameObject.Find("UICamera");
+        //canvas = GameObject.Find("Canvas");
+        //UIcamera = GameObject.Find("UICamera");
         navscript = GameObject.Find("NavMeshmanager").GetComponent<NavMeshManager>();
     }
 
@@ -88,11 +87,25 @@ public class MapGenerator : MonoBehaviour
 
         //敵の生成時にスクリプトを指定するために、GameObjectを格納する変数
         GameObject[] ene;
-        
+
+        /*void AssetBundleUnload()
+        {
+            JsonAssetBundle.Unload(false);
+            ObjectAssetBundle.Unload(false);
+            ManagerAssetBundle.Unload(false);
+            EnemyAssetBundle.Unload(false);
+        }
+
+        AssetBundleUnload();*/
+
         //JsonファイルのAssetBundle読み込み、AssetBundleからファイルの読み込み
-        JsonAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Map/" + MapFolderName);
-        string mapdatainputString = JsonAssetBundle.LoadAsset<TextAsset>("Assets/MapData/" + MapFolderName + "/Mapdata.json").ToString();
-        string mapinfoinputString = JsonAssetBundle.LoadAsset<TextAsset>("Assets/MapData/" + MapFolderName + "/MapInfo.json").ToString();
+        JsonAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, MapFolderName));
+        Debug.Log(MapFolderName);
+        string mapdatainputString = JsonAssetBundle.LoadAsset<TextAsset>("Mapdata").ToString();
+        string mapinfoinputString = JsonAssetBundle.LoadAsset<TextAsset>("MapInfo").ToString();
+        Debug.Log(mapdatainputString);
+        Debug.Log(mapinfoinputString);
+
 
         //マップサイズ情報の読み込み
         MapInfo inputjson2 = JsonUtility.FromJson<MapInfo>(mapinfoinputString);
@@ -113,17 +126,17 @@ public class MapGenerator : MonoBehaviour
         //Debug.Log(inputjson.mapdata[0].xcoor);
 
         //オブジェクトとマネージャーのAssetBundle読み込み、GameObjectとしての読み込み
-        ObjectAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Objects");
-        ManagerAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Manager");
-        EnemyAssetBundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Enemies");
+        ObjectAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "objects"));
+        ManagerAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "manager"));
+        EnemyAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "enemies"));
 
-        Wall = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Wall.prefab");
+        Wall = ObjectAssetBundle.LoadAsset<GameObject>("Wall.prefab");
         EventWall = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/EventWall.prefab");
         Door = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Door.prefab");
         Floor = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Floor.prefab");
         Ceiling = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Ceiling.prefab");
         Item = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Item.prefab");
-        Player = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/Player.prefab");
+        Player = GameObject.Find("OVRPlayerController");
         ExitArea = ObjectAssetBundle.LoadAsset<GameObject>("Assets/Resources/Objects/ExitArea.prefab");
         SceneManager = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Manager/SceneManager.prefab");
         ItemManager = ManagerAssetBundle.LoadAsset<GameObject>("Assets/Resources/Manager/ItemManager.prefab");
@@ -159,7 +172,6 @@ public class MapGenerator : MonoBehaviour
                         Parent = DoorParent;
                         var exit = Instantiate(ExitArea, new Vector3(inputjson.mapdata[i].xcoor, 1f, inputjson.mapdata[i].ycoor), Quaternion.identity);
                         exit.name = ExitArea.name;
-                        rotate.y = 90f;
                         break;
 
                     case "Capture\\003.png":
@@ -188,7 +200,6 @@ public class MapGenerator : MonoBehaviour
                         InstanceObject = Player;
                         y = 1.5f;
                         Parent = null;
-                        rotate.y = 180f;
                         break;
 
                         case "Capture\\007.png":
@@ -197,18 +208,16 @@ public class MapGenerator : MonoBehaviour
                         Parent = WallParent;
                         break;
                 }
-                ObjectInstance2(Floor, FloorParent, mapSize - inputjson.mapdata[i].xcoor, y, inputjson.mapdata[i].ycoor, InstanceObject, Parent, rotate);
+                ObjectInstance2(Floor, FloorParent, inputjson.mapdata[i].xcoor, y, inputjson.mapdata[i].ycoor, InstanceObject, Parent);
             }
-            var floor = Instantiate(Floor, new Vector3(mapSize - inputjson.mapdata[i].xcoor, 0f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
+            var floor = Instantiate(Floor, new Vector3(inputjson.mapdata[i].xcoor, 0f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
             floor.name = Floor.name;
             if (FloorParent != null) floor.transform.parent = FloorParent.transform;
 
-            var ceiling = Instantiate(Ceiling, new Vector3(mapSize - inputjson.mapdata[i].xcoor, 4f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
+            var ceiling = Instantiate(Ceiling, new Vector3(inputjson.mapdata[i].xcoor, 4f, inputjson.mapdata[i].ycoor), Quaternion.identity) as GameObject;
             ceiling.name = Ceiling.name;
             if (CeilingParent != null) ceiling.transform.parent = CeilingParent.transform;
-
         }
-        navscript.BakeNavMesh();
 
         for(int j = 0; j < EnemyCount; j++)
         {
@@ -227,15 +236,6 @@ public class MapGenerator : MonoBehaviour
             enemymovescript[k].init();
         }
 
-        void AssetBundleUnload()
-        {
-            JsonAssetBundle.Unload(false);
-            ObjectAssetBundle.Unload(false);
-            ManagerAssetBundle.Unload(false);
-            EnemyAssetBundle.Unload(false);
-        }
-        AssetBundleUnload();
-
     }
 
     private void ObjectInstance1(GameObject objb)
@@ -244,19 +244,20 @@ public class MapGenerator : MonoBehaviour
         obja.name = objb.name;
     }
 
-    private void ObjectInstance2(GameObject floorb, GameObject floorparent, float x, float y, float z, GameObject objb, GameObject parent, Vector3 Rotate)
+    private void ObjectInstance2(GameObject floorb, GameObject floorparent, float x, float y, float z, GameObject objb, GameObject parent)
     {
         var floora = Instantiate(floorb, new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
         floora.name = floorb.name;
         if (floorparent != null) floora.transform.parent = floorparent.transform;
 
-        if (objb != null)
-        {
-            var obja = Instantiate(objb, new Vector3(x, y, z), Quaternion.Euler(Rotate)) as GameObject;
-            obja.name = objb.name;
-            if (parent != null) obja.transform.parent = parent.transform;
-        }
-        
+
+            if (objb != null)
+            {
+                var obja = Instantiate(objb, new Vector3(x, y, z), Quaternion.identity) as GameObject;
+                obja.name = objb.name;
+                if (parent != null) obja.transform.parent = parent.transform;
+            }
+
     }
 
     private void EnemyInstance(int x, int y, GameObject eneb, GameObject parent, int j)
@@ -266,9 +267,9 @@ public class MapGenerator : MonoBehaviour
         if (parent != null) enea.transform.parent = parent.transform;
     }
 
-    private void UISetActivefalse(GameObject Can, GameObject Cam)
+    /*private void UISetActivefalse(GameObject Can, GameObject Cam)
     {
         Can.SetActive(false);
         Cam.SetActive(false);
-    }
+    }*/
 }

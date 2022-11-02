@@ -22,7 +22,7 @@ public class ItemCount : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Player")
+        if(other.gameObject.name == "CustomHandLeft")
         {
             script.itemcounterAdd();
             Destroy(this.gameObject);

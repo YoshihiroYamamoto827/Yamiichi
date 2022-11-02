@@ -1,7 +1,10 @@
 ManifestFileVersion: 0
-CRC: 1023360220
+CRC: 670477452
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: objects
+      Name: map5x5
+      Dependencies: {}
+    Info_1:
+      Name: map10x10
       Dependencies: {}

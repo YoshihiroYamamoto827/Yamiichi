@@ -41,8 +41,6 @@ public class GimmicInfo
 public class Gimmicdata
 {
     bool exit;
-    int Xmovecoor;
-    int Ymovecoor;
 }
 
 
@@ -188,7 +186,7 @@ public class MapEditor : EditorWindow
             if (subWindow == null)
             {
                 subWindow = MapEditorSubWindow.WillAppear(this);
-                //subWindow2 = MapEditorSubWindow2.WillAppear(this);
+               // subWindow2 = MapEditorSubWindow2.WillAppear(this);
             }
             else
             {
@@ -344,9 +342,9 @@ public class MapEditorSubWindow : EditorWindow
                 using (new GUILayout.VerticalScope())
                 {
                         //グリッド線を描画する
-                        for (int xx = 0; xx < mapSize; xx++)
+                        for (int yy = 0; yy < mapSize; yy++)
                         {
-                            for (int yy = 0; yy < mapSize; yy++)
+                            for (int xx = 0; xx < mapSize; xx++)
                             {
                                 measureX = Areamargin * 3 + gridSize * xx;
                                 measureY = Areamargin * 3 + gridSize * yy;
@@ -414,9 +412,9 @@ public class MapEditorSubWindow : EditorWindow
                     }
 
                     //選択した画像を描画する
-                    for (int xx = 0; xx < mapSize; xx++)
+                    for (int yy = 0; yy < mapSize; yy++)
                     {
-                        for (int yy = 0; yy < mapSize; yy++)
+                        for (int xx = 0; xx < mapSize; xx++)
                         {
                             if (map[xx, yy] != null && map[xx, yy].Length > 0)
                             {
@@ -446,6 +444,16 @@ public class MapEditorSubWindow : EditorWindow
 
 
                     GUILayout.Space(measureY);
+                        
+                    //出力ボタン
+                    Rect rect = new Rect(0, position.size.y - 50, 300, 50);
+                    GUILayout.BeginArea(rect);
+                    if (GUILayout.Button("output file", GUILayout.MinWidth(300), GUILayout.MinHeight(50)))
+                    {
+                        OutputFile();
+                    }
+                    GUILayout.FlexibleSpace();
+                    GUILayout.EndArea();
 
                 }
 
@@ -534,8 +542,8 @@ public class MapEditorSubWindow : EditorWindow
     }
 }
 
-/*//MapEditor SubWindow2
-public class MapEditorSubWindow2 : EditorWindow
+//MapEditor SubWindow2
+/*public class MapEditorSubWindow2 : EditorWindow
 {
     //マップウィンドウのサイズ
     const float WINDOW_W = 750.0f;
@@ -601,8 +609,6 @@ public class MapEditorSubWindow2 : EditorWindow
         using (var scrollView = new EditorGUILayout.ScrollViewScope(scrollPos))
         {
             scrollPos = scrollView.scrollPosition;
-
-            switch(map[x,y])
 
         }
     }

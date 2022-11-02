@@ -1,16 +1,10 @@
 ManifestFileVersion: 0
-CRC: 2650733408
+CRC: 1413889683
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: samplejson4
+      Name: sample6
       Dependencies: {}
     Info_1:
-      Name: objects
-      Dependencies: {}
-    Info_2:
-      Name: samplejson5
-      Dependencies: {}
-    Info_3:
-      Name: samplejson6
+      Name: ovrplayer
       Dependencies: {}
